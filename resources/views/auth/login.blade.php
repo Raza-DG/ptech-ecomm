@@ -8,7 +8,7 @@
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Aside-->
             <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative"
-                style="background-color: #F2C98A">
+                style="background-color: #e30d0d">
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
                     <!--begin::Content-->
@@ -23,11 +23,11 @@
                         <br>
                         <!--end::Logo-->
                         <!--begin::Title-->
-                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">{{ translate('Welcome to') }}
+                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #000;">{{ translate('Welcome to') }}
                             {{ env('APP_NAME') }}</h1>
                         <!--end::Title-->
                         <!--begin::Description-->
-                        <p class="fw-bold fs-2" style="color: #986923;">Discover Amazing {{ env('APP_NAME') }}
+                        <p class="fw-bold fs-2" style="color: #000;">{{ env('APP_NAME') }}
                             <br />{{ translate('Login to your account.') }}
                         </p>
                         <!--end::Description-->
@@ -35,7 +35,7 @@
                     <!--end::Content-->
                     <!--begin::Illustration-->
                     <div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px"
-                        style="background-image: url({{ uploaded_asset(get_setting('admin_login_background')) }}"></div>
+                        style="background-image: url({{ uploaded_asset(get_setting('admin_login_background')) }})"></div>
                     <!--end::Illustration-->
                 </div>
                 <!--end::Wrapper-->
