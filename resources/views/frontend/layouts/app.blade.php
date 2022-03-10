@@ -48,10 +48,13 @@
     <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ static_asset('assets/frontend/assets/css/vendors.css') }}">
+    {{-- <link rel="stylesheet" href="{{ static_asset('assets/frontend/assets/css/vendors.css') }}">
     @if(\App\Models\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
         <link rel="stylesheet" href="{{ static_asset('assets/frontend/assets/css/bootstrap-rtl.min.css') }}">
         <link rel="stylesheet" href="{{ static_asset('assets/frontend/assets/css/main.rtl.min.css') }}">
@@ -80,8 +83,15 @@
 
     <!-- CSSVendor -->
     <link rel="stylesheet" type="text/css" href="{{ static_asset('assets/frontend/static/css/vendor/slick.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ static_asset('assets/frontend/static/css/vendor/jquery-ui.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_asset('assets/frontend/static/css/vendor/jquery-ui.min.css') }}"> --}}
     <!-- /CSSVendor -->
+
+
+	<link data-minify="1" href="{{static_asset("assets/frontend/css/322cbd50567d4d12c25d652739fbf040.css")}}" media="all" rel="stylesheet">
+	<link href="{{static_asset("assets/frontend/slick/slick.css")}}" rel="stylesheet" type="text/css">
+	<link href="{{static_asset("assets/frontend/slick/slick-theme.css")}}" rel="stylesheet" type="text/css">
+
+    <link href="{{static_asset("assets/frontend/css/main.css")}}" media="all" rel="stylesheet">
 
     <script>
         var AIZ = AIZ || {};
@@ -111,7 +121,7 @@
 
     <style>
         body{
-            font-family: 'Open Sans', sans-serif;
+            font-family:'Inter', sans-serif;
             font-weight: 400;
         }
         :root{
@@ -180,8 +190,7 @@
 </div>
     <!-- aiz-main-wrapper -->
 
-
-	<body class='motor-top-offs'>
+<body class="home page-template page-template-template-builder page-template-template-builder-php page page-id-8 wp-custom-logo theme-rey woocommerce-no-js rey-navDefault rey-no-js opt rey-wishlist elementor-default elementor-kit-1313 elementor-page elementor-page-8 rey-cwidth--full --no-acc-focus" data-rsssl="1">
     <!--menu-white motor-top-->
     <input type="hidden" id="name_file" value="{{ route('home') }}">
     <input type="hidden" id="idPagina" value="1">
@@ -192,10 +201,12 @@
     <input type="hidden" id="domain" value="{{ getBaseURL() }}">
 
 
-    <div class="aiz-main-wrapper d-flex flex-column">
+    <div class="rey-siteWrapper" id="page">
+		<div class="rey-overlay rey-overlay--site"></div>
 
         <!-- Header -->
         @include('frontend.inc.nav')
+		<div class="rey-siteHeader-helper --dnone-desktop --dnone-tablet --dnone-mobile"></div>
 
         @yield('content')
 
@@ -247,23 +258,7 @@
         </div>
     @endif
 
-    @include('frontend.partials.modal')
-
-    <div class="modal fade" id="addToCart">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
-            <div class="modal-content position-relative">
-                <div class="c-preloader text-center p-3">
-                    <i class="las la-spinner la-spin la-3x"></i>
-                </div>
-                <button type="button" class="close absolute-top-right btn-icon close z-1" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="la-2x">&times;</span>
-                </button>
-                <div id="addToCart-modal-body">
-
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- @include('frontend.partials.modal') --}}
 
     @yield('modal')
 
@@ -272,15 +267,306 @@
 <script src="{{ static_asset('assets/js/vendors.js') }}"></script>
 <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
 
-<script src="{{ static_asset('assets/frontend/static/js/vendor/slick.min.js') }}"></script>
-<script src="{{ static_asset('assets/frontend/static/js/vendor/jquery-ui.min.js') }}"></script>
-<script src="{{ static_asset('assets/frontend/assets/js/whatschat-style1.js') }}"></script>
-<script src="{{ static_asset('assets/frontend/assets/js/whatschat-layout.js') }}"></script>
-<script src="{{ static_asset('assets/frontend/assets/js/main.min.js') }}"></script>
+<script>
+	function openMenu() {
+		document.getElementById("site-navigation-mobile-0968131").classList.add("show-menu");
+	}
 
-<script src="{{ static_asset('assets/frontend/static/js/main.min.js') }}"></script>
-<script src="{{ static_asset('assets/frontend/static/js/img-resp.js') }}"></script>
-<script src="{{ static_asset('assets/frontend/static/js/custom.js') }}"></script>
+	function closeMenu() {
+		document.getElementById("site-navigation-mobile-0968131").classList.remove("show-menu");
+	}
+</script>
+<!-- for slick slider start -->
+<script src="{{static_asset("assets/frontend/js/jquery2.2.0.js")}}" type="text/javascript">
+</script>
+
+<!-- for slick slider start -->
+<script charset="utf-8" src="{{static_asset("assets/frontend/slick/slick.js")}}" type="text/javascript">
+</script>
+
+{{-- <!-- for slick slider start -->
+<script type="text/javascript">
+	$(document).on('ready', function() {
+		$(".regular").slick({
+			dots: false,
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 1500,
+			responsive: [{
+					breakpoint: 768,
+					settings: {
+						prevArrow: false,
+						nextArrow: false
+					}
+				},
+				{
+					breakpoint: 576,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1,
+						infinite: true,
+						dots: false,
+						prevArrow: false,
+						nextArrow: false
+					}
+				},
+			]
+		});
+		$(".client_slick").slick({
+			dots: false,
+			slidesToShow: 6,
+			slidesToScroll: 1,
+			prevArrow: false,
+			nextArrow: false,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			responsive: [{
+				breakpoint: 650,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					infinite: true,
+					dots: false
+				},
+			}, {
+				breakpoint: 500,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					infinite: true,
+					dots: false
+				},
+			}]
+		});
+		$(".services-slider").slick({
+			dots: false,
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 1500,
+			responsive: [{
+				breakpoint: 576,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					infinite: true,
+					dots: false
+				}
+			}, {
+				breakpoint: 400,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					infinite: true,
+					dots: false,
+					prevArrow: false,
+					nextArrow: false
+				}
+			}]
+		});
+	});
+
+	function OpenFilterModal() {
+		document.getElementById("filterModal").classList.add("slideModal").classList.add("slideModal");
+	}
+
+	function closeFilterModal() {
+		document.getElementById("filterModal").classList.remove("slideModal").classList.add("slideModal");
+	}
+</script>
+<!-- for slick slider start -->
+
+<!-- for mobile menu toggle start -->
+<script id='elementor-frontend-js-before' type='text/javascript'>
+	var elementorFrontendConfig = {
+		"environmentMode": {
+			"edit": false,
+			"wpPreview": false,
+			"isScriptDebug": false
+		},
+		"i18n": {
+			"shareOnFacebook": "Share on Facebook",
+			"shareOnTwitter": "Share on Twitter",
+			"pinIt": "Pin it",
+			"download": "Download",
+			"downloadImage": "Download image",
+			"fullscreen": "Fullscreen",
+			"zoom": "Zoom",
+			"share": "Share",
+			"playVideo": "Play Video",
+			"previous": "Previous",
+			"next": "Next",
+			"close": "Close"
+		},
+		"is_rtl": false,
+		"breakpoints": {
+			"xs": 0,
+			"sm": 480,
+			"md": 768,
+			"lg": 1025,
+			"xl": 1440,
+			"xxl": 1600
+		},
+		"responsive": {
+			"breakpoints": {
+				"mobile": {
+					"label": "Mobile",
+					"value": 767,
+					"default_value": 767,
+					"direction": "max",
+					"is_enabled": true
+				},
+				"mobile_extra": {
+					"label": "Mobile Extra",
+					"value": 880,
+					"default_value": 880,
+					"direction": "max",
+					"is_enabled": false
+				},
+				"tablet": {
+					"label": "Tablet",
+					"value": 1024,
+					"default_value": 1024,
+					"direction": "max",
+					"is_enabled": true
+				},
+				"tablet_extra": {
+					"label": "Tablet Extra",
+					"value": 1200,
+					"default_value": 1200,
+					"direction": "max",
+					"is_enabled": false
+				},
+				"laptop": {
+					"label": "Laptop",
+					"value": 1366,
+					"default_value": 1366,
+					"direction": "max",
+					"is_enabled": false
+				},
+				"widescreen": {
+					"label": "Widescreen",
+					"value": 2400,
+					"default_value": 2400,
+					"direction": "min",
+					"is_enabled": false
+				}
+			}
+		},
+		"version": "3.5.5",
+		"is_static": false,
+		"experimentalFeatures": {
+			"e_dom_optimization": true,
+			"e_optimized_assets_loading": true,
+			"e_import_export": true,
+			"e_hidden_wordpress_widgets": true,
+			"landing-pages": true,
+			"elements-color-picker": true,
+			"favorite-widgets": true,
+			"admin-top-bar": true
+		},
+		"urls": {
+			"assets": "https:\/\/demos.reytheme.com\/amsterdam\/wp-content\/plugins\/elementor\/assets\/"
+		},
+		"settings": {
+			"page": [],
+			"editorPreferences": []
+		},
+		"kit": {
+			"active_breakpoints": ["viewport_mobile", "viewport_tablet"],
+			"global_image_lightbox": "yes",
+			"lightbox_enable_counter": "yes",
+			"lightbox_enable_fullscreen": "yes",
+			"lightbox_enable_zoom": "yes",
+			"lightbox_enable_share": "yes",
+			"lightbox_title_src": "title",
+			"lightbox_description_src": "description"
+		},
+		"post": {
+			"id": 8,
+			"title": "Amsterdam%20Demo%20%E2%80%93%20Just%20another%20Rey%20Multisite%20Dev%20Sites%20site",
+			"excerpt": "",
+			"featuredImage": false
+		}
+	};
+</script>
+<!-- for mobile menu toggle end -->
+
+<!-- lazy load compulsory start -->
+<script>
+	window.lazyLoadOptions = {
+		elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",
+		data_src: "lazy-src",
+		data_srcset: "lazy-srcset",
+		data_sizes: "lazy-sizes",
+		class_loading: "lazyloading",
+		class_loaded: "lazyloaded",
+		threshold: 300,
+		callback_loaded: function(element) {
+			if (element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible") {
+				if (element.classList.contains("lazyloaded")) {
+					if (typeof window.jQuery != "undefined") {
+						if (jQuery.fn.fitVids) {
+							jQuery(element).parent().fitVids()
+						}
+					}
+				}
+			}
+		}
+	};
+	window.addEventListener('LazyLoad::Initialized', function(e) {
+		var lazyLoadInstance = e.detail.instance;
+		if (window.MutationObserver) {
+			var observer = new MutationObserver(function(mutations) {
+				var image_count = 0;
+				var iframe_count = 0;
+				var rocketlazy_count = 0;
+				mutations.forEach(function(mutation) {
+					for (i = 0; i < mutation.addedNodes.length; i++) {
+						if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') {
+							continue
+						}
+						if (typeof mutation.addedNodes[i].getElementsByClassName !== 'function') {
+							continue
+						}
+						images = mutation.addedNodes[i].getElementsByTagName('img');
+						is_image = mutation.addedNodes[i].tagName == "IMG";
+						iframes = mutation.addedNodes[i].getElementsByTagName('iframe');
+						is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
+						rocket_lazy = mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');
+						image_count += images.length;
+						iframe_count += iframes.length;
+						rocketlazy_count += rocket_lazy.length;
+						if (is_image) {
+							image_count += 1
+						}
+						if (is_iframe) {
+							iframe_count += 1
+						}
+					}
+				});
+				if (image_count > 0 || iframe_count > 0 || rocketlazy_count > 0) {
+					lazyLoadInstance.update()
+				}
+			});
+			var b = document.getElementsByTagName("body")[0];
+			var config = {
+				childList: !0,
+				subtree: !0
+			};
+			observer.observe(b, config)
+		}
+	}, !1)
+</script>
+<!-- lazy load compulsory end --> --}}
+
+
+<script async data-no-minify="1" src="{{static_asset("assets/frontend/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js")}}">
+</script>
+
+<script data-minify="1" defer src="{{static_asset("assets/frontend/js/27010d555b6a4399e10ac6a8ba7b0c21.js")}}">
+</script>
 
     @if (get_setting('facebook_chat') == 1)
         <script type="text/javascript">
@@ -316,6 +602,27 @@
     <script>
 
         $(document).ready(function() {
+
+            $(function(){
+                var current = location;
+                $('#site-navigation-0968131 > ul > li > a').each(function(i,el){
+                    var $this = $(this).attr('href');
+                    // if the current path is like this link, make it active
+                    if($this == current.href){
+                        $(this).parent("li").addClass('current-menu-item');
+                    }
+                })
+            })
+
+            $('.menu-item-type-post_type').each(function(i, el) {
+                $(el).on('mouseover', function(){
+                    if(!$(el).find('.rey-mega-gs').hasClass("loaded")){
+                        $.post('{{ route('menus.elements') }}', {_token: AIZ.data.csrf, id:$(el).data('id')}, function(data){
+                            $(el).find('.rey-mega-gs').addClass('loaded').html(data);
+                        });
+                    }
+                });
+            });
 
             $(".js-toggle-guests").on('click',function () {
                 var e = $(this),
