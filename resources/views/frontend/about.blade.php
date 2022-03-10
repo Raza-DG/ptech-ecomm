@@ -6,259 +6,135 @@ if (Session::has('locale')) {
     $lang = 'en';
 }
 @endphp
+<style>
+    .text-part div{
+        color: #4c4c4c;
+        font-size: 16px;
+        /* font-weight: 600; */
+        padding: 2px 0;
+    }
+</style>
 @section('content')
 
-<!-- TOP MODULE full screen size -->
-<section class="top-module video-inactive js-active-slider mt_2p" data-slider_name="top-module-slider" data-slider_arrows="advantages-content-arrows" data-slider_showbtns="false" data-slider_btns="btn-slide-circle" data-slider_showdots="false" data-slider_fade="false" data-slider_autoplay="true" data-slides_pc="1" data-slides_laptop="1" data-slides_tablet="1" data-slides_mobile="1">
-    <div class="wrap-top-module">
-        <!-- TOP-LOGO -->
-        <div class="top-module-logo">
-            <a href="{{ route('home') }}">
-                <div class="wrap-top-logo">
-                    <img src="{{ static_asset('assets/frontend/static/logo/logo_white.svg')}}" class="top-logo-img" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="top-module-breadcrumbs">
-            <ol class="breadcrumbs-list" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                <li class="breadcrumbs-list-element " itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="#">
-                        <span class="breadcrumbs-element-text" itemprop="name">Home</span>
-                    </a>
-                    <span itemprop="position" content="1">&gt;</span>
-                </li>
-                <li class="breadcrumbs-list-element " itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="#">
-                        <span class="breadcrumbs-element-text" itemprop="name">Overview</span>
-                    </a>
-                    <span itemprop="position" content="1">&gt;</span>
-                </li>
-                <li class="breadcrumbs-list-element active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a itemprop="item" href="#">
-                        <span class="breadcrumbs-element-text" itemprop="name">About</span>
-                    </a>
-                    <span itemprop="position" content="2">&gt;</span>
-                </li>
-            </ol>        </div>
-        <!-- TOP TEXT -->
-        @if (get_setting('about_slider_images') != null)
-            @foreach (json_decode(get_setting('about_slider_images'), true) as $key => $value)
-                <div class="top-module-text">
-                    <h1 class="top-module-text_title">{{ json_decode(get_setting('about_slider_texts',null,$lang), true)[$key] ?? "" }}</h1>
-                </div>
-            @endforeach
-        @endif
-        <!-- TOP SLIDER -->
-        <div class="top-module-slider">
-            @if (get_setting('about_slider_images') != null)
-                @foreach (json_decode(get_setting('about_slider_images'), true) as $key => $value)
-                @php
-                    $filepath = uploaded_asset($value);
-                    $ex = explode('/',$filepath);
-                @endphp
-                    <div class="top-slider-element">
-                        <div class="wrap-slider-element">
-                            <figure class="slider-element-img responsive-resize" role="img" aria-label="" data-filename="{{end($ex)}}" data-section="home" style="background-image:url()"></figure>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-        <!-- TOP LINKS
-        <div class="top-module-links">
-            <div class="wrap-top-links">
-                <div class="top-links-element js-toggle-popup" data-popup="newsletter" role="button" tabindex="0">
-                    <div class="wrap-links-element">
-                        <p class="links-element-text">Newsletter</p>
-                        <i class="links-element-icon icon-letter"></i>
-                    </div>
-                </div>
+    <!-- .rey-siteHeader -->
+    <div class="rey-siteContent main-div --tpl-template-builder-php" id="content">
+        <section class="common-sections about-bg-gray" data-element_type="section" data-id="9161df8">
+            <div class="elementor-widget-container">
+                <p class="elementor-heading-title elementor-size-default">HOME/ <span class="text-red">ABOUT US</span></p>
             </div>
-        </div> -->
-        <!-- TOP-SCROLL -->
-        <div class="top-module-scroll">
-            <div class="wrap-top-scroll js-scrollto" data-scroll_to=".start" data-scroll_spacer="80" role="button" tabindex="0">
-                <i class="top-scroll-icon icon-sign-down"></i>
-                <p class="top-scroll-text">Scroll down</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="start">
-    <div class="big-wrapper first-module"></div>
-</div>
-<!-- todo: variables "var-info-left" & "var-graphics-left" // "var-info-right" & "var-graphics-right"-->
-<section class="info-gallery var-info-left var-graphics-left">
-    <div class="big-wrapper">
-        <div class="wrap-info-gallery">
-            <div class="info-gallery-content js-active-slider" data-slider_name="js-section-slider" data-slider_showbtns="true" data-slider_btns="btn-slide-circle" data-slider_showdots="false" data-slider_fade="true" data-slider_autoplay="true" data-slides_pc="1" data-slides_laptop="1" data-slides_tablet="1" data-slides_mobile="1">
-                <div class="wrap-info-content">
-                    <div class="info-content-box">
-                        <div class="info-gallery-element">
-                            <div class="wrap-info-element">
-                                <div class="info-gallery-element_header">
-                                    <div class="wrap-info-header">
-                                        <h2 class="info-header-title">{{ get_setting('about_infocontent_mainheading',null,$lang) ?? "" }}</h2>
-                                     </div>
-                                </div>
-                                @if (get_setting('about_infocontent_images') != null && get_setting('about_infocontent_images') != '[]' )
-                                    <div class="info-gallery-element_multimedia">
-                                        <div class="gallery-multimedia-arrows js-slider-arrows"></div>
-                                        <div class="gallery-multimedia-box js-section-slider">
-                                            @php
-                                                $images = get_setting('about_infocontent_images');
-                                                $image = explode(',',$images);
-                                            @endphp
-                                            @foreach ($image as $img)
-                                                @php
-                                                    $upload = uploaded_asset($img);
-                                                    $file = explode('/',$upload);
-                                                @endphp
-                                                <div class="gallery-multimedia-element">
-                                                    <div class="wrap-multimedia-element">
-                                                        <figure class="multimedia-element-photo responsive-resize" role="img" aria-label="" data-filename="{{end($file)}}" style="background-image:url();"></figure>
+        </section>
+        <div class="rey-siteContainer rey-pbTemplate main-holder-div">
+            <div class="rey-siteRow">
+                <main class="rey-siteMain rey-filterSidebar" id="main">
+                    <div class="elementor elementor-1032" data-elementor-id="1032" data-elementor-settings="[]" data-elementor-type="wp-post">
+                        <div class="elementor-section-wrap common-sections">
+                            <section class="elementor-section elementor-top-section elementor-element elementor-element-9161df8 elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default pt20px" data-element_type="section" data-id="9161df8" style="text-align:center;">
+                                <img alt="ISO" class="circular-iso-img" src="{{uploaded_asset(get_setting('about_our_story_image'))}}">
+                                <div class="elementor-container elementor-column-gap-default">
+                                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-eleme	nt elementor-element-8d7b482" data-element_type="column" data-id="8d7b482">
+                                        <div class="elementor-column-wrap--8d7b482 elementor-widget-wrap elementor-element-populated">
+                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="dd31e89" data-widget_type="heading.default">
+                                                <div class="elementor-widget-container">
+                                                    <h2 class="text-red pt60px mb0">{{ get_setting('about_our_story') }}</h2>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-55f2920 u-links-anim-ul elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="55f2920" data-widget_type="text-editor.default">
+                                                <div class="text-part text-responsive" style="width:100%;max-width:700px;margin:auto;padding:0px 0px 0px 0px;">
+                                                    <div class="elementor-widget-container">
+                                                        <br>
+                                                        {!! get_setting('about_our_story_description',null,$lang) ?? "" !!}
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="info-gallery-element_text">
-                                    <div class="wrap-info-text">
-                                        <p class="info-text-paragraph">{!! get_setting('about_infocontent_decription',null,$lang) ?? "" !!}
-                                        </p>
-                                        <div class="info-text-btns">
-                                            <div class="wrap-info-btns">
-                                                @if (get_setting('about_infocontent_subdecription',null,$lang) != null)
-                                                    <div class="info-btns-element btn-linker toright js-open-moretext" role="button" tabindex="0">
-                                                        <p class="btn-linker-text">{{translate("Read more")}}</p>
-                                                    </div>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="moretext-module">
-    <div class="big-wrapper">
-        <div class="wrap-moretext-module">
-            <div class="moretext-module-list">
-                @if (get_setting('about_infocontent_subdecription',null,$lang) != null)
-                    @foreach (json_decode(get_setting('about_infocontent_subdecription'), true) as $key => $value)
-                        <div class="moretext-list-element">
-                            <div class="wrap-moretext-element">
-                                <h3 class="{{$value == null ? "moretext-element-title" : "moretext-element-subtitle"}}">{{ json_decode(get_setting('about_infocontent_subtitle',null,$lang),true)[$key] }}</h3>
-                                <p class="moretext-element-text">{!! $value !!}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-            <div class="moretext-module-btns">
-                <div class="btn-linker toright js-close-moretext" role="button" aria-label="">
-                    <p class="btn-linker-text">Hide</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- todo: variables "var-box-lines" -->
-
-@if (get_setting('about_advantage_images') != null)
-    <section class="advantages-module js-load-moreicons">
-        <div class="big-wrapper">
-            <div class="wrap-advantages-module">
-                <div class="advantages-module-box js-active-slider" data-slider_name="js-section-slider" data-slider_showbtns="true" data-slider_btns="btn-slide-circle" data-slider_showdots="false" data-slider_fade="false" data-slider_autoplay="true" data-slides_pc="3" data-slides_laptop="2" data-slides_tablet="1" data-slides_mobile="1">
-                    <div class="wrap-advantages-box">
-                        <span class="advantages-box-title">{{ get_setting('about_advantage_mainheading',null,$lang) ?? "" }}</span>
-                        <div class="advantages-box-list js-section-slider">
-                            @if (get_setting('about_advantage_images') != null)
-                                @foreach (json_decode(get_setting('about_advantage_images'), true) as $key => $value)
-                                    <div class="advantages-list-element" itemprop="amenityFeature" itemscope itemtype="https://schema.org/LocationFeatureSpecification">
-                                        <div class="wrap-advantages-element">
-                                            <i class="advantages-element-icon {{json_decode(get_setting('advantage_icon'), true)[$key]}}"></i>
-                                            <p class="advantages-element-text" itemprop="name">{{json_decode(get_setting('about_advantage_text',null,$lang), true)[$key]}}</p>
-                                            <p class="advantages-element-subtext">{{json_decode(get_setting('about_advantage_subtext',null,$lang), true)[$key]}}</p>
+                            </section><br>
+                            <br>
+                            <section class="elementor-section elementor-top-section elementor-element elementor-element-6167dae elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="6167dae">
+                                <div class="elementor-container elementor-column-gap-default">
+                                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4175219" data-element_type="column" data-id="4175219">
+                                        <div class="elementor-column-wrap--4175219 elementor-widget-wrap elementor-element-populated">
+                                            <div class="elementor-element elementor-element-82e66f4 elementor-widget elementor-widget-image" data-element_type="widget" data-id="82e66f4" data-widget_type="image.default">
+                                                <div class="elementor-widget-container"><img alt="" class="attachment-large size-large" src="{{uploaded_asset(get_setting('about_our_mission_image'))}}"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                @endforeach
-                            @endif
-                        </div>
-                        <div class="advantages-box-arrows js-slider-arrows"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-@endif
-
-@if(get_setting('about_discover_heading',null,$lang) != null)
-    <section class="gallery-list var-box-lines">
-        <div class="big-wrapper">
-            <div class="wrap-gallery-list">
-                <div class="gallery-list-container">
-                    <div class="wrap-gallery-container">
-                        <div class="box-lines-top"></div>
-                        <div class="box-lines-bottom"></div>
-                        <div class="gallery-list-header">
-                            <div class="wrap-gallery-header">
-                                <h2 class="gallery-header-title">{{ get_setting('about_discover_heading',null,$lang) ?? "" }}</h2>
-                                <p class="gallery-header-subtitle">{{ get_setting('about_discover_subheading',null,$lang) ?? "" }}</p>
-                            </div>
-                        </div>
-                        <div class="gallery-list-box">
-                            @if (get_setting('about_service_images') != null)
-                                @foreach (json_decode(get_setting('about_service_images'), true) as $key => $value)
-                                    <div class="gallery-list-element">
-                                        <a target=""
-                                        @if (json_decode(get_setting('about_service_links'), true)[$key] != null && json_decode(get_setting('about_service_links'), true)[$key] != "#" )
-                                            href="{{ json_decode(get_setting('about_service_links'), true)[$key] }}"
-                                            @else
-                                            href="javascript:void(0)"
-                                            data-submenu="{{ json_decode(get_setting('about_service_menuid'), true)[$key] }}"
-                                            class="js-open-submenu"
-                                        @endif
-                                        role="button" tabindex="0">
-                                            <div class="wrap-gallery-element">
-                                                <div class="gallery-element-media">
-                                                    <div class="wrap-element-media">
-                                                        <figure class="element-media-photo" role="img" aria-label="{{ json_decode(get_setting('about_service_heading'), true)[$key] ?? "" }}" data-lazyimg="{{uploaded_asset($value) }}"></figure>
-                                                    </div>
+                                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-c16c300 aic" data-element_type="column" data-id="c16c300">
+                                        <div class="elementor-column-wrap--c16c300 elementor-widget-wrap elementor-element-populated">
+                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="dd31e89" data-widget_type="heading.default">
+                                                <div class="elementor-widget-container">
+                                                    <br>
+                                                    <h2 class="text-red pt60px mb0 fz22px">{{ get_setting('about_our_mission') }}</h2>
                                                 </div>
-                                                <div class="gallery-element-info">
-                                                    <div class="wrap-element-info">
-                                                        <p class="element-info-title">{{ json_decode(get_setting('about_service_heading',null,$lang), true)[$key] ?? "" }}</p>
-                                                        {{-- <p class="element-info-subtitle">Utmost professionalism with a smile</p> --}}
-                                                        <div class="element-info-btns">
-                                                            <div class="btn-corp">
-                                                                <p class="btn-corp-text">{{json_decode(get_setting('about_service_linktext',null,$lang), true)[$key] ?? "" }}</p>
-                                                            </div>
-                                                        </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-39e40ef u-links-anim-ul elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="39e40ef" data-widget_type="text-editor.default">
+                                                <div class="text-part" style="width:100%;padding:0px 0px 0px 0px;">
+                                                    <div class="elementor-widget-container">
+                                                        {!! get_setting('about_our_mission_description',null,$lang) ?? "" !!}
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
-                                @endforeach
-                            @endif
-
+                                </div>
+                            </section><br>
+                            <br>
+                            <section class="elementor-section elementor-top-section elementor-element elementor-element-9161df8 elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="9161df8" style="text-align:center;">
+                                <div class="elementor-container elementor-column-gap-default">
+                                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8d7b482" data-element_type="column" data-id="8d7b482">
+                                        <div class="elementor-column-wrap--8d7b482 elementor-widget-wrap elementor-element-populated">
+                                            <div class="elementor-element elementor-element-5910655 u-links-anim-ul elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="5910655" data-widget_type="text-editor.default">
+                                                <div class="elementor-widget-container">
+                                                    <h3><span class="text-red futura_medium_condensed_bt">{{get_setting("about_our_strength")}}</span></h3>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-14c2e0f u-links-anim-ul elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="14c2e0f" data-widget_type="text-editor.default">
+                                                <div class="text-part text-responsive" style="width:100%;max-width:700px;margin:auto;padding:0px 0px 0px 0px;">
+                                                    <div class="elementor-widget-container">
+                                                        {!! get_setting('about_our_strength_description',null,$lang) ?? "" !!}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section><br>
+                            <br>
+                            <section class="elementor-section elementor-top-section elementor-element elementor-element-6167dae elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="6167dae">
+                                <div class="elementor-container elementor-column-gap-default col-reverse-sm">
+                                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-c16c300" data-element_type="column" data-id="c16c300">
+                                        <div class="elementor-column-wrap--c16c300 elementor-widget-wrap elementor-element-populated">
+                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="dd31e89" data-widget_type="heading.default">
+                                                <div class="elementor-widget-container">
+                                                    <h2 class="text-red pt60px mb0 fz22px">{{ get_setting('about_quality_policy') }}</h2>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-39e40ef u-links-anim-ul elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="39e40ef" data-widget_type="text-editor.default">
+                                                <div class="text-part" style="width:100%;padding:0px 0px 0px 0px;">
+                                                    <div class="elementor-widget-container">
+                                                        {!! get_setting('about_quality_policy_description',null,$lang) ?? "" !!}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4175219" data-element_type="column" data-id="4175219">
+                                        <div class="elementor-column-wrap--4175219 elementor-widget-wrap elementor-element-populated">
+                                            <div class="elementor-element elementor-element-82e66f4 elementor-widget elementor-widget-image" data-element_type="widget" data-id="82e66f4" data-widget_type="image.default">
+                                                <div class="elementor-widget-container"><img alt="" class="attachment-large sm-pb30px size-large" src="{{uploaded_asset(get_setting('about_quality_policy_image'))}}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section><br>
+                            <br>
                         </div>
                     </div>
-                </div>
+                </main><!-- .rey-siteMain -->
             </div>
-        </div>
-    </section>
-@endif
-
+        </div><!-- .rey-siteContainer -->
+    </div><!-- .rey-siteContent -->
 
 @endsection
 
