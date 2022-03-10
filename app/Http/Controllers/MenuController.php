@@ -72,9 +72,9 @@ class MenuController extends Controller
         $menu->menu_id = $request->menu_id;
         $menu->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)) . '-' . Str::random(5);
         $menu->save();
-        // $menu_translation = MenuTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'menu_id' => $request->menu_id]);
-        //        $menu_translation->name = $request->name;
-        //        $menu_translation->save();
+        $menu_translation = MenuTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'menu_id' => $menu->id]);
+        $menu_translation->name = $request->name;
+        $menu_translation->save();
 
 
 
@@ -160,6 +160,12 @@ class MenuController extends Controller
         $menu->type = $request->type;
         $menu->icon = $request->icon;
         $menu->menu_type = $request->menu_type;
+        if (isset($request->full_image)) {
+            $menu->full_image = $request->full_image;
+        }else{
+            $menu->full_image = 0;
+        }
+        $menu->description = $request->description;
         $menu->target = $request->target;
         if ($request->status != null) {
             $menu->status = $request->status;
