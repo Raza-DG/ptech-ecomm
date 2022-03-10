@@ -209,6 +209,7 @@
                         id: id
                     }, function(data) {
                         $('#menu_modal_edit .modal-content').html(data);
+                        AIZ.plugins.textEditor();
                         $('#menu_modal_edit').modal('show', {
                             backdrop: 'static'
                         });
