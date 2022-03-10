@@ -38,14 +38,6 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">eCommerce</li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-300 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
                     <li class="breadcrumb-item text-muted">Website Setup</li>
                     <!--end::Item-->
                     <!--begin::Item-->
@@ -84,7 +76,7 @@
                     </ul>
                 <div class="card card-flush mt-10 mb-10">
                     {{-- Home Slider --}}
-                    <div class="card mt-5">
+                    <div class="card mt-5 d-none">
                         <div class="card-header">
                             <h6 class="mb-0">{{ translate('Contact Page') }}</h6>
                         </div>
@@ -159,6 +151,209 @@
                             </form>
                         </div>
                     </div>
+
+
+
+                    {{-- Contact Us --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Contact Us') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mt-5 mb-3">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="main_heading">
+                                                <input type="text" class="form-control" placeholder="Heading" name="main_heading" value="{{ get_setting('main_heading') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- Map iframe --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Map Iframe') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mt-5 mb-3">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="map_url">
+                                                <input type="text" class="form-control" placeholder="map" name="map_url" value="{{ get_setting('map_url') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- Customer Servie --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Customer Service') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mb-5">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_one">
+                                                <input type="text" class="form-control" placeholder="Heading" name="contact_us_widget_one" value="{{ get_setting('contact_us_widget_one') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-5">
+                                            <div class="d-flex flex-column">
+                                                <div class="mb-5 fv-row">
+                                                    <label class="form-label">{{ translate('Description') }}</label>
+                                                    <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_one_description">
+                                                    <textarea class="aiz-text-editor" data-buttons='[["font", ["bold", "underline", "italic", "clear"]],["para", ["ul", "ol", "paragraph"]],["style", ["style"]],["color", ["color"]],["table", ["table"]],["insert", ["link", "picture", "video"]],["view", ["fullscreen", "codeview", "undo", "redo"]]]' name="contact_us_widget_one_description" placeholder="Description" data-min-height="150">
+                                                            {!! get_setting('contact_us_widget_one_description',null,$lang) ?? "" !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                    {{-- Press Contact --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Press Contact') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mb-5">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_second">
+                                                <input type="text" class="form-control" placeholder="Heading" name="contact_us_widget_second" value="{{ get_setting('contact_us_widget_second') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-5">
+                                            <div class="d-flex flex-column">
+                                                <div class="mb-5 fv-row">
+                                                    <label class="form-label">{{ translate('Description') }}</label>
+                                                    <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_second_description">
+                                                    <textarea class="aiz-text-editor" data-buttons='[["font", ["bold", "underline", "italic", "clear"]],["para", ["ul", "ol", "paragraph"]],["style", ["style"]],["color", ["color"]],["table", ["table"]],["insert", ["link", "picture", "video"]],["view", ["fullscreen", "codeview", "undo", "redo"]]]' name="contact_us_widget_second_description" placeholder="Description" data-min-height="150">
+                                                            {!! get_setting('contact_us_widget_second_description',null,$lang) ?? "" !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                    {{-- Address --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Address') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mb-5">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_third">
+                                                <input type="text" class="form-control" placeholder="Heading" name="contact_us_widget_third" value="{{ get_setting('contact_us_widget_third') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-5">
+                                            <div class="d-flex flex-column">
+                                                <div class="mb-5 fv-row">
+                                                    <label class="form-label">{{ translate('Description') }}</label>
+                                                    <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_third_description">
+                                                    <textarea class="aiz-text-editor" data-buttons='[["font", ["bold", "underline", "italic", "clear"]],["para", ["ul", "ol", "paragraph"]],["style", ["style"]],["color", ["color"]],["table", ["table"]],["insert", ["link", "picture", "video"]],["view", ["fullscreen", "codeview", "undo", "redo"]]]' name="contact_us_widget_third_description" placeholder="Description" data-min-height="150">
+                                                            {!! get_setting('contact_us_widget_third_description',null,$lang) ?? "" !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    {{-- Can We Help ? --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Can We Help ?') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mb-5">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_fourth">
+                                                <input type="text" class="form-control" placeholder="Heading" name="contact_us_widget_fourth" value="{{ get_setting('contact_us_widget_fourth') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-5">
+                                            <div class="d-flex flex-column">
+                                                <div class="mb-5 fv-row">
+                                                    <label class="form-label">{{ translate('Description') }}</label>
+                                                    <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_fourth_description">
+                                                    <textarea class="aiz-text-editor" data-buttons='[["font", ["bold", "underline", "italic", "clear"]],["para", ["ul", "ol", "paragraph"]],["style", ["style"]],["color", ["color"]],["table", ["table"]],["insert", ["link", "picture", "video"]],["view", ["fullscreen", "codeview", "undo", "redo"]]]' name="contact_us_widget_fourth_description" placeholder="Description" data-min-height="150">
+                                                            {!! get_setting('contact_us_widget_fourth_description',null,$lang) ?? "" !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
 
                 </div>
             </div>
