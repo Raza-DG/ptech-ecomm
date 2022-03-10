@@ -25,6 +25,9 @@ Route::get('/refresh-csrf', function() {
     return csrf_token();
 });
 
+Route::post('/menus/menu-element-list', 'HomeController@get_menus_items')->name('menus.elements');
+
+
 Route::post('/aiz-uploader', 'AizUploadController@show_uploader');
 Route::post('/aiz-uploader/upload', 'AizUploadController@upload');
 Route::get('/aiz-uploader/get_uploaded_files', 'AizUploadController@get_uploaded_files');
