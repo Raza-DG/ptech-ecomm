@@ -28,7 +28,7 @@ use Mail;
 use Illuminate\Auth\Events\PasswordReset;
 use Cache;
 use App\Mail\EmailManager;
-
+use App\Models\Menu;
 
 class HomeController extends Controller
 {
@@ -750,5 +750,11 @@ class HomeController extends Controller
     {
         $contacts = Contact::where('id',$request->id)->first();
         return view('contactus.show',compact('contacts'));
+    }
+
+    public function get_menus_items(Request $request)
+    {
+        $menus = Menu::findOrFail($request->id);
+        return view('frontend.partials.sub_menu', compact('menus'));
     }
 }
