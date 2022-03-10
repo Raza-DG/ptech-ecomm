@@ -424,7 +424,7 @@
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
-                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}} (162 x 164)</div>
                                                     </div>
                                                     <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                                     <input type="hidden" name="types[]" value="about_our_story_image">
@@ -475,7 +475,7 @@
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
-                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}(800 x 534)</div>
                                                     </div>
                                                     <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                                     <input type="hidden" name="types[]" value="about_our_mission_image">
@@ -522,11 +522,11 @@
                                                 <input type="text" class="form-control" placeholder="Heading" name="about_our_strength" value="{{ get_setting('about_our_strength') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md mb-5">
+                                        <div class="col-md mb-5 d-none">
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
-                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}} (800 x 534)</div>
                                                     </div>
                                                     <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                                     <input type="hidden" name="types[]" value="about_our_strength_image">
@@ -576,7 +576,7 @@
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
-                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}(800 x 534)</div>
                                                     </div>
                                                     <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                                     <input type="hidden" name="types[]" value="about_quality_policy_image">
