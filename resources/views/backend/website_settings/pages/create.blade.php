@@ -30,14 +30,6 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">eCommerce</li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-300 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
                     <li class="breadcrumb-item text-muted">Website Setup</li>
                     <!--end::Item-->
                     <!--begin::Item-->
