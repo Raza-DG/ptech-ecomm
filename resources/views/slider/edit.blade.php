@@ -31,14 +31,6 @@
                     </li>
                     <!--end::Item-->
                     <!--begin::Item-->
-                    <li class="breadcrumb-item text-muted">eCommerce</li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-300 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                    <!--begin::Item-->
                     <li class="breadcrumb-item text-muted">Website Setup</li>
                     <!--end::Item-->
                     <!--begin::Item-->
@@ -82,19 +74,19 @@
                             <input type="hidden" name="lang" value="{{ $lang }}">
                             @csrf
                             <div class="form-group row">
-                                <label class="col-sm-3 col-from-label" for="name">{{translate('Title1')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
+                                <label class="col-sm-3 col-from-label" for="name">{{translate('Title')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                                 <div class="col-sm-9 mb-2">
                                     <input type="text" placeholder="{{translate('Title1')}}" id="title1" name="title1" value="{{ $slider->getTranslation('title1', $lang) }}" class="form-control"   autofocus>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row d-none">
                                 <label class="col-sm-3 col-from-label" for="name">{{translate('Title2')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                                 <div class="col-sm-9 mb-2">
                                     <input type="text" placeholder="{{translate('Title2')}}" id="title2" name="title2" value="{{ $slider->getTranslation('title2', $lang) }}" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row" {{$lang == 'en' ? '':'hidden'}}>
-                                <label class="col-sm-3 col-from-label" for="name">{{translate('Sorting')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
+                                <label class="col-sm-3 col-from-label" for="name">{{translate('Sorting')}}</label>
                                 <div class="col-sm-9 mb-2">
                                     <input type="text" placeholder="{{translate('Sorting')}}" id="sorting_id" name="sorting_id" value="{{ $slider->sorting_id}}" class="form-control" >
                                 </div>
@@ -150,11 +142,11 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" >{{translate('Photo')}} <small>({{env('SLIDER_IMAGE_WIDTH')}}x{{env('SLIDER_IMAGE_HEIGHT')}})</small></label>
+                                <label class="col-md-3 col-form-label" >{{translate('Photo')}}</label>
                                 <div class="col-md-9 mb-3">
                                     <div class="input-group" data-toggle="aizuploader" data-type="image">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}({{env('SLIDER_IMAGE_WIDTH')}}x{{env('SLIDER_IMAGE_HEIGHT')}})</div>
                                         </div>
                                         <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                         <input type="hidden" name="photo" value="{{$slider->getTranslation('photo',$lang)}}" class="selected-files">
@@ -164,11 +156,11 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label" >{{translate('Mobile Photo')}} <small>({{env('MOBILE_SILDER_IMAGE_WIDTH')}}x{{env('MOBILE_SILDER_IMAGE_HEIGHT')}})</small></label>
+                                <label class="col-md-3 col-form-label" >{{translate('Mobile Photo')}}</label>
                                 <div class="col-md-9 mb-3">
                                     <div class="input-group" data-toggle="aizuploader" data-type="image">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
+                                            <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}({{env('MOBILE_SILDER_IMAGE_WIDTH')}}x{{env('MOBILE_SILDER_IMAGE_HEIGHT')}})</div>
                                         </div>
                                         <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                         <input type="hidden" name="mobile_photo" value="{{$slider->getTranslation('mobile_photo',$lang)}}" class="selected-files">

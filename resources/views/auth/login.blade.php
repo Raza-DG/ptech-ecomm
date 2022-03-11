@@ -1,6 +1,40 @@
 @extends('backend.layouts.layout')
 
 @section('content')
+<style>
+.btn-check:active+.btn.btn-primary, .btn-check:checked+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.show, .btn.btn-primary:active:not(.btn-active), .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .show>.btn.btn-primary{
+
+    background-color: #1f2d1c !important;
+}
+.btn.btn-primary{
+     background-color: #1f2d1c !important;
+}
+.link-primary{
+    color: #1f2d1c !important;
+}
+    .link-primary:a, .link-primary:focus, .link-primary:hover {
+    color: #1f2d1c !important;
+}
+.form-check.form-check-solid .form-check-input:checked {
+    background-color: #1f2d1c;
+}
+
+ .links-logo_element {
+    display: block;
+    width: 175px;
+    height: 175px;
+    background-image: url(public/assets/frontend/static/logo/icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+    -webkit-transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s;
+    -moz-transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s;
+    -ms-transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s;
+    -o-transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s;
+    transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s;
+}
+
+</style>
     <!--begin::Main-->
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
@@ -8,34 +42,37 @@
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Aside-->
             <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative"
-                style="background-color: #e30d0d">
+                style="background-color: #ee2525">
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
                     <!--begin::Content-->
                     <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
                         <!--begin::Logo-->
-                        @if (get_setting('system_logo_black') != null)
-                            <img src="{{ uploaded_asset(get_setting('system_logo_black')) }}" class="h-60px"
-                                height="60">
-                        @else
-                            <img src="{{ static_asset('assets/img/logo.png') }}" class="mw-100 mb-4" height="40">
-                        @endif
+                        <br><br><br><br>
+
+                            <a href="{{ route('home') }}" class="wrap-links-logo" style="text-align: -webkit-center;">
+                                <img src="{{ uploaded_asset(get_setting('system_logo_black')) }}" class="h-60px" height="60">
+                            </a>
                         <br>
                         <!--end::Logo-->
                         <!--begin::Title-->
-                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #000;">{{ translate('Welcome to') }}
+                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #ffffff;">{{ translate('Welcome to') }}
                             {{ env('APP_NAME') }}</h1>
+
+                            <br>
+                        @if (get_setting('system_logo_white') != null)
+                            <a href="https://digitalgraphiks.ae" target="_blank" class="wrap-links-logo" style="text-align: -webkit-center;">
+                                <img src="{{ static_asset("assets/img/logo_white.svg") }}" class="h-60px" height="60">
+                            </a>
+                        @endif
                         <!--end::Title-->
                         <!--begin::Description-->
-                        <p class="fw-bold fs-2" style="color: #000;">{{ env('APP_NAME') }}
-                            <br />{{ translate('Login to your account.') }}
-                        </p>
+
                         <!--end::Description-->
                     </div>
                     <!--end::Content-->
                     <!--begin::Illustration-->
-                    <div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px"
-                        style="background-image: url({{ uploaded_asset(get_setting('admin_login_background')) }})"></div>
+
                     <!--end::Illustration-->
                 </div>
                 <!--end::Wrapper-->
@@ -66,7 +103,7 @@
                                 <!--begin::Input-->
                                 <input
                                     class="form-control form-control-lg form-control-solid {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                    type="text" name="email" id="email" autocomplete="off" />
+                                    type="text" name="email" id="email" autocomplete="off" placeholder="{{ translate('email') }}" />
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -85,7 +122,7 @@
                                     @if (env('MAIL_USERNAME') != null && env('MAIL_PASSWORD') != null)
                                         <!--begin::Link-->
                                         <a href="{{ route('password.request') }}"
-                                            class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+                                            class="link-primary fs-6 fw-bolder d-none">Forgot Password ?</a>
                                         <!--end::Link-->
                                     @endif
                                 </div>
@@ -116,7 +153,7 @@
                             <!--begin::Actions-->
                             <div class="text-center">
                                 <!--begin::Submit button-->
-                                <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+                                <button type="submit" id="kt_sign_in_submit" class="btn btn-lg w-100 mb-5" style="background-color: #f51c1c;color:#ffffff">
                                     <span class="indicator-label">Continue</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

@@ -34,14 +34,6 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">eCommerce</li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="breadcrumb-item">
-                            <span class="bullet bg-gray-300 w-5px h-2px"></span>
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">Website Setup</li>
                         <!--end::Item-->
                         <!--begin::Item-->
@@ -63,6 +55,52 @@
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
+               <div class="row">
+                   {{-- Our Strength --}}
+                    <div class="card pt-5">
+                        <div class="card-header">
+                            <h4 class="mb-0">{{ translate('Slider Left Side Text') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row gutters-5 mt-5">
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="slider_left_text">
+                                                <input type="text" class="form-control" placeholder="Heading" name="slider_left_text" value="{{ get_setting('slider_left_text') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group">
+                                                <input type="hidden" name="types[][{{ $lang }}]" value="slider_left_sub_text">
+                                                <input type="text" class="form-control" placeholder="Second Heading" name="slider_left_sub_text" value="{{ get_setting('slider_left_sub_text') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md mb-5">
+                                            <div class="form-group">
+                                                <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}} (162 x 108)</div>
+                                                    </div>
+                                                    <div class="form-control file-amount pb-10">{{ translate('Choose File') }}</div>
+                                                    <input type="hidden" name="types[]" value="slider_left_text_image">
+                                                    <input type="hidden" name="slider_left_text_image" class="selected-files" value="{{get_setting('slider_left_text_image')}}">
+                                                </div>
+                                                <div class="file-preview box sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end mt-5">
+                                    <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+               </div>
                 <div class="row">
 
                     <div class="col-md-7">
@@ -87,7 +125,7 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>{{ translate('Title1') }}</th>
+                                                <th>{{ translate('Title') }}</th>
                                                 <th>{{ translate('Image') }}</th>
                                                 <th>{{ translate('Status') }}</th>
                                                 <th class="text-right">{{ translate('Options') }}</th>
@@ -145,11 +183,11 @@
                                 <form action="{{ route('slider.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group mb-3">
-                                        <label for="name">{{ translate('Title1') }}</label>
-                                        <input type="text" placeholder="{{ translate('Title1') }}" name="title1"
+                                        <label for="name">{{ translate('Title') }}</label>
+                                        <input type="text" placeholder="{{ translate('Title') }}" name="title1"
                                             class="form-control" autofocus>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group mb-3 d-none">
                                         <label for="name">{{ translate('Title2') }}</label>
                                         <input type="text" placeholder="{{ translate('Title2') }}" name="title2"
                                             class="form-control">
@@ -208,12 +246,12 @@
                                         <input type="number" placeholder="0" name="sorting_id" class="form-control">
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="name">{{ translate('Photo') }}
-                                            <small>({{ env('SLIDER_IMAGE_WIDTH') }}x{{ env('SLIDER_IMAGE_HEIGHT') }})</small></label>
+                                        <label for="name">{{ translate('Photo') }}</label>
                                         <div class="input-group" data-toggle="aizuploader" data-type="image">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text bg-soft-secondary font-weight-medium">
-                                                    {{ translate('Browse') }}</div>
+                                                    {{ translate('Browse') }} ({{ env('SLIDER_IMAGE_WIDTH') }} x {{ env('SLIDER_IMAGE_HEIGHT') }})
+                                                </div>
                                             </div>
                                             <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                             <input type="hidden" name="photo" class="selected-files">
@@ -222,12 +260,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="name">{{ translate('Mobile Photo') }}
-                                            <small>({{ env('MOBILE_SILDER_IMAGE_WIDTH') }}x{{ env('MOBILE_SILDER_IMAGE_HEIGHT') }})<small></label>
+                                        <label for="name">{{ translate('Mobile Photo') }}</label>
                                         <div class="input-group" data-toggle="aizuploader" data-type="image">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text bg-soft-secondary font-weight-medium">
-                                                    {{ translate('Browse') }}</div>
+                                                    {{ translate('Browse') }} ({{ env('MOBILE_SILDER_IMAGE_WIDTH') }} x {{ env('MOBILE_SILDER_IMAGE_HEIGHT') }})
+                                                </div>
                                             </div>
                                             <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                             <input type="hidden" name="mobile_photo" class="selected-files">
