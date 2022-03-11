@@ -187,6 +187,11 @@
                                         <input type="text" placeholder="{{ translate('Title') }}" name="title1"
                                             class="form-control" autofocus>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <label for="name">{{ translate('Title Background Color') }}</label>
+                                        <input type="text" placeholder="{{ translate('#fff') }}" name="background_color"
+                                            class="form-control">
+                                    </div>
                                     <div class="form-group mb-3 d-none">
                                         <label for="name">{{ translate('Title2') }}</label>
                                         <input type="text" placeholder="{{ translate('Title2') }}" name="title2"

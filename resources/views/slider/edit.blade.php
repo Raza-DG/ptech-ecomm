@@ -79,6 +79,12 @@
                                     <input type="text" placeholder="{{translate('Title1')}}" id="title1" name="title1" value="{{ $slider->getTranslation('title1', $lang) }}" class="form-control"   autofocus>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-from-label" for="name">{{ translate('Title Background Color') }}</label>
+                                <div class="col-sm-9 mb-2">
+                                    <input type="text" placeholder="{{ translate('#fff') }}" name="background_color" value="{{$slider->background_color}}" class="form-control">
+                                </div>
+                            </div>
                             <div class="form-group row d-none">
                                 <label class="col-sm-3 col-from-label" for="name">{{translate('Title2')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                                 <div class="col-sm-9 mb-2">

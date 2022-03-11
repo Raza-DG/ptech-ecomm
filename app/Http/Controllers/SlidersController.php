@@ -70,6 +70,7 @@ class SlidersController extends Controller
         $slider->title1 =   $request->title1;
         $slider->title2 =   $request->title2;
         $slider->button_text    =   $request->button_text;
+        $slider->background_color    =   $request->background_color;
         $slider->status =   0;
         $slider->type   =   $request->type;
         if ($request->type == 'category') {
@@ -195,6 +196,7 @@ class SlidersController extends Controller
             $slider->title1 =   $request->title1;
             $slider->title2 =   $request->title2;
             $slider->button_text    =   $request->button_text;
+            $slider->background_color    =   $request->background_color;
             if ($request->status) {
                 $slider->status =   $request->status;
             }
