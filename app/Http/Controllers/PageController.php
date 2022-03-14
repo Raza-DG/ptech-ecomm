@@ -92,6 +92,8 @@ class PageController extends Controller
             return view('backend.website_settings.pages.contactus', compact('page','lang'));
           }elseif ($page->type == 'about') {
             return view('backend.website_settings.pages.about', compact('page','lang'));
+          }elseif ($page->type == "accrediation-approvals") {
+            return view('backend.website_settings.pages.accrediations_approvals', compact('page','lang'));
           }
           else{
             return view('backend.website_settings.pages.edit', compact('page','lang'));
