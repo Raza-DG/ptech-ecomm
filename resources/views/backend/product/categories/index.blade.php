@@ -117,11 +117,11 @@
                                             <th class="min-w-200px">{{ translate('Category Name') }}</th>
                                             <th class="text-center min-w-75px">{{ translate('Parent Category') }}</th>
                                             <th class="text-center min-w-175px">{{ translate('Order Level') }}</th>
-                                            <th class="text-center min-w-150px">{{ translate('Level') }}</th>
+                                           
                                             <th class="text-center min-w-100px">{{ translate('Banner') }}</th>
                                             <th class="text-center min-w-100px">{{ translate('Icon') }}</th>
                                             <th class="text-center min-w-70px">{{ translate('Featured') }}</th>
-                                            <th class="text-center min-w-100px">{{ translate('Commission') }}</th>
+                                            <th class="text-center min-w-100px">{{ translate('Menu') }}</th>
                                             <th class="text-center min-w-150px">{{ translate('Actions') }}</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -182,11 +182,7 @@
                                                         {{ $category->order_level }}
                                                     </span>
                                                 </td>
-                                                <td class="text-center pe-0" data-order="32">
-                                                    <span class="fw-bolder ms-3">
-                                                        {{ $category->level }}
-                                                    </span>
-                                                </td>
+                                                 
                                                 <!--end::Qty=-->
                                                 <!--begin::Price=-->
                                                 <td class="text-center pe-0" data-order="2">
@@ -210,7 +206,7 @@
                                                     @endif
                                                 </td>
                                                 <!--end::Price=-->
-                                                <!--begin::Rating-->
+                                                
                                                 <td class="text-center pe-0" data-order="rating-3">
                                                     <label
                                                         class="form-check form-switch form-check-custom form-check-solid">
@@ -221,11 +217,19 @@
                                                             } ?>>
                                                     </label>
                                                 </td>
-                                                <td class="text-center pe-0">
-                                                    <span
-                                                        class="badge badge-light-warning">{{ $category->commision_rate }}
-                                                        %</span>
+                                                
+                                                <!--begin::Rating-->
+                                                <td class="text-center pe-0" data-order="rating-3">
+                                                    <label
+                                                        class="form-check form-switch form-check-custom form-check-solid">
+                                                        <input class="form-check-input" onchange="update_menu(this)"
+                                                            value="{{ $category->id }}" type="checkbox"
+                                                            <?php if ($category->menu == 1) {
+                                                                echo 'checked';
+                                                            } ?>>
+                                                    </label>
                                                 </td>
+                                                 
                                                 <!--end::Rating-->
 
                                                 <td class="text-center">
@@ -320,6 +324,26 @@
             }, function(data) {
                 if (data == 1) {
                     AIZ.plugins.notify('success', '{{ translate('Featured categories updated successfully') }}');
+                } else {
+                    AIZ.plugins.notify('danger', '{{ translate('Something went wrong') }}');
+                }
+            });
+        }
+        
+        
+         function update_menu(el) {
+            if (el.checked) {
+                var status = 1;
+            } else {
+                var status = 0;
+            }
+            $.post('{{ route('categories.menu') }}', {
+                _token: '{{ csrf_token() }}',
+                id: el.value,
+                status: status
+            }, function(data) {
+                if (data == 1) {
+                    AIZ.plugins.notify('success', '{{ translate('Menu categories updated successfully') }}');
                 } else {
                     AIZ.plugins.notify('danger', '{{ translate('Something went wrong') }}');
                 }

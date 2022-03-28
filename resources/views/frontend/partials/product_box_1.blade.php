@@ -1,52 +1,30 @@
-<div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">
-    @if(discount_in_percentage($product) > 0)
-        <span class="badge-custom">{{ translate('OFF') }}<span class="box ml-1 mr-0">&nbsp;{{discount_in_percentage($product)}}%</span></span>
-    @endif
-    <div class="position-relative">
-        <a href="{{ route('product', $product->slug) }}" class="d-block">
-            <img
-                class="img-fit lazyload mx-auto h-140px h-md-210px"
-                src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                data-src="{{ uploaded_asset($product->thumbnail_img) }}"
-                alt="{{  $product->getTranslation('name')  }}"
-                onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-            >
-        </a>
-        @if ($product->wholesale_product)
-            <span class="absolute-bottom-left fs-11 text-white fw-600 px-2 lh-1-8" style="background-color: #455a64">
-                {{ translate('Wholesale') }}
-            </span>
-        @endif
-        <div class="absolute-top-right aiz-p-hov-icon">
-            <a href="javascript:void(0)" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
-                <i class="la la-heart-o"></i>
-            </a>
-            <a href="javascript:void(0)" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
-                <i class="las la-sync"></i>
-            </a>
-            <a href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
-                <i class="las la-shopping-cart"></i>
-            </a>
-        </div>
-    </div>
-    <div class="p-md-3 p-2 text-left">
-        <div class="fs-15">
-            @if(home_base_price($product) != home_discounted_base_price($product))
-                <del class="fw-600 opacity-50 mr-1">{{ home_base_price($product) }}</del>
-            @endif
-            <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
-        </div>
-        <div class="rating rating-sm mt-1">
-            {{ renderStarRating($product->rating) }}
-        </div>
-        <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
-            <a href="{{ route('product', $product->slug) }}" class="d-block text-reset">{{  $product->getTranslation('name')  }}</a>
-        </h3>
-        @if (addon_is_activated('club_point'))
-            <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">
-                {{ translate('Club Point') }}:
-                <span class="fw-700 float-right">{{ $product->earn_point }}</span>
+<div class="product-grid-item product woodmart-hover-quick col-lg-20_0 col-md-3 col-sm-4 col-6 first type-product post-447 status-publish first instock product_cat-beef product_cat-quick-cook-meals has-post-thumbnail shipping-taxable purchasable product-type-simple" data-id="447" data-loop="1">
+    <div class="product-element-top">
+        <a class="product-image-link" href="{{ route('product', $product->slug) }}">
+            <div class="product-labels labels-rounded">
+                @if(discount_in_percentage($product) > 0)
+                    <span class="onsale product-label">&nbsp;-{{discount_in_percentage($product)}}%</span>
+                @endif
             </div>
-        @endif
+            <img alt="" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" height="300" src="{{ uploaded_asset($product->thumbnail_img) }}" width="300"></a>
+        <div class="woodmart-buttons wd-pos-r-t">
+            <div class="woodmart-wishlist-btn wd-action-btn wd-wishlist-btn wd-style-icon">
+                <a href="javascript:void(0)" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left" data-added-text="Browse Wishlist" data-key="{{ $product->id }}" data-product-id="{{ $product->id }}" href="{{ route('product', $product->slug) }}">{{ translate('Add to wishlist') }}</a>
+            </div>
+        </div>
+        <div class="woodmart-add-btn wd-add-btn-replace">
+            <a href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" data-quantity="1" rel="nofollow"><span>{{ translate('Add to cart') }}</span></a>
+        </div>
+        <div class="quick-shop-wrapper">
+            <div class="quick-shop-close wd-cross-button wd-size-s  ">
+                <span>Close</span>
+            </div>
+            <div class="quick-shop-form"></div>
+        </div>
     </div>
+    <h3 class="product-title"><a href="{{ route('product', $product->slug) }}">{{ Str::words($product->getTranslation('name'), '3')  }}</a></h3><span class="price"><span class="woocommerce-Price-amount amount"></span></span>
+    @if(home_base_price($product) != home_discounted_base_price($product))
+        <del class="fw-600 opacity-50 mr-1">{{ home_base_price($product) }}</del>
+    @endif
+    <bdi> {{ home_discounted_base_price($product) }}</bdi>
 </div>

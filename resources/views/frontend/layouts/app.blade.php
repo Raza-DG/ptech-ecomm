@@ -4,23 +4,17 @@
 @else
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @endif
-
 <head>
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ getBaseURL() }}">
     <meta name="file-base-url" content="{{ getFileBaseURL() }}">
-
     <title>@yield('meta_title', get_setting('website_name').' | '.get_setting('site_motto'))</title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta name="description" content="@yield('meta_description', get_setting('meta_description') )" />
     <meta name="keywords" content="@yield('meta_keywords', get_setting('meta_keywords') )">
-
     @yield('meta')
-
     @if (!isset($detailedProduct) && !isset($customer_product) && !isset($shop) && !isset($page) && !isset($blog))
         <!-- Schema.org markup for Google+ -->
         <meta itemprop="name" content="{{ get_setting('meta_title') }}">
@@ -56,18 +50,89 @@
         rel="stylesheet">
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ static_asset('assets/css/vendors.css') }}">
+
     @if (\App\Models\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
         <link rel="stylesheet" href="{{ static_asset('assets/frontend/assets/css/bootstrap-rtl.min.css') }}">
     @endif
     <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">
+    @if(Route::currentRouteName() == 'checkout.shipping_info')
+        <link rel='stylesheet' href='{{ static_asset('assets-ecom/css/checkout.css') }}' type='text/css' />
+        <link rel='stylesheet' id='woodmart-pad-css' href='{{ static_asset('assets-ecom/css/woodmart-pad-public.css') }}' type='text/css' media='all' />
+    @elseif(Route::currentRouteName() == 'address.add_billing_address' || Route::currentRouteName() == 'address.add_shipping_address' || Route::currentRouteName() == 'address.address_edit' || Route::currentRouteName() == 'wishlists')
 
-    <link data-minify="1" href="{{ static_asset('assets/frontend/css/322cbd50567d4d12c25d652739fbf040.css') }}"
-        media="all" rel="stylesheet">
-    <link href="{{ static_asset('assets/frontend/slick/slick.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ static_asset('assets/frontend/slick/slick-theme.css') }}" rel="stylesheet" type="text/css">
+    @else
+        <link rel="stylesheet" href="{{ static_asset('assets/css/vendors.css') }}">
+    @endif
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="{{ static_asset('assets/frontend/css/main.css') }}" media="all" rel="stylesheet">
+   <link rel='stylesheet' id='xts-google-fonts-css' href='https://fonts.googleapis.com/css?family=Lato%3A100%2C100italic%2C300%2C300italic%2C400%2C400italic%2C700%2C700italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;ver=5.3.6' type='text/css' media='all' />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel='stylesheet' id='bootstrap-css' href="{{ static_asset('assets-ecom/themes/woodmart/css/bootstrap.min48f5.css?ver=5.3.6') }}" type='text/css' media='all' />
+    <link rel='stylesheet' id='woodmart-style-css' href="{{ static_asset('assets-ecom/themes/woodmart/style.min48f5.css?ver=5.3.6') }}" type='text/css' media='all' />
+    <link rel='stylesheet' id='xts-style-theme_settings_default-css' href="{{ static_asset('assets-ecom/themes/woodmart/style.min48f5.css?ver=5.3.6') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='xts-style-theme_settings_default-css' href="{{ static_asset('assets-ecom/uploads/2021/12/xts-theme_settings_default-164076906048f5.css') }}" type='text/css' media='all' />
+    <link rel="stylesheet" href="{{ static_asset('assets-ecom/css/shop.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('assets-ecom/css/common.css') }}">
+
+    <link rel="stylesheet" src="{{ static_asset('assets-ecom/themes/woodmart/style.min48f5.css') }}">
+
+    <script type='text/javascript' src="{{ static_asset('assets-ecom/plugins/woocommerce/assets/js/js-cookie/js.cookie.min6b25.js?ver=2.1.4') }}" id='js-cookie-js'></script>
+
+
+    <style>
+        .icons-design-simple .woodmart-social-icon {
+            background-color: #888888;
+            color: #FFF !important;
+        }
+
+        .icons-design-simple .woodmart-social-icon:hover {
+            background-color: #F2F2F2;
+            color: rgba(0, 0, 0, .4) !important;
+        }
+
+        .woodmart-navigation .item-level-0>a {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        @media(max-width: 991px) {
+            .black-menu-bar {
+                display: none;
+            }
+        }
+
+        .page .main-page-wrapper,
+        .main-page-wrapper {
+            background-image: url({{ static_asset('assets-ecom/images/Background-Full.jpg') }});
+            background-position-y: 630px;
+            background-repeat: repeat-y;
+            background-position-x: center;
+        }
+		.mt-100{
+		margin-top:100px;
+
+		}
+		.mt-150{
+		margin-top:150px;
+
+		}
+		.mt-200{
+		margin-top:200px;
+
+		}
+
+		.carousel-box c-pointer border p-1 rounded{
+width:unset !important;}
+
+
+.h2, h2 {
+    font-size: 15px !imporatant;
+}
+    </style>
+
+    <link rel='stylesheet' id='js_composer_front-css' href="{{ static_asset('assets-ecom/plugins/js_composer/assets/css/js_composer.mine6df.css?ver=6.5.0') }}" type='text/css' media='all' />
 
 
     <script>
@@ -127,10 +192,6 @@
     @if (get_setting('google_analytics') == 1)
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}">
-            < />
-
-            <
-            script >
                 window.dataLayer = window.dataLayer || [];
 
             function gtag() {
@@ -188,28 +249,14 @@
 </div>
 <!-- aiz-main-wrapper -->
 
-<body
-    class="home page-template page-template-template-builder page-template-template-builder-php page page-id-8 wp-custom-logo theme-rey woocommerce-no-js rey-navDefault rey-no-js opt rey-wishlist elementor-default elementor-kit-1313 elementor-page elementor-page-8 rey-cwidth--full --no-acc-focus"
-    data-rsssl="1">
-    <!--menu-white motor-top-->
-    <input type="hidden" id="name_file" value="{{ route('home') }}">
-    <input type="hidden" id="idPagina" value="1">
-    <input type="hidden" id="nombrePagina" value="home">
-    <input type="hidden" id="lang-input" value="en">
-
-    <!-- Base URL -->
-    <input type="hidden" id="domain" value="{{ getBaseURL() }}">
-
-
-    <div class="rey-siteWrapper" id="page">
-        <div class="rey-overlay rey-overlay--site"></div>
-
-        <!-- Header -->
-        @include('frontend.inc.nav')
-        <div class="rey-siteHeader-helper --dnone-desktop --dnone-tablet --dnone-mobile"></div>
-
-        @yield('content')
-
+<body data-rsssl=1 class="home page-template-default page page-id-702 theme-woodmart woocommerce-no-js wrapper-full-width form-style-square form-border-width-2 categories-accordion-on woodmart-ajax-shop-on offcanvas-sidebar-mobile offcanvas-sidebar-tablet sticky-toolbar-on btns-default-3d btns-default-dark btns-default-hover-dark btns-shop-3d btns-shop-light btns-shop-hover-light btns-accent-3d btns-accent-light btns-accent-hover-light wpb-js-composer js-comp-ver-6.5.0 vc_responsive">
+        <div class="website-wrapper">
+                @include('frontend.inc.nav')
+            <div class="main-page-wrapper">
+                <!-- MAIN CONTENT AREA -->
+                @yield('content')
+            </div>
+        </div>
         @include('frontend.inc.footer')
 
     </div>
@@ -262,7 +309,23 @@
         </div>
     @endif
 
-    {{-- @include('frontend.partials.modal') --}}
+   {{-- @include('frontend.partials.modal') --}}
+
+    <div class="modal fade" id="addToCart">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
+            <div class="modal-content position-relative">
+                <div class="c-preloader text-center p-3">
+                    <i class="las la-spinner la-spin la-3x"></i>
+                </div>
+                <button type="button" class="close absolute-top-right btn-icon close z-1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la-2x">&times;</span>
+                </button>
+                <div id="addToCart-modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     @yield('modal')
 
@@ -274,302 +337,131 @@
     <script src="{{ static_asset('assets/js/vendors.js') }}"></script>
     <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
 
-    <script>
-        function openMenu() {
-            document.getElementById("site-navigation-mobile-0968131").classList.add("show-menu");
-        }
-
-        function closeMenu() {
-            document.getElementById("site-navigation-mobile-0968131").classList.remove("show-menu");
-        }
-    </script>
-
-    <script charset="utf-8" src="{{ static_asset('assets/frontend/slick/slick.js') }}" type="text/javascript">
-    </script>
-    <!-- for slick slider start -->
-    <script type="text/javascript">
-        $(document).on('ready', function() {
-            $(".regular").slick({
-                dots: false,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1500,
-                responsive: [{
-                        breakpoint: 768,
-                        settings: {
-                            prevArrow: false,
-                            nextArrow: false
-                        }
-                    },
-                    {
-                        breakpoint: 576,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: false,
-                            prevArrow: false,
-                            nextArrow: false
-                        }
-                    },
-                ]
-            });
-            $(".client_slick").slick({
-                dots: false,
-                slidesToShow: 6,
-                slidesToScroll: 1,
-                prevArrow: false,
-                nextArrow: false,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: [{
-                    breakpoint: 650,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false
-                    },
-                }, {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false
-                    },
-                }]
-            });
-            $(".services-slider").slick({
-                dots: false,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1500,
-                responsive: [{
-                    breakpoint: 576,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false
-                    }
-                }, {
-                    breakpoint: 400,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false,
-                        prevArrow: false,
-                        nextArrow: false
-                    }
-                }]
-            });
-        });
-
-        function OpenFilterModal() {
-            document.getElementById("filterModal").classList.add("slideModal").classList.add("slideModal");
-        }
-
-        function closeFilterModal() {
-            document.getElementById("filterModal").classList.remove("slideModal").classList.add("slideModal");
-        }
-    </script>
-    <!-- for slick slider start -->
-    <script id='elementor-frontend-js-before' type='text/javascript'>
-        var elementorFrontendConfig = {
-            "environmentMode": {
-                "edit": false,
-                "wpPreview": false,
-                "isScriptDebug": false
-            },
-            "i18n": {
-                "shareOnFacebook": "Share on Facebook",
-                "shareOnTwitter": "Share on Twitter",
-                "pinIt": "Pin it",
-                "download": "Download",
-                "downloadImage": "Download image",
-                "fullscreen": "Fullscreen",
-                "zoom": "Zoom",
-                "share": "Share",
-                "playVideo": "Play Video",
-                "previous": "Previous",
-                "next": "Next",
-                "close": "Close"
-            },
-            "is_rtl": false,
-            "breakpoints": {
-                "xs": 0,
-                "sm": 480,
-                "md": 768,
-                "lg": 1025,
-                "xl": 1440,
-                "xxl": 1600
-            },
-            "responsive": {
-                "breakpoints": {
-                    "mobile": {
-                        "label": "Mobile",
-                        "value": 767,
-                        "default_value": 767,
-                        "direction": "max",
-                        "is_enabled": true
-                    },
-                    "mobile_extra": {
-                        "label": "Mobile Extra",
-                        "value": 880,
-                        "default_value": 880,
-                        "direction": "max",
-                        "is_enabled": false
-                    },
-                    "tablet": {
-                        "label": "Tablet",
-                        "value": 1024,
-                        "default_value": 1024,
-                        "direction": "max",
-                        "is_enabled": true
-                    },
-                    "tablet_extra": {
-                        "label": "Tablet Extra",
-                        "value": 1200,
-                        "default_value": 1200,
-                        "direction": "max",
-                        "is_enabled": false
-                    },
-                    "laptop": {
-                        "label": "Laptop",
-                        "value": 1366,
-                        "default_value": 1366,
-                        "direction": "max",
-                        "is_enabled": false
-                    },
-                    "widescreen": {
-                        "label": "Widescreen",
-                        "value": 2400,
-                        "default_value": 2400,
-                        "direction": "min",
-                        "is_enabled": false
+    <script type='text/javascript' id='woodmart-theme-js-extra'>
+        /* <![CDATA[ */
+        var woodmart_settings = {
+            "photoswipe_close_on_scroll": "1",
+            "woocommerce_ajax_add_to_cart": "yes",
+            "variation_gallery_storage_method": "old",
+            "elementor_no_gap": "enabled",
+            "adding_to_cart": "Processing",
+            "added_to_cart": "Product was successfully added to your cart.",
+            "continue_shopping": "Continue shopping",
+            "view_cart": "View Cart",
+            "go_to_checkout": "Checkout",
+            "loading": "Loading...",
+            "countdown_days": "days",
+            "countdown_hours": "hr",
+            "countdown_mins": "min",
+            "countdown_sec": "sc",
+            "cart_url": "https:\/\/tendergourmetbutchery.com.au\/cart\/",
+            "ajaxurl": "https:\/\/tendergourmetbutchery.com.au\/wp-admin\/admin-ajax.php",
+            "add_to_cart_action": "widget",
+            "added_popup": "no",
+            "categories_toggle": "yes",
+            "enable_popup": "no",
+            "popup_delay": "2000",
+            "popup_event": "time",
+            "popup_scroll": "1000",
+            "popup_pages": "0",
+            "promo_popup_hide_mobile": "no",
+            "product_images_captions": "no",
+            "ajax_add_to_cart": "1",
+            "all_results": "View all results",
+            "product_gallery": {
+                "images_slider": true,
+                "thumbs_slider": {
+                    "enabled": true,
+                    "position": "bottom",
+                    "items": {
+                        "desktop": 4,
+                        "tablet_landscape": 3,
+                        "tablet": 4,
+                        "mobile": 3,
+                        "vertical_items": 3
                     }
                 }
             },
-            "version": "3.5.5",
-            "is_static": false,
-            "experimentalFeatures": {
-                "e_dom_optimization": true,
-                "e_optimized_assets_loading": true,
-                "e_import_export": true,
-                "e_hidden_wordpress_widgets": true,
-                "landing-pages": true,
-                "elements-color-picker": true,
-                "favorite-widgets": true,
-                "admin-top-bar": true
+            "zoom_enable": "no",
+            "ajax_scroll": "yes",
+            "ajax_scroll_class": ".main-page-wrapper",
+            "ajax_scroll_offset": "100",
+            "infinit_scroll_offset": "300",
+            "product_slider_auto_height": "no",
+            "price_filter_action": "click",
+            "product_slider_autoplay": "",
+            "close": "Close (Esc)",
+            "share_fb": "Share on Facebook",
+            "pin_it": "Pin it",
+            "tweet": "Tweet",
+            "download_image": "Download image",
+            "cookies_version": "1",
+            "header_banner_version": "2",
+            "promo_version": "3",
+            "header_banner_close_btn": "1",
+            "header_banner_enabled": "0",
+            "whb_header_clone": "\n    <div class=\"whb-sticky-header whb-clone whb-main-header <%wrapperClasses%>\">\n        <div class=\"<%cloneClass%>\">\n            <div class=\"container\">\n                <div class=\"whb-flex-row whb-general-header-inner\">\n                    <div class=\"whb-column whb-col-left whb-visible-lg\">\n                        <%.site-logo%>\n                    <\/div>\n                    <div class=\"whb-column whb-col-center whb-visible-lg\">\n                        <%.main-nav%>\n                    <\/div>\n                    <div class=\"whb-column whb-col-right whb-visible-lg\">\n                        <%.woodmart-header-links%>\n                        <%.search-button:not(.mobile-search-icon)%>\n\t\t\t\t\t\t<%.woodmart-wishlist-info-widget%>\n                        <%.woodmart-compare-info-widget%>\n                        <%.woodmart-shopping-cart%>\n                        <%.full-screen-burger-icon%>\n                    <\/div>\n                    <%.whb-mobile-left%>\n                    <%.whb-mobile-center%>\n                    <%.whb-mobile-right%>\n                <\/div>\n            <\/div>\n        <\/div>\n    <\/div>\n",
+            "pjax_timeout": "5000",
+            "split_nav_fix": "",
+            "shop_filters_close": "no",
+            "woo_installed": "1",
+            "base_hover_mobile_click": "yes",
+            "centered_gallery_start": "1",
+            "quickview_in_popup_fix": "",
+            "disable_nanoscroller": "enable",
+            "one_page_menu_offset": "150",
+            "hover_width_small": "1",
+            "is_multisite": "",
+            "current_blog_id": "1",
+            "swatches_scroll_top_desktop": "",
+            "swatches_scroll_top_mobile": "",
+            "lazy_loading_offset": "0",
+            "add_to_cart_action_timeout": "no",
+            "add_to_cart_action_timeout_number": "3",
+            "single_product_variations_price": "yes",
+            "google_map_style_text": "Custom style",
+            "quick_shop": "yes",
+            "sticky_product_details_offset": "150",
+            "preloader_delay": "300",
+            "comment_images_upload_size_text": "Some files are too large. Allowed file size is 1 MB.",
+            "comment_images_count_text": "You can upload up to 3 images to your review.",
+            "comment_images_upload_mimes_text": "You are allowed to upload images only in png, jpeg formats.",
+            "comment_images_added_count_text": "Added %s image(s)",
+            "comment_images_upload_size": "1048576",
+            "comment_images_count": "3",
+            "comment_images_upload_mimes": {
+                "jpg|jpeg|jpe": "image\/jpeg",
+                "png": "image\/png"
             },
-            "urls": {
-                "assets": "https:\/\/demos.reytheme.com\/amsterdam\/wp-content\/plugins\/elementor\/assets\/"
-            },
-            "settings": {
-                "page": [],
-                "editorPreferences": []
-            },
-            "kit": {
-                "active_breakpoints": ["viewport_mobile", "viewport_tablet"],
-                "global_image_lightbox": "yes",
-                "lightbox_enable_counter": "yes",
-                "lightbox_enable_fullscreen": "yes",
-                "lightbox_enable_zoom": "yes",
-                "lightbox_enable_share": "yes",
-                "lightbox_title_src": "title",
-                "lightbox_description_src": "description"
-            },
-            "post": {
-                "id": 8,
-                "title": "Amsterdam%20Demo%20%E2%80%93%20Just%20another%20Rey%20Multisite%20Dev%20Sites%20site",
-                "excerpt": "",
-                "featuredImage": false
-            }
+            "home_url": "https:\/\/tendergourmetbutchery.com.au\/",
+            "shop_url": "https:\/\/tendergourmetbutchery.com.au\/shop\/",
+            "age_verify": "no",
+            "age_verify_expires": "30",
+            "cart_redirect_after_add": "no",
+            "swatches_labels_name": "no",
+            "product_categories_placeholder": "Select a category",
+            "product_categories_no_results": "No matches found",
+            "cart_hash_key": "wc_cart_hash_7526f33d48d6cffb6c08d9e001840c0e",
+            "fragment_name": "wc_fragments_7526f33d48d6cffb6c08d9e001840c0e"
         };
+        var woodmart_variation_gallery_data = null;
+        /* ]]> */
     </script>
+    <script type='text/javascript' src="{{ static_asset('assets-ecom/themes/woodmart/js/functions.min48f5.js?ver=5.3.6') }}" id='woodmart-theme-js'></script>
+    <script type='text/javascript' src="{{ static_asset('assets-ecom/themes/woodmart/js/jquery.tooltips.min48f5.js?ver=5.3.6') }}" id='woodmart-tooltips-js'></script>
+    <script type='text/javascript' src="{{ static_asset('assets-ecom/themes/woodmart/js/jquery.magnific-popup.min48f5.js?ver=5.3.6') }}" id='woodmart-magnific-popup-js'></script>
 
-    <script>
-        window.lazyLoadOptions = {
-            elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",
-            data_src: "lazy-src",
-            data_srcset: "lazy-srcset",
-            data_sizes: "lazy-sizes",
-            class_loading: "lazyloading",
-            class_loaded: "lazyloaded",
-            threshold: 300,
-            callback_loaded: function(element) {
-                if (element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible") {
-                    if (element.classList.contains("lazyloaded")) {
-                        if (typeof window.jQuery != "undefined") {
-                            if (jQuery.fn.fitVids) {
-                                jQuery(element).parent().fitVids()
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        window.addEventListener('LazyLoad::Initialized', function(e) {
-            var lazyLoadInstance = e.detail.instance;
-            if (window.MutationObserver) {
-                var observer = new MutationObserver(function(mutations) {
-                    var image_count = 0;
-                    var iframe_count = 0;
-                    var rocketlazy_count = 0;
-                    mutations.forEach(function(mutation) {
-                        for (i = 0; i < mutation.addedNodes.length; i++) {
-                            if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') {
-                                continue
-                            }
-                            if (typeof mutation.addedNodes[i].getElementsByClassName !==
-                                'function') {
-                                continue
-                            }
-                            images = mutation.addedNodes[i].getElementsByTagName('img');
-                            is_image = mutation.addedNodes[i].tagName == "IMG";
-                            iframes = mutation.addedNodes[i].getElementsByTagName('iframe');
-                            is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
-                            rocket_lazy = mutation.addedNodes[i].getElementsByClassName(
-                                'rocket-lazyload');
-                            image_count += images.length;
-                            iframe_count += iframes.length;
-                            rocketlazy_count += rocket_lazy.length;
-                            if (is_image) {
-                                image_count += 1
-                            }
-                            if (is_iframe) {
-                                iframe_count += 1
-                            }
-                        }
-                    });
-                    if (image_count > 0 || iframe_count > 0 || rocketlazy_count > 0) {
-                        lazyLoadInstance.update()
-                    }
-                });
-                var b = document.getElementsByTagName("body")[0];
-                var config = {
-                    childList: !0,
-                    subtree: !0
-                };
-                observer.observe(b, config)
-            }
-        }, !1)
+    <!-- SmoothScroll -->
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/uploads/wpmss/wpmssab.mind214.js?ver=1617197745') }}' id='wpmssab-js'></script>
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/plugins/mousewheel-smooth-scroll/js/SmoothScroll.min5b3c.js?ver=1.4.10') }}' id='SmoothScroll-js'></script>
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/uploads/wpmss/wpmss.mind214.js?ver=1617197745') }}' id='wpmss-js'></script>
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/themes/woodmart/js/jquery.nanoscroller.min48f5.js?ver=5.3.6') }}' id='woodmart-nanoscroller-js'></script>
+    <!-- SmoothScroll End -->
+    <!-- Imortant -->
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/themes/woodmart/js/owl.carousel.min48f5.js?ver=5.3.6') }}' id='woodmart-owl-carousel-js'>
     </script>
-
-    <script async data-no-minify="1"
-        src="{{ static_asset('assets/frontend/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js') }}">
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min20fd.js?ver=4.9.2') }}' id='wc-add-to-cart-variation-js'>
     </script>
-
-    <script data-minify="1" defer src="{{ static_asset('assets/frontend/js/27010d555b6a4399e10ac6a8ba7b0c21.js') }}">
-    </script>
-
-
-    </script>
-
     @if (get_setting('facebook_chat') == 1)
         <script type="text/javascript">
             window.fbAsyncInit = function() {
@@ -614,14 +506,17 @@
                 })
             })
 
-            $('.menu-item-type-post_type').each(function(i, el) {
+            $('.menu-item').each(function(i, el) {
+
                 $(el).on('mouseover', function() {
-                    if (!$(el).find('.rey-mega-gs').hasClass("loaded")) {
+
+                    if (!$(el).find('.sub-men').hasClass("loaded")) {
+					console.log(el);
                         $.post('{{ route('menus.elements') }}', {
                             _token: AIZ.data.csrf,
                             id: $(el).data('id')
                         }, function(data) {
-                            $(el).find('.rey-mega-gs').addClass('loaded').html(data);
+                            $(el).find('.sub-men').addClass('loaded').html(data);
                         });
                     }
                 });
@@ -679,6 +574,46 @@
                 });
             }
         });
+
+
+		$('#search1').on('keyup', function() {
+            search1();
+        });
+
+        $('#search1').on('focus', function() {
+            search1();
+        });
+		function search1() {
+            var searchKey = $('#search1').val();
+            if (searchKey.length > 0) {
+                $('body').addClass("typed-search-box-shown");
+
+                $('.typed-search-box').removeClass('d-none');
+                $('.search-preloader').removeClass('d-none');
+                $.post('{{ route('search.ajax') }}', {
+                    _token: AIZ.data.csrf,
+                    search: searchKey
+                }, function(data) {
+                    if (data == '0') {
+                        // $('.typed-search-box').addClass('d-none');
+                        $('#search-content1').html(null);
+                        $('.typed-search-box .search-nothing').removeClass('d-none').html(
+                            'Sorry, nothing found for <strong>"' + searchKey + '"</strong>');
+                        $('.search-preloader').addClass('d-none');
+
+                    } else {
+                        $('.typed-search-box .search-nothing').addClass('d-none').html(null);
+                        $('#search-content1').html(data);
+						console.log(data);
+                        $('.search-preloader').addClass('d-none');
+                    }
+                });
+            } else {
+                $('.typed-search-box').addClass('d-none');
+                $('body').removeClass("typed-search-box-shown");
+            }
+        }
+
 
         $('#search').on('keyup', function() {
             search();
@@ -850,8 +785,9 @@
                         $('.c-preloader').hide();
                         $('#modal-size').removeClass('modal-lg');
                         $('#addToCart-modal-body').html(data.modal_view);
-                        AIZ.extra.plusMinus();
+                        // AIZ.extra.plusMinus();
                         updateNavCart(data.nav_cart_view, data.cart_count);
+
                     }
                 });
             } else {
@@ -886,6 +822,35 @@
             } else {
                 AIZ.plugins.notify('warning', "{{ translate('Please choose all the options') }}");
             }
+        }
+
+
+
+		function enquireNow() {
+
+                $('#addToCart-modal-body').html(null);
+                $('#addToCart').modal();
+                $('.c-preloader').show();
+                $.ajax({
+                    type: "POST",
+                    url: '{{ route('cart.addToCart') }}',
+                    data: $('#option-choice-form').serializeArray(),
+                    success: function(data) {
+                        if (data.status == 1) {
+
+                            $('#addToCart-modal-body').html(data.modal_view);
+                            updateNavCart(data.nav_cart_view, data.cart_count);
+
+                            window.location.replace("{{ route('cart') }}");
+                        } else {
+                            $('#addToCart-modal-body').html(null);
+                            $('.c-preloader').hide();
+                            $('#modal-size').removeClass('modal-lg');
+                            $('#addToCart-modal-body').html(data.modal_view);
+                        }
+                    }
+                });
+
         }
 
         function show_purchase_history_details(order_id) {

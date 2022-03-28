@@ -154,7 +154,7 @@
                                             <div class="ms-4">
                                                 <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to
                                                     upload.</h3>
-                                                <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
+                                                <span class="fs-7 fw-bold text-gray-400">Upload Icon</span>
                                             </div>
                                             <!--end::Info-->
                                         </div>
@@ -182,9 +182,12 @@
                                             <input type="hidden" name="banner" class="selected-files"
                                                 value="{{ $category->banner }}">
                                             <div class="ms-4">
-                                                <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to
-                                                    upload.</h3>
-                                                <span class="fs-7 fw-bold text-gray-400">Upload up to 10 files</span>
+                                                <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
+                                                @if ($category->id == 2)
+                                                    <span class="fs-7 fw-bold text-gray-400">Image Size 1500 x 634</span>
+                                                    @else
+                                                    <span class="fs-7 fw-bold text-gray-400">Image Size 466 x 398</span>
+                                                @endif
                                             </div>
                                             <!--end::Info-->
                                         </div>
@@ -307,7 +310,7 @@
                                 </div>
                             </div>
                         @endif
-                        <div class="card card-flush py-4">
+                        <div class="card card-flush py-4 d-none">
                             <div class="card-header">
                                 <div class="card-title">
                                     <h3>{{ translate('Filtering Attributes') }}</h3>

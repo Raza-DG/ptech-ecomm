@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <section class="gry-bg py-4">
+    <section class="gry-bg py-4 mt-150">
         <div class="profile">
             <div class="container">
                 <div class="row">

@@ -99,7 +99,8 @@
                                     <!--begin::Table row-->
                                     @if (count($conversations) > 0)
                                         @foreach ($conversations as $key => $conversation)
-                                            @if ($ticket->user != null)
+										 
+                                            
                                                 <tr>
                                                     <!--begin::Checkbox-->
                                                     <td class="text-center pe-0">
@@ -180,8 +181,7 @@
                                                     </td>
 
                                                     <!--end::Action=-->
-                                                </tr>
-                                            @endif
+                                                </tr> 
                                         @endforeach
                                     @else
                                         <tr>

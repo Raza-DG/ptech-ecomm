@@ -85,19 +85,19 @@
                                                 <input type="text" class="form-control" placeholder="Heading" name="home_one_heading" value="{{ get_setting('home_one_heading') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-5">
+                                        <div class="col-md-6 mb-5">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="home_one_button">
-                                                <input type="text" class="form-control" placeholder="Button Text" name="home_one_button" value="{{ get_setting('home_one_button') }}">
+                                                <input type="text" class="form-control" placeholder="Heading2" name="home_one_button" value="{{ get_setting('home_one_button') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-5">
+                                        <div class="col-md-3 mb-5 d-none">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="home_one_button_link">
                                                 <input type="text" class="form-control" placeholder="Button Link" name="home_one_button_link" value="{{ get_setting('home_one_button_link') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md mb-5">
+                                        <div class="col-md mb-5 d-none">
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
@@ -147,7 +147,7 @@
 
                     <div class="card pt-5">
                         <div class="card-header">
-                            <h4 class="mb-0">{{ translate('OUR SERVICES') }}</h4>
+                            <h4 class="mb-0">{{ translate('Best Sellers') }}</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
@@ -160,13 +160,13 @@
                                                 <input type="text" class="form-control" placeholder="Heading" name="home_second_heading" value="{{ get_setting('home_second_heading') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-5">
+                                        <div class="col-md-6 mb-5">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="home_second_button">
                                                 <input type="text" class="form-control" placeholder="Button Text" name="home_second_button" value="{{ get_setting('home_second_button') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-5">
+                                        <div class="col-md-3 mb-5 d-none">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="home_second_button_link">
                                                 <input type="text" class="form-control" placeholder="Button Link" name="home_second_button_link" value="{{ get_setting('home_second_button_link') }}">
@@ -186,7 +186,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md mb-5 d-none">
+                                        <div class="col-md mb-5  ">
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
@@ -222,7 +222,7 @@
 
                     <div class="card pt-5">
                         <div class="card-header">
-                            <h4 class="mb-0">{{ translate('READY TO SHOP') }}</h4>
+                            <h4 class="mb-0">{{ translate('Why Choose') }}</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
@@ -235,19 +235,19 @@
                                                 <input type="text" class="form-control" placeholder="Heading" name="home_third_heading" value="{{ get_setting('home_third_heading') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-5">
+                                        <div class="col-md-6 mb-5">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="home_third_button">
                                                 <input type="text" class="form-control" placeholder="Button Text" name="home_third_button" value="{{ get_setting('home_third_button') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-5">
+                                        <div class="col-md-3 mb-5 d-none">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="home_third_button_link">
                                                 <input type="text" class="form-control" placeholder="Button Link" name="home_third_button_link" value="{{ get_setting('home_third_button_link') }}">
                                             </div>
                                         </div>
-                                        <div class="col-md mb-5">
+                                        <div class="col-md mb-5  d-none">
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
@@ -261,7 +261,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md mb-5 d-none">
+                                        <div class="col-md mb-5">
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
                                                     <div class="input-group-prepend">
@@ -275,7 +275,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-5 d-none">
+                                        <div class="col-md-12 mb-5">
                                             <div class="d-flex flex-column">
                                                 <div class="mb-5 fv-row">
                                                     <label class="form-label">{{ translate('Description') }}</label>
@@ -295,7 +295,7 @@
                         </div>
                     </div>
 
-                    <div class="card pt-5">
+                    <div class="card pt-5 d-none">
                         <div class="card-header">
                             <h4 class="mb-0">{{ translate('OUR PRODUCTS') }}</h4>
                         </div>
@@ -379,7 +379,7 @@
                         <div class="card-body">
                             <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="col-md-6 mb-5">
+                                <div class="col-md-6 mb-5 d-none">
                                     <div class="form-group">
                                         <input type="hidden" name="types[][{{ $lang }}]" value="home_fifth_heading">
                                         <input type="text" class="form-control" placeholder="Heading" name="home_fifth_heading" value="{{ get_setting('home_fifth_heading') }}">
@@ -1357,7 +1357,7 @@
                     </div>
 
                     {{-- Top 10 --}}
-                    <div class="card d-none">
+                    <div class="card ">
                         <div class="card-header">
                             <h6 class="mb-0">{{ translate('Top 10') }}</h6>
                         </div>
@@ -1389,7 +1389,7 @@
                                     </select>
                                 </div>
 
-                                <div class="fv-row mb-2">
+                                <div class="fv-row mb-2 d-none">
                                     <label for="kt_ecommerce_add_product_store_template"
                                         class="form-label">{{ translate('Top Brands (Max 10)') }}</label>
                                     <input type="hidden" name="types[]" value="top10_brands">

@@ -37,6 +37,7 @@ class ConversationController extends Controller
      */
     public function admin_index()
     {
+	 
         if (BusinessSetting::where('type', 'conversation_system')->first()->value == 1) {
             $conversations = Conversation::orderBy('created_at', 'desc')->get();
             return view('backend.support.conversations.index', compact('conversations'));

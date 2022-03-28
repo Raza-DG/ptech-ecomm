@@ -1,0 +1,897 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ .woodmart-pad-content{
+     position: relative;
+ }
+.woodmart-pad-content .flex-wrapper{
+    display: flex;
+}
+
+.woodmart-pad-content h3{
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #41322d;
+    margin-bottom: 15px;
+}
+
+.woodmart-pad-content .note-wrapper{
+    border-left: 3px solid #fee902;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+.woodmart-pad-content .uppercase{
+    text-transform: uppercase;
+}
+.woodmart-pad-content .note-wrapper p{    
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #41322d;
+    margin-bottom: 5px;
+}
+
+.grid-view .comment-wrapper{
+    border-radius: 5px;
+    background-color: rgba(109, 80, 71, 0.1);
+    padding: 15px;
+    margin: 10px 20px 20px;
+}
+
+.comment-wrapper p{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.28px;
+    text-align: center;
+    color: #41322d;
+    margin-bottom: 0;
+}
+
+.toggle p{
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-align: left;
+    color: #6d5047;
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.toggle{
+    display: flex;
+    align-items: center;
+    padding: 9px 20px 9px 19px;
+    border-radius: 25px;
+    border: solid 1px rgba(109, 80, 71, 0.2);
+    cursor: pointer;
+}
+
+.custom-slick{
+    width: 100%;
+    padding: 50px 15px 0;
+}
+.date-selected p{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.28px;
+    color: #41322d;
+    margin-bottom: 0;
+}
+
+.date-selected p.date{
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    color: #41322d;
+}
+.grid-view .single-date{
+    padding: 10px 0;    
+    border-radius: 5px;
+    border: solid 1px #a79590;
+    margin: 5px;
+    text-align: center;
+}
+
+.grid-view .single-date.selected, .grid-view .single-date:hover{            
+    background-color: #6d5047;
+    cursor: pointer;
+}
+
+.grid-view .single-date.selected p:first-child, .grid-view .single-date:hover p:first-child{
+    color: #fee902;
+}
+.grid-view .single-date.selected p,.grid-view .single-date:hover p{
+    color: white;
+}
+.single-date p:first-child{
+    text-transform: uppercase;
+}
+.grid-view .single-date p{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.28px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.grid-view .single-date.disabled{
+    pointer-events: none;
+    background-color: rgba(109, 80, 71, 0.1);
+}
+
+.grid-view .single-date.disabled p{
+    color: rgba(65, 50, 45, 0.35);
+}
+
+.woodmart-pad-content .hide{
+    display: none !important;
+}
+.hide{
+    display: none;
+}
+.importanthide{
+    display: none !important;
+}
+.woodmart-pad-content .grid-view{
+    border-radius: 5px;
+    border: solid 1px rgba(109, 80, 71, 0.2);
+}
+
+.date-selected{
+    margin: 20px;
+}
+.calendar-view .date-selected{
+    text-align: center;
+    padding: 30px;
+}
+
+.calendar-view .date-selected p.date{
+    margin-bottom: 10px;
+}
+#pickup-wrapper .date-selected p.date{
+    font-size: 18px;
+}
+.err-msg{
+    margin-bottom: 0;
+    color: red;
+}
+.woodmart-pad-content .options-wrapper .half{
+    flex: 1 1 0px;
+    border-radius: 10px;
+    border: solid 2px #a79590;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.options-wrapper > div{
+    text-align: center;
+}
+
+.options-wrapper{
+    justify-content: stretch;
+    margin-bottom: 25px;
+}
+.options-wrapper input{
+    display: none;
+}
+
+.options-wrapper .half.active label img.active{
+    display: block;
+}
+.options-wrapper img.active{
+    display: none;
+}
+.options-wrapper .half.active img.active{
+    display: block;
+}
+.options-wrapper .half.active label img{
+    display: none;
+}
+.options-wrapper span{
+    display: block;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.96px;
+    margin-bottom: 10px;
+}
+.options-wrapper img{
+    margin: 0 auto;
+}
+.options-wrapper label{
+    height: 100%;
+    border-radius: 5px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.options-wrapper .half.active{
+    background-color: #6d5047;    
+    border:solid 2px #6d5047;
+}
+
+.options-wrapper .half.active span{
+    color: white;
+}
+
+.options-wrapper .half span{
+    color: #6d5047;    
+}
+
+.options-wrapper .half img{
+    max-width: 56px;
+}
+
+.custom-slick .slick-next:hover{
+    box-shadow: none;
+}
+.custom-slick .slick-next{
+    background-image:url('../images/yellow-chev-right.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 20px;
+    color: #a79590;
+    background-color: transparent;
+    background-position: right center;
+    padding-right: 30px;
+    top: 0;
+}
+.number-wrapper{
+    display: none;
+}
+/* #custom-checkout-steps .border:after{
+    white-space: nowrap;
+    content: "" !important;
+    font-weight: bold;
+    top: 20px;
+    left: 50%;
+    z-index: 0;
+    border: 2px dashed #6d50471a;
+    right: 0;
+    width: 50%;
+    display: block;
+}
+#custom-checkout-steps .border:before{
+    content: "" !important;
+    font-weight: bold;
+    top: 20px;
+    right: 50%;
+    position: absolute;
+    z-index: 0;
+    border: 2px dashed #6d50471a;
+    left: 4px;
+    width: 50%;
+    display: block;
+}
+
+#custom-checkout-steps .step-active .border:before,#custom-checkout-steps .step-completed .border:after,#custom-checkout-steps .step-completed .border:before{
+    border: 2px dashed #6d5047;
+}
+
+.woodmart-checkout-steps li .number-wrapper{
+    width: 42px;
+    height: 42px;
+    position: relative;    
+    border-radius: 21px;
+    margin: 0 auto;
+} */
+
+/* .woodmart-checkout-steps li.step-completed .number-wrapper{
+    background:#6d5047;
+}
+
+.woodmart-checkout-steps li.step-inactive .number-wrapper{
+    background: #f3f3f3;
+}
+.woodmart-checkout-steps li.step-active .number-wrapper{
+    background: #fee902;
+}
+
+.woodmart-checkout-steps ul li:after{
+    display: none;
+}
+
+.woodmart-checkout-steps ul li span:after{
+    background-color: transparent !important;
+}
+
+#custom-checkout-steps.woodmart-checkout-steps ul li span{
+    position: inherit;
+} */
+
+/* .step-label{
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.44px;
+    text-align: center;
+    color: #41322d;
+    margin-top: 10px;
+} */
+/* #custom-checkout-steps ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+#custom-checkout-steps ul li{
+    position: relative;
+    flex: 1 1 0px;
+} */
+/* .custom-cart-pages .page-title-default{
+    background: none;
+    margin-bottom: 0;
+    padding-bottom: 25px;
+} */
+
+/* #custom-checkout-steps ul li.step-active .step-label {
+    font-weight: 800;
+}
+#custom-checkout-steps ul li a{
+    opacity: 1;
+    margin: 0 auto;
+} */
+
+/* .number-wrapper span{
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.36px;
+    text-align: center;
+    color: #6d5047;
+    padding-top: 10px;
+}
+
+#custom-checkout-steps ul li:first-child span:first-child:before{
+    display: none;
+}
+
+#custom-checkout-steps ul li:last-child span:first-child:after{
+    display: none;
+} */
+
+.woodmart-checkout-steps span.border{
+    display: none;
+}
+
+.woodmart-pad-content input[type=text], .woodmart-pad-content select,.woodmart-pad-content input[type=email], .woodmart-pad-content span.select2-container{
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+body #woodmart-pad-form .select2-selection{
+    border-radius: 5px;
+}
+#shipping-wrapper > div, #pickup-wrapper > div{
+    padding: 0 10px;
+}
+
+#gotothisweek, #pickupgotothisweek{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-align: left;
+    color: #41322d;
+    text-transform: uppercase;
+    position: absolute;
+    left: 20px;
+    top: 12px;
+    z-index: 200;
+}
+
+.grid-view > div{
+    position: relative;
+}
+.toggle-wrapper{
+    margin-bottom: 12px;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.flex-start{
+    align-items: flex-start;
+}
+
+.date-selected > div{
+    padding: 0 5px;
+}
+.toggle img{
+    max-height: 16px;
+}
+.grid-mode img{
+    margin:3px 0;
+}
+
+#shipping-calendar .ui-widget.ui-widget-content, #pickup-calendar .ui-widget.ui-widget-content{
+    border: none;
+}
+
+.calendar-wrapper{
+    border-right: solid 1px rgba(109, 80, 71, 0.2);
+    flex: 1 1 0px;
+}
+
+.available-hourslots{
+    flex: 1 1 0px;
+}
+.calendar-view{
+    border-radius: 5px;
+    border: solid 1px rgba(109, 80, 71, 0.2);
+}
+.calendar-view .text-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 0px;
+}
+
+.calendar-view .comment-wrapper{
+    padding: 35px;
+}
+
+.half{
+    width: 50%;
+    float: left;
+    max-width: 50%;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.single-hourslot.selected, .single-hourslot:hover{
+    background-color: #6d5047;
+    color: white;
+}
+.single-hourslot{
+    border-radius: 5px;
+    background-color: rgba(109, 80, 71, 0.1);
+    border: solid 1px #6d5047;
+    color: #6d5047;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.single-hourslot.disabled{
+    pointer-events: none;
+    border: none;
+    color: #a79590;
+    background-color: rgba(109, 80, 71, 0.1);
+}
+
+.single-hourslot span{
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-align: center;
+}
+
+.calendar-wrapper .ui-widget.ui-widget-content{
+    width: 100%;
+}
+
+#pickup-wrapper .calendar-view .date-selected{
+    text-align: left;
+    padding: 20px;
+    border-top: solid 1px rgba(109, 80, 71, 0.2);
+    margin: 0;
+}
+
+#store-location-info p:first-child{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.34px;
+}
+#store-location-info p{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.28px;
+    text-align: left;
+    color: #41322d;
+    margin-bottom: 5px;
+}
+
+#store-location-info{
+    padding: 18px;
+    border-radius: 5px;
+    border: solid 1px rgba(109, 80, 71, 0.2);
+    margin-bottom: 20px;
+}
+
+#pickup-note-wrapper p{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.28px;
+    text-align: left;
+    color: #41322d;
+    margin-bottom: 0;
+}
+#pickup-note-wrapper{
+    padding: 16px 13px 18px 20px;
+    border-radius: 5px;
+    background-color: rgba(109, 80, 71, 0.1);
+    margin-bottom: 10px;
+}
+
+.number-wrapper img{
+    display: none;
+}
+
+.step-completed .number-wrapper img{
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 14px;
+}
+
+.woodmart-pad-content a.proceed_to_checkout:hover,.woodmart-pad-content a.proceed_to_checkout:focus{
+    box-shadow: none;
+    opacity: 0.9;
+}
+.grid-view .single-date{
+    outline: none;
+}
+.woodmart-pad-content a.proceed_to_checkout.disabled{
+    pointer-events: none;
+    opacity: 0.3;
+}
+.woodmart-pad-content a.proceed_to_checkout{
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #6d5047;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.68px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: none;
+    padding: 15px 26px;
+    display: block;
+}
+
+#pickup-wrapper .grid-view .single-hourslot{
+    flex: 0 0 163px;
+    text-align: center;
+    max-width: 170px;
+}
+#pickup-wrapper .grid-view .available-hourslots{
+    flex-wrap: wrap;
+    display: flex;
+    padding: 0 10px;
+}
+#pickup-wrapper .calendar-view .single-hourslot{
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+#pickup-wrapper h4{
+    font-family: Lato;
+    font-size: 17px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.34px;
+    text-align: left;
+    color: #41322d;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+body{
+    position: relative;
+}
+
+.toggle.disabled{
+    opacity: .8;
+    pointer-events: none;
+}
+/* calendar custom style*/
+.ui-datepicker-title span{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #41322d;
+}
+.ui-datepicker-header.ui-widget-header{
+    background: none;
+    border: none;
+}
+.ui-datepicker-calendar thead tr th span{
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #41322d;
+    text-transform: none;
+}
+.ui-datepicker-unselectable.ui-state-disabled span{
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #a79590;
+}
+.ui-datepicker-calendar tbody td a.ui-state-default{
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #41322d;
+}
+
+.ui-datepicker-calendar .ui-state-default{
+    border: none;
+    background: none;
+    padding: 10px;
+}
+
+.ui-datepicker .ui-icon.ui-icon-circle-triangle-e{
+    background-position: center;
+    background-image: url('../images/icon_chevron_right.svg');
+}
+
+.ui-datepicker .ui-icon.ui-icon-circle-triangle-w{
+    background-position: center;
+    background-image: url('../images/icon_chevron_left.png');
+}
+#woodmart-pad-form .ui-datepicker .ui-datepicker-next.ui-corner-all.ui-state-hover.ui-datepicker-next-hover{
+    right: 2px;
+}
+#woodmart-pad-form .ui-datepicker .ui-datepicker-prev.ui-corner-all.ui-state-hover.ui-datepicker-prev-hover{
+    left: 2px;
+}
+#woodmart-pad-form .ui-datepicker .ui-datepicker-next.ui-corner-all.ui-state-hover.ui-datepicker-next-hover,#woodmart-pad-form .ui-datepicker .ui-datepicker-prev.ui-corner-all.ui-state-hover.ui-datepicker-prev-hover{
+    background: none;
+    border: none;
+    top: 2px;
+    cursor: pointer;
+}
+.mobile-only{
+    display: none;
+}
+
+a.ui-state-default.ui-state-active{
+    background:url('../images/yellow-circle.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* hourslot pagination */
+.paginationjs-pages ul li{
+    float:left;
+    padding: 10px;
+}
+.paginationjs-pages ul{
+    margin: 0 auto;
+}
+
+.paginationjs-pages{
+    display: flex;
+}
+#billing_country_field, #billing_state_field{
+    display: none !important;
+}
+.woocommerce-shipping-totals.shipping input, .woocommerce-shipping-destination, form.woocommerce-shipping-calculator{
+    display: none !important;
+}
+.woocommerce-order-received .woocommerce-customer-details h2.woocommerce-column__title, .woocommerce-my-account-wrapper .woocommerce-customer-details h2.woocommerce-column__title{
+    display: none;
+}
+.woocommerce-order-received .woocommerce-customer-details .woocommerce-column--shipping-address{
+    display: none;
+}
+
+.custom-info{
+    font-style: italic;
+    font-size: 110%;
+    line-height: 1.8;
+}
+#pickup-note-wrapper ol{
+    list-style: decimal;
+}
+#pickup-note-wrapper ul{
+    list-style: inherit;
+}
+.custom-order-total th{
+    font-size: 18px;
+}
+.custom-order-total td span{
+    font-size: 22px;
+}
+.woocommerce-cart .order-total, .woocommerce-cart .woocommerce-shipping-totals.shipping, .woocommerce-cart .fee{
+    display: none;
+}
+
+.single-shipping-time {
+    border-radius: 5px;
+    background-color: rgba(109, 80, 71, 0.1);
+    border: solid 1px #6d5047;
+    color: #6d5047;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex-basis: 50%;
+    text-transform: uppercase;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#grid-shipping-time-wrapper{
+    padding: 10px;
+}
+
+.single-shipping-time.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@media (max-width: 1240px){
+    #pickup-wrapper .grid-view .single-hourslot{
+        flex: 1 1 33%;
+    }
+}
+@media (max-width:768px){
+    #pickup-wrapper .calendar-view .single-hourslot{
+        max-width: 170px;
+        margin: 10px 5;
+    }
+    #shipping-wrapper .note-wrapper{
+        margin-bottom: 30px;
+    }
+    /* #custom-checkout-steps ul li:not(.step-active){
+        display: inherit;
+    } */
+
+    .half{
+        width: 100%;
+        float: none;
+        max-width: 100%;
+    }
+
+    .woodmart-pad-content .note-wrapper{
+        padding-right: 0;
+    }
+    .woodmart-pad-content .flex-wrapper.calendar-view{
+        display: block;
+    }
+    #map iframe{
+        max-height: 250px;
+    }
+    #pickup-wrapper .calendar-view .flex-wrapper{
+        display: block;
+    }
+
+    #pickup-wrapper .calendar-view .calendar-wrapper {
+        border-bottom: solid 1px rgba(109, 80, 71, 0.2);
+        border-right: none;
+        padding: 15px 0;
+    }
+    .mobile-only{
+        display: inherit;
+    }
+
+    .desktop-only{
+        display: none !important;
+    }
+
+    #pickup-wrapper .calendar-view .comment-wrapper{
+        border-radius: 5px;
+        background-color: rgba(109, 80, 71, 0.1);
+        padding: 20px 15px;
+        margin: 10px 20px 20px;
+    }
+
+    #map{
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid rgba(109, 80, 71, 0.2);
+    }
+
+    #pickup-wrapper .calendar-view .available-hourslots .items{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width:420px){
+    #pickup-wrapper .grid-view .single-hourslot,#pickup-wrapper .calendar-view .single-hourslot{
+        max-width: 140px;
+        margin: 10px 5px;
+        padding: 5px;
+    }
+
+    #pickup-wrapper .calendar-view .date-selected{
+        text-align: center;
+    }
+}

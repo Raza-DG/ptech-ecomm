@@ -144,9 +144,7 @@
                             </li>
                             <!--end:::Tab item-->
                             <!--begin:::Tab item-->
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_ecommerce_sales_order_history">Order History</a>
-                            </li>
+                            
                             <!--end:::Tab item-->
                         </ul>
                         <!--end:::Tabs-->
@@ -163,10 +161,7 @@
                         <!--end::Button-->
                         <!--begin::Button-->
                         <a href="{{ route('invoice.download', $order->id) }}" class="btn btn-light-primary btn-sm me-lg-n7">{{translate('Download Order')}}</a>
-                        <a href="#" class="btn btn-light-primary btn-sm me-lg-n7">Edit Order</a>
-                        <!--end::Button-->
-                        <!--begin::Button-->
-                        <a href="#" class="btn btn-light-primary btn-sm">Add New Order</a>
+                         
                         <!--end::Button-->
                     </div>
                     <!--begin::Order summary-->
@@ -285,17 +280,7 @@
                                             <td class="fw-bolder text-end">
                                                 <div class="d-flex align-items-center justify-content-end">
                                                     <!--begin:: Avatar -->
-                                                    <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
-                                                        <a href="#">
-                                                            <div class="symbol-label">
-                      <img src="{{ static_asset('assets/backend/media/avatars/300-23.jpg')}}" alt="@if ($order->user != null)
-                      {{ $order->user->name }}
-                      @else
-                          Guest ({{ $order->guest_id }})
-                                                @endif" class="w-100" />
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                     
                                                     <!--end::Avatar-->
                                                     <!--begin::Name-->
                                                     <a href="#" class="text-gray-600 text-hover-primary">@if ($order->user != null)

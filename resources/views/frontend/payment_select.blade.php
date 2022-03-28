@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-<section class="pt-5 mb-4">
+<section class="pt-5 mb-4 mt-150">
     <div class="container">
         <div class="row">
             <div class="col-xl-8 mx-auto">
@@ -309,6 +309,7 @@
                                             </div>
                                         @endif
                                         @if(get_setting('cash_payment') == 1)
+										
                                             @php
                                                 $digital = 0;
                                                 $cod_on = 1;
@@ -322,6 +323,7 @@
                                                     }
                                                 }
                                             @endphp
+											 
                                             @if($digital != 1 && $cod_on == 1)
                                                 <div class="col-6 col-md-4">
                                                     <label class="aiz-megabox d-block mb-3">
@@ -408,7 +410,7 @@
                             <span>{{ translate('I agree to the')}}</span>
                         </label>
                         <a href="{{ route('terms') }}">{{ translate('terms and conditions')}}</a>,
-                        <a href="{{ route('returnpolicy') }}">{{ translate('return policy')}}</a> &
+                     
                         <a href="{{ route('privacypolicy') }}">{{ translate('privacy policy')}}</a>
                     </div>
 

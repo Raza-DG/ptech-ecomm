@@ -210,6 +210,7 @@
                                                             <h3 class="fs-5 fw-bolder text-gray-900 mb-1">
                                                                 {{ translate('Click to upload') }}
                                                             </h3>
+                                                            <span class="fs-7 fw-bold text-gray-400">Image Size 500 x 583</span>
                                                         </div>
                                                         <!--end::Info-->
                                                     </div>
@@ -221,7 +222,7 @@
 
                                             </div>
                                             <div class="text-muted fs-7">This image is visible in all product box. Use
-                                                300x300 sizes image.
+                                                500 x 583 sizes image.
                                                 <br>Keep some blank space around main object of your image as we had to crop
                                                 <br> some edge in different devices to make it responsive.
                                             </div>
@@ -239,6 +240,7 @@
                                                         <input type="hidden" name="photos" class="selected-files">
                                                         <div class="ms-4">
                                                             <h3 class="fs-5 fw-bolder text-gray-900 mb-1">{{translate('Click to upload')}}</h3>
+                                                            <span class="fs-7 fw-bold text-gray-400">Image Size 410 x 309</span>
                                                         </div>
                                                         <!--end::Info-->
                                                     </div>
@@ -250,14 +252,14 @@
 
                                             </div>
                                             <div class="text-muted fs-7">
-                                                {{ translate('These images are visible in product details page gallery. Use 600x600 sizes images.') }}
+                                                {{ translate('These images are visible in product details page gallery. Use 410 x 309 sizes images.') }}
                                             </div>
                                         </div>
                                         <!--end::Card header-->
                                     </div>
                                     <!--end::Media-->
                                     <!--begin::Video-->
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -295,8 +297,145 @@
                                     </div>
                                     <!--end::Video-->
 
-                                    <!--begin::PDF-->
+
+
+
                                     <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h3>{{ translate('Optional Accessories') }}</h3>
+                                            </div>
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+
+
+
+
+									 <div class="fv-row mb-2">
+                                    <label for="required kt_ecommerce_add_product_store_template"
+                                        class="form-label">{{ translate('Optional Accessories') }}</label>
+                                    <select class="form-select mb-2 js-data-example-ajax" data-control="select2"
+                                        data-hide-search="false" data-placeholder="Select an option" name="related_products[]"
+                                        id="related_products" data-live-search="true" multiple="multiple" data-select>
+
+                                    </select>
+
+                                </div>
+
+								<div class="fv-row mb-2 form-group">
+                                    <div class="table-responsive" id="discount_table">
+
+                                    </div>
+                                </div>
+
+									     <!--end::Card header-->
+                                        </div>
+                                        <!--End::Today's & Flash DeaL-->
+                                    </div>
+
+
+
+                                    <div class="card card-flush py-4 ">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h3>{{ translate('DataSheet Specification') }}</h3>
+                                            </div>
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-2">
+                                                <!--begin::Dropzone-->
+                                                 <div class="list_headings">
+
+
+							 </div>
+
+
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary btn-sm mt-5 ms-5"
+                                data-toggle="add-more"
+                                data-content='
+                                <div class="row">
+								 <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button type="button" class="mt-1 btn btn-icon btn-circle btn-sm btn-light-danger" data-toggle="remove-parent" data-parent=".row">
+                                                <i class="las la-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body pt-0">
+                                            <!--begin::Input group-->
+                                            <div class="mb-5 fv-row">
+                                                <label class="form-label">{{ translate('Title') }}</label>
+                                                <input type="text" placeholder="{{ translate('Title') }}" name="heading_list[]" class="form-control mb-2" >
+                                            </div>
+                                            <!--begin::Input group-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body pt-0">
+                                            <!--begin::Input group-->
+
+
+
+											 <!--begin::Dropzone-->
+                                                <div class="dropzone" id="kt_ecommerce_add_product_mediaa"
+                                                    data-toggle="aizuploader" data-multiple="true" data-type="document">
+                                                    <!--begin::Message-->
+                                                    <div class="dz-message needsclick">
+                                                        <!--begin::Icon-->
+                                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                                        <!--end::Icon-->
+                                                        <!--begin::Info-->
+                                                        <input type="hidden" name="pdf2[]" class="selected-files"
+                                                            value="">
+                                                        <div class="ms-4">
+                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload.</h3>
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                </div>
+                                                <!--end::Dropzone-->
+                                                <div class="file-preview box sm">
+                                                </div>
+                                            </div>
+
+
+                                            <!--begin::Input group-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                '
+                                data-target=".list_headings">
+                                {{ translate('Add New List') }}
+                            </button>
+                                                <!--end::Dropzone-->
+
+                                            </div>
+
+                                            <!--end::Input group-->
+                                            <!--begin::Description-->
+
+                                            <!--end::Description-->
+                                        </div>
+                                        <!--end::Card header-->
+                                    </div>
+
+
+
+
+                                    <!--begin::PDF-->
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -337,7 +476,7 @@
                                     </div>
                                     <!--end::PDF-->
                                     <!--begin::Today's & Flash DeaL-->
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none" style="display:none;">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -414,7 +553,7 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="kt_ecommerce_add_product_advanced" role="tab-panel">
                                 <div class="d-flex flex-column gap-7 gap-lg-6">
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -472,7 +611,7 @@
                                         <!--end::Card header-->
                                     </div>
                                     @if (addon_is_activated("warehouse") == true)
-                                        <div class="card card-flush py-4">
+                                        <div class="card card-flush py-4 d-none">
                                             <!--begin::Card header-->
                                             <div class="card-header">
                                                 <div class="card-title">
@@ -559,7 +698,7 @@
                                                     <!--begin::Input-->
                                                     <input type="number" lang="en" min="0" step="0.01"
                                                         placeholder="{{ translate('Discount') }}" name="discount"
-                                                        class="form-control mb-2" required>
+                                                        class="form-control mb-2" value="0" required>
                                                     <!--end::Input-->
                                                     <!--begin::Description-->
                                                     <div class="text-muted fs-7">
@@ -668,7 +807,7 @@
                                     </div>
                                     <!--end::Pricing-->
                                     <!--begin::Variations-->
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -881,12 +1020,12 @@
                                     <!--end::Svg Icon-->Create new Brand
                                 </a>
                                 <!--begin::Label-->
-                                <label class="form-label d-block">Tags</label>
+                                <label class="form-label d-block d-none">Tags</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input id="kt_ecommerce_add_product_tags" class="form-control mb-2" name="tags[]"
+                                <input id="kt_ecommerce_add_product_tags" class="form-control mb-2 d-none" name="tags[]"
                                     placeholder="{{ translate('Type & add tag') }}">
-                                <div class="text-muted fs-7">
+                                <div class="text-muted fs-7 d-none">
                                     <span class="text-danger"> {{ translate('Type & hit enter add tag') }}.</span>
                                     {{ translate('This is used for search. Input those words by which customer can find this product.') }}
                                 </div>
@@ -894,7 +1033,7 @@
                             <!--end::Card body-->
                         </div>
 
-                        <div class="card card-flush py-4">
+                        <div class="card card-flush py-4 d-none">
                             <!--begin::Card header-->
                             <div class="card-header">
                                 <!--begin::Card title-->
@@ -912,7 +1051,7 @@
                                             class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack mb-5">
                                             <span
                                                 class="form-check-label ms-0 fw-bolder fs-6 text-gray-700">{{ translate('Status') }}</span>
-                                            <input class="form-check-input" type="checkbox" name="cash_on_delivery"
+                                            <input class="form-check-input"  checked="checked" type="checkbox" name="cash_on_delivery"
                                                 value="1">
                                         </label>
                                     @else
@@ -933,7 +1072,7 @@
                         </div>
                         <!--end::Status-->
                     </div>
-                    <div class="card card-flush py-4">
+                    <div class="card card-flush py-4 d-none">
                         <!--begin::Card header-->
                         <div class="card-header">
                             <!--begin::Card title-->
@@ -998,7 +1137,7 @@
                         </div>
                         <!--end::Card body-->
                     </div>
-                    <div class="card card-flush py-4">
+                    <div class="card card-flush py-4 d-none">
                         <!--begin::Card header-->
                         <div class="card-header">
                             <!--begin::Card title-->
@@ -1100,7 +1239,7 @@
                             </div>
                     @endif
 
-                    <div class="card card-flush py-4">
+                    <div class="card card-flush py-4 d-none">
                         <!--begin::Card header-->
                         <div class="card-header">
                             <!--begin::Card title-->
@@ -1170,6 +1309,86 @@
 @section('script')
     <script src="{{ static_asset('assets/backend/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
     <script src="{{ static_asset('assets/backend/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".js-data-example-ajax").select2({
+                ajax: {
+                    url: "{{ route('flash_deal.search') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        // parse the results into the format expected by Select2
+                        // since we are using custom formatting functions we do not need to
+                        // alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+                        params.page = params.page || 1;
+                        // console.log(data);
+                        // console.log(data.data[0].items);
+                        // console.log(params);
+                        // return
+                        return {
+                            results: data.items,
+                            pagination: {
+                                more: (params.page * 30) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                placeholder: 'Search for a product',
+                minimumInputLength: 1,
+                templateResult: formatRepo,
+                templateSelection: formatRepoSelection
+            });
+
+            function formatRepo(repo) {
+                if (repo.loading) {
+                    return repo.text;
+                }
+
+                var $container = $(
+                    "<div class='select2-result-repository clearfix'>" +
+                    "<div class='select2-result-repository__meta'>" +
+                    "<div class='select2-result-repository__title'></div>" +
+                    "<div class='select2-result-repository__description'></div>" +
+                    "</div>" +
+                    "</div>"
+                );
+
+                $container.find(".select2-result-repository__title").text(repo.name);
+                // $container.find(".select2-result-repository__description").text(repo.description);
+
+                return $container;
+            }
+
+            function formatRepoSelection(repo) {
+                return repo.name || repo.text;
+            }
+
+            $('#related_products').on('change', function() {
+                var product_ids = $('#related_products').val();
+                if (product_ids.length > 0) {
+                    $.post('{{ route('flash_deals.product_discount') }}', {
+                        _token: '{{ csrf_token() }}',
+                        product_ids: product_ids
+                    }, function(data) {
+                        $('#discount_table').html(data);
+                        AIZ.plugins.fooTable();
+                    });
+                } else {
+                    $('#discount_table').html(null);
+                }
+            });
+        });
+    </script>
     <script type="text/javascript">
         $('form').bind('submit', function(e) {
             // Disable the submit button while evaluating if the form should be submitted

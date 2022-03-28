@@ -1,0 +1,31 @@
+@media (max-width: 576px) {
+    .products-footer {
+        margin-bottom: 20px;
+    }
+    .shop-banner {
+        margin-bottom: 0;
+    }
+}
+.sub-men {
+    position: absolute;
+    min-width: 150px;
+    background-color: #fff;
+    margin-top: 1px;
+}
+.menu-item .sub-men {
+    display: none;
+    opacity: 0;
+    transition: all .3s ease;
+}
+.menu-item:hover .sub-men {
+    display: block;
+    opacity: 1;
+    border-left: 1px solid rgba(129,129,129,.15);
+    border-right: 1px solid rgba(129,129,129,.15);
+}
+.menu-item .sub-men li {
+    border-bottom: 1px solid rgba(129,129,129,.15);
+}
+.menu-item .sub-men li:hover {
+    background-color: #F9F9F9;
+}

@@ -95,6 +95,9 @@ class PageController extends Controller
           }elseif ($page->type == "accrediation-approvals") {
             return view('backend.website_settings.pages.accrediations_approvals', compact('page','lang'));
           }
+          elseif ($page->type == "all_page_banner") {
+              return view('backend.website_settings.pages.all_page_banner', compact('page','lang'));
+          }
           else{
             return view('backend.website_settings.pages.edit', compact('page','lang'));
           }

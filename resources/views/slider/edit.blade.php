@@ -85,10 +85,16 @@
                                     <input type="text" placeholder="{{ translate('#fff') }}" name="background_color" value="{{$slider->background_color}}" class="form-control">
                                 </div>
                             </div>
-                            <div class="form-group row d-none">
+                            <div class="form-group row  ">
                                 <label class="col-sm-3 col-from-label" for="name">{{translate('Title2')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                                 <div class="col-sm-9 mb-2">
                                     <input type="text" placeholder="{{translate('Title2')}}" id="title2" name="title2" value="{{ $slider->getTranslation('title2', $lang) }}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row  ">
+                                <label class="col-sm-3 col-from-label" for="name">{{translate('Title3')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
+                                <div class="col-sm-9 mb-2">
+                                    <input type="text" placeholder="{{translate('Title3')}}" id="title3" name="title3" value="{{ $slider->getTranslation('title3', $lang) }}" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row" {{$lang == 'en' ? '':'hidden'}}>
@@ -103,6 +109,18 @@
                                     <input type="text" placeholder="{{translate('Button Text')}}" id="button_text" name="button_text" value="{{ $slider->getTranslation('button_text', $lang) }}" class="form-control" >
                                 </div>
                             </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-from-label" for="name">{{translate('Align')}}</label>
+                                <div class="col-sm-9 mb-2">
+                                    <select class="form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="Select an option" id="align" name="align" data-live-search="true">
+                                        <option value="left" {{$slider->align == 'left' ? 'selected' : ''}}>{{translate('Left')}}</option>
+                                        <option value="center" {{$slider->align == 'center' ? 'selected' : ''}}>{{translate('Center')}}</option>
+                                        <option value="right" {{$slider->align == 'right' ? 'selected' : ''}}>{{translate('Right')}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="form-group row">
                                 <label class="col-sm-3 col-from-label" for="name">{{translate('Link With')}}</label>
                                 <div class="col-sm-9 mb-2">

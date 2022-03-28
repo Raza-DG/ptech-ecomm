@@ -74,8 +74,8 @@
                             <li class="nav-item">
                                 <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3"
                                     href="{{ route('products.admin.edit', ['id' => $product->id, 'lang' => $language->code]) }}">
-                                    <img src="{{ static_asset('assets/img/flags/' . $language->code . '.png') }}" height="11"
-                                        class="mr-1">
+                                    <img src="{{ static_asset('assets/img/flags/' . $language->code . '.png') }}"
+                                        height="11" class="mr-1">
                                     <span>{{ $language->name }}</span>
                                 </a>
                             </li>
@@ -94,7 +94,8 @@
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-6">
                         <!--begin:::Tabs-->
                         <div class="card card-flush py-4">
-                            <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-n2 nav nav-tabs nav-fill border-light">
+                            <ul
+                                class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-n2 nav nav-tabs nav-fill border-light">
                                 <!--begin:::Tab item-->
                                 <li class="nav-item">
                                     <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
@@ -153,56 +154,56 @@
                                                     <label
                                                         class="required form-label">{{ translate('Minimum Purchase Qty') }}</label>
                                                     <input type="number" lang="en" class="form-control mb-2" name="min_qty"
-                                                        value="@if ($product->min_qty <= 1){{ 1 }}@else{{ $product->min_qty }}@endif" min="1" required />
+                                                        value="{{ $product->min_qty ?? 1 }}"
+                                                        min="1" required />
                                                 </div>
                                             </div>
                                             <!--begin::Shipping-->
-                                                <!--begin::Shipping form-->
-                                                <div id="kt_ecommerce_add_product_shipping" class="mt-10">
-                                                    <!--begin::Input group-->
-                                                    <div class="mb-10 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="form-label">Weight</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Editor-->
-                                                        <input type="text" name="weight" class="form-control mb-2"
-                                                            placeholder="Product weight" value="{{$product->weight}}"  />
-                                                        <!--end::Editor-->
-                                                        <!--begin::Description-->
-                                                        <div class="text-muted fs-7">Set a product weight in kilograms (kg).
-                                                        </div>
-                                                        <!--end::Description-->
+                                            <!--begin::Shipping form-->
+                                            <div id="kt_ecommerce_add_product_shipping" class="mt-10">
+                                                <!--begin::Input group-->
+                                                <div class="mb-10 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label class="form-label">Weight</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Editor-->
+                                                    <input type="text" name="weight" class="form-control mb-2"
+                                                        placeholder="Product weight" value="{{ $product->weight }}" />
+                                                    <!--end::Editor-->
+                                                    <!--begin::Description-->
+                                                    <div class="text-muted fs-7">Set a product weight in kilograms (kg).
                                                     </div>
-                                                    <!--end::Input group-->
-                                                    <!--begin::Input group-->
-                                                    <div class="fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="form-label">Dimension</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <div class="d-flex flex-wrap flex-sm-nowrap gap-3">
-                                                            <input type="number" name="width" class="form-control mb-2"
-                                                                placeholder="Width (w)" value="{{$product->width}}" />
-                                                            <input type="number" name="height" class="form-control mb-2"
-                                                                placeholder="Height (h)" value="{{$product->height}}" />
-                                                            <input type="number" name="length" class="form-control mb-2"
-                                                                placeholder="Lengtn (l)" value="{{$product->length}}" />
-                                                        </div>
-                                                        <!--end::Input-->
-                                                        <!--begin::Description-->
-                                                        <div class="text-muted fs-7">Enter the product dimensions in
-                                                            centimeters (cm).</div>
-                                                        <!--end::Description-->
-                                                    </div>
-                                                    <!--end::Input group-->
+                                                    <!--end::Description-->
                                                 </div>
-                                                <!--end::Shipping form-->
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row">
+                                                    <!--begin::Label-->
+                                                    <label class="form-label">Dimension</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <div class="d-flex flex-wrap flex-sm-nowrap gap-3">
+                                                        <input type="number" name="width" class="form-control mb-2"
+                                                            placeholder="Width (w)" value="{{ $product->width }}" />
+                                                        <input type="number" name="height" class="form-control mb-2"
+                                                            placeholder="Height (h)" value="{{ $product->height }}" />
+                                                        <input type="number" name="length" class="form-control mb-2"
+                                                            placeholder="Lengtn (l)" value="{{ $product->length }}" />
+                                                    </div>
+                                                    <!--end::Input-->
+                                                    <!--begin::Description-->
+                                                    <div class="text-muted fs-7">Enter the product dimensions in
+                                                        centimeters (cm).</div>
+                                                    <!--end::Description-->
+                                                </div>
+                                                <!--end::Input group-->
+                                            </div>
+                                            <!--end::Shipping form-->
                                             <!--end::Shipping-->
                                             <div>
                                                 <label
                                                     class="form-label">{{ translate('Product Description') }}</label>
-                                                <textarea class="aiz-text-editor"
-                                                    name="description">{{ $product->getTranslation('description', $lang) }}</textarea>
+                                                <textarea class="aiz-text-editor" name="description">{{ $product->getTranslation('description', $lang) }}</textarea>
                                                 <div class="text-muted fs-7">Set a description to the product for better
                                                     visibility.</div>
                                             </div>
@@ -236,7 +237,9 @@
                                                         <input type="hidden" name="thumbnail_img" class="selected-files"
                                                             value="{{ $product->thumbnail_img }}">
                                                         <div class="ms-4">
-                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload</h3>
+                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload
+                                                            </h3>
+                                                            <span class="fs-7 fw-bold text-gray-400">Image Size 500 x 583</span>
                                                         </div>
                                                         <!--end::Info-->
                                                     </div>
@@ -248,7 +251,7 @@
 
                                             </div>
                                             <div class="text-muted fs-7">This image is visible in all product box. Use
-                                                300x300 sizes image.
+                                                500 x 583 sizes image.
                                                 <br>Keep some blank space around main object of your image as we had to crop
                                                 <br> some edge in different devices to make it responsive.
                                             </div>
@@ -266,7 +269,9 @@
                                                         <input type="hidden" name="photos" class="selected-files"
                                                             value="{{ $product->photos }}">
                                                         <div class="ms-4">
-                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload.</h3>
+                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload.
+                                                            </h3>
+                                                            <span class="fs-7 fw-bold text-gray-400">Image Size 410 x 309</span>
                                                         </div>
                                                         <!--end::Info-->
                                                     </div>
@@ -276,14 +281,14 @@
                                                 </div>
                                             </div>
                                             <div class="text-muted fs-7">
-                                                {{ translate('These images are visible in product details page gallery. Use 600x600 sizes images.') }}
+                                                {{ translate('These images are visible in product details page gallery. Use 410 x 309 sizes images.') }}
                                             </div>
                                         </div>
                                         <!--end::Card header-->
                                     </div>
                                     <!--end::Media-->
                                     <!--begin::Video-->
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -301,16 +306,17 @@
                                                     data-hide-search="true" data-placeholder="Select an option"
                                                     id="video_provider" name="video_provider">
                                                     <option value="youtube" <?php if ($product->video_provider == 'youtube') {
-                                                            echo 'selected';
-                                                        } ?>>{{ translate('Youtube') }}
+    echo 'selected';
+} ?>>
+                                                        {{ translate('Youtube') }}
                                                     </option>
                                                     <option value="dailymotion" <?php if ($product->video_provider == 'dailymotion') {
-                                                            echo 'selected';
-                                                        } ?>>
+    echo 'selected';
+} ?>>
                                                         {{ translate('Dailymotion') }}</option>
                                                     <option value="vimeo" <?php if ($product->video_provider == 'vimeo') {
-                                                            echo 'selected';
-                                                        } ?>>{{ translate('Vimeo') }}
+    echo 'selected';
+} ?>>{{ translate('Vimeo') }}
                                                     </option>
                                                 </select>
                                             </div>
@@ -328,8 +334,211 @@
                                     </div>
                                     <!--end::Video-->
 
-                                    <!--begin::PDF-->
+
+
                                     <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h3>{{ translate('Optional Accessories') }}</h3>
+                                            </div>
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+
+                                            <div class="fv-row mb-2">
+                                                <label for="required kt_ecommerce_add_product_store_template"
+                                                    class="form-label">{{ translate('Optional Accessories') }}</label>
+                                                <select class="form-select mb-2 js-data-example-ajax"
+                                                    data-control="select2" data-hide-search="false"
+                                                    data-placeholder="Select an option" name="related_products[]"
+                                                    id="related_products" data-live-search="true" multiple="multiple"
+                                                    data-select>
+                                                    @foreach(\App\Models\Product::where('published',1)->orderBy('created_at', 'desc')->get() as $products)
+                                                        <option value="{{$products->id}}" {{in_array($products->id,json_decode($product->related_id)) == true ? "selected" : "" }}>{{ $product->getTranslation('name') }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+
+                                            <div class="fv-row mb-2 form-group">
+                                                <div class="table-responsive" id="discount_table">
+
+                                                </div>
+                                            </div>
+
+                                            <!--end::Card header-->
+                                        </div>
+                                        <!--End::Today's & Flash DeaL-->
+                                    </div>
+
+                                    <div class="card card-flush py-4 ">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h3>{{ translate('DataSheet Specification') }}</h3>
+                                            </div>
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-2">
+                                                <!--begin::Dropzone-->
+                                                <div class="list_headings">
+
+                                                    @if ($product->sheet != null)
+                                                        @php
+                                                            $sheets = json_decode($product->sheet);
+                                                        @endphp
+
+                                                        @foreach ($sheets as $key => $sheet)
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group">
+                                                                        <button type="button"
+                                                                            class="mt-1 btn btn-icon btn-circle btn-sm btn-light-danger"
+                                                                            data-toggle="remove-parent" data-parent=".row">
+                                                                            <i class="las la-times"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <div class="card-body pt-0">
+                                                                        <!--begin::Input group-->
+                                                                        <div class="mb-5 fv-row">
+                                                                            <label
+                                                                                class="form-label">{{ translate('Title') }}</label>
+                                                                            <input type="text"
+                                                                                placeholder="{{ translate('Title') }}"
+                                                                                name="heading_list[]"
+                                                                                value="{{ translate($sheet) }}"
+                                                                                class="form-control mb-2">
+                                                                        </div>
+                                                                        <!--begin::Input group-->
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <div class="card-body pt-0">
+                                                                        <!--begin::Input group-->
+
+
+
+                                                                        <!--begin::Dropzone-->
+                                                                        <div class="dropzone"
+                                                                            id="kt_ecommerce_add_product_mediaa"
+                                                                            data-toggle="aizuploader" data-multiple="true"
+                                                                            data-type="document">
+                                                                            <!--begin::Message-->
+                                                                            <div class="dz-message needsclick">
+                                                                                <!--begin::Icon-->
+                                                                                <i
+                                                                                    class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                                                                <!--end::Icon-->
+                                                                                <!--begin::Info-->
+                                                                                <input type="hidden" name="pdf2[]"
+                                                                                    class="selected-files"
+                                                                                    value="{{ json_decode($product->sheet_link)[$key] }}">
+                                                                                <div class="ms-4">
+                                                                                    <h3
+                                                                                        class="fs-5 fw-bolder text-gray-900 mb-1">
+                                                                                        Click to upload.</h3>
+                                                                                </div>
+                                                                                <!--end::Info-->
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--end::Dropzone-->
+                                                                        <div class="file-preview box sm">
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <!--begin::Input group-->
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+
+
+
+
+                                                </div>
+
+
+
+                                                <button type="button" class="btn btn-secondary btn-sm mt-5 ms-5"
+                                                    data-toggle="add-more" data-content='
+                                    <div class="row">
+            <div class="col-md-2">
+                                            <div class="form-group">
+                                                <button type="button" class="mt-1 btn btn-icon btn-circle btn-sm btn-light-danger" data-toggle="remove-parent" data-parent=".row">
+                                                    <i class="las la-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="card-body pt-0">
+                                                <!--begin::Input group-->
+                                                <div class="mb-5 fv-row">
+                                                    <label class="form-label">{{ translate('Title') }}</label>
+                                                    <input type="text" placeholder="{{ translate('Title') }}" name="heading_list[]" class="form-control mb-2" >
+                                                </div>
+                                                <!--begin::Input group-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="card-body pt-0">
+                                                <!--begin::Input group-->
+
+
+
+               <!--begin::Dropzone-->
+                                                    <div class="dropzone" id="kt_ecommerce_add_product_mediaa"
+                                                        data-toggle="aizuploader" data-multiple="true" data-type="document">
+                                                        <!--begin::Message-->
+                                                        <div class="dz-message needsclick">
+                                                            <!--begin::Icon-->
+                                                            <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                                            <!--end::Icon-->
+                                                            <!--begin::Info-->
+                                                            <input type="hidden" name="pdf2[]" class="selected-files"
+                                                                value="">
+                                                            <div class="ms-4">
+                                                                <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload.</h3>
+                                                            </div>
+                                                            <!--end::Info-->
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Dropzone-->
+                                                    <div class="file-preview box sm">
+                                                    </div>
+                                                </div>
+
+
+                                                <!--begin::Input group-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    ' data-target=".list_headings">
+                                                    {{ translate('Add New List') }}
+                                                </button>
+                                                <!--end::Dropzone-->
+
+                                            </div>
+
+                                            <!--end::Input group-->
+                                            <!--begin::Description-->
+
+                                            <!--end::Description-->
+                                        </div>
+                                        <!--end::Card header-->
+                                    </div>
+
+
+                                    <!--begin::PDF-->
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -353,7 +562,8 @@
                                                         <input type="hidden" name="pdf" class="selected-files"
                                                             value="{{ $product->pdf }}">
                                                         <div class="ms-4">
-                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload.</h3>
+                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload.
+                                                            </h3>
                                                         </div>
                                                         <!--end::Info-->
                                                     </div>
@@ -374,7 +584,7 @@
                                     </div>
                                     <!--end::PDF-->
                                     <!--begin::Today's & Flash DeaL-->
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-done" style="display:none;">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -421,7 +631,8 @@
                                             <div class="row mb-6">
                                                 <div class="col-md-6 fv-row fv-plugins-icon-container">
                                                     <div class="fv-row mb-2">
-                                                        <label class="form-label">{{ translate('Discount') }}</label>
+                                                        <label
+                                                            class="form-label">{{ translate('Discount') }}</label>
                                                         <input type="number" name="flash_discount"
                                                             value="{{ $product->flash_deal_product ? $product->flash_deal_product->discount : '0' }}"
                                                             min="0" step="1" class="form-control mb-2">
@@ -434,10 +645,12 @@
                                                         <select class="form-select mb-2" name="flash_discount_type"
                                                             data-control="select2" data-hide-search="true"
                                                             data-placeholder="Select an option">
-                                                            <option value="amount" @if ($product->flash_deal_product && $product->flash_deal_product->discount_type == 'amount') selected @endif>
+                                                            <option value="amount"
+                                                                @if ($product->flash_deal_product && $product->flash_deal_product->discount_type == 'amount') selected @endif>
                                                                 {{ translate('Flat') }}
                                                             </option>
-                                                            <option value="percent" @if ($product->flash_deal_product && $product->flash_deal_product->discount_type == 'percent') selected @endif>
+                                                            <option value="percent"
+                                                                @if ($product->flash_deal_product && $product->flash_deal_product->discount_type == 'percent') selected @endif>
                                                                 {{ translate('Percent') }}
                                                             </option>
                                                         </select>
@@ -456,7 +669,7 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="kt_ecommerce_add_product_advanced" role="tab-panel">
                                 <div class="d-flex flex-column gap-7 gap-lg-6">
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -469,15 +682,16 @@
                                                     <label class="form-label">{{ translate('Colors') }}</label>
                                                     <select class="form-select mb-2" data-control="select2"
                                                         data-placeholder="Select an option" data-allow-clear="true"
-                                                        name="colors[]" id="colors" multiple {{count(json_decode($product->colors)) > 0 ? '' : 'disabled' }} >
+                                                        name="colors[]" id="colors" multiple
+                                                        {{ count(json_decode($product->colors)) > 0 ? '' : 'disabled' }}>
                                                         @foreach (\App\Models\Color::orderBy('name', 'asc')->get() as $key => $color)
                                                             <option value="{{ $color->code }}" <?php if (in_array($color->code, json_decode($product->colors))) {
-                                                                        echo 'selected';
-                                                                    } ?>>
+                                                                echo 'selected';} ?>>
                                                                 <span><span
                                                                         class='size-15px d-inline-block mr-2 rounded border'
                                                                         style='background:{{ $color->code }}'></span><span>
-                                                                        {{ $color->name }}</option>
+                                                                        {{ $color->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -487,8 +701,7 @@
                                                         class="form-check form-switch form-check-custom form-check-solid">
                                                         <input class="form-check-input" type="checkbox"
                                                             name="colors_active" value="1" <?php if (count(json_decode($product->colors)) > 0) {
-                                                                    echo 'checked';
-                                                                } ?>>
+                                                                echo 'checked';} ?>>
                                                     </label>
                                                 </div>
                                             </div>
@@ -498,7 +711,8 @@
                                                     data-placeholder="Select an option" data-allow-clear="true"
                                                     name="choice_attributes[]" id="choice_attributes" multiple>
                                                     @foreach (\App\Models\Attribute::all() as $key => $attribute)
-                                                        <option value="{{ $attribute->id }}" @if ($product->attributes != null && in_array($attribute->id, json_decode($product->attributes, true))) selected @endif>
+                                                        <option value="{{ $attribute->id }}"
+                                                            @if ($product->attributes != null && in_array($attribute->id, json_decode($product->attributes, true))) selected @endif>
                                                             {{ $attribute->getTranslation('name') }}</option>
                                                     @endforeach
                                                 </select>
@@ -541,8 +755,8 @@
                                         </div>
                                         <!--end::Card header-->
                                     </div>
-                                    @if (addon_is_activated("warehouse") == true)
-                                        <div class="card card-flush py-4">
+                                    @if (addon_is_activated('warehouse') == true)
+                                        <div class="card card-flush py-4  d-none">
                                             <!--begin::Card header-->
                                             <div class="card-header">
                                                 <div class="card-title">
@@ -551,15 +765,18 @@
                                             </div>
                                             <div class="card-body pt-0">
                                                 <div class="mb-6 fv-row">
-                                                    <label class="required form-label">{{ translate('Warehouse') }}</label>
-                                                    <select class="form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="Select an option" id="warehouse_id" name="warehouse_id" data-live-search="true">
-                                                    <option value="0">{{ translate('No Parent') }}</option>
-                                                    @foreach (App\Models\Warehouse::where('status',1)->get() as $warehouse)
-                                                        <option value="{{ $warehouse->id }}" >
-                                                            {{ $warehouse->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                                    <label
+                                                        class="required form-label">{{ translate('Warehouse') }}</label>
+                                                    <select class="form-select mb-2" data-control="select2"
+                                                        data-hide-search="false" data-placeholder="Select an option"
+                                                        id="warehouse_id" name="warehouse_id" data-live-search="true">
+                                                        <option value="0">{{ translate('No Parent') }}</option>
+                                                        @foreach (App\Models\Warehouse::where('status', 1)->get() as $warehouse)
+                                                            <option value="{{ $warehouse->id }}">
+                                                                {{ $warehouse->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                     <!--end::Description-->
                                                 </div>
                                             </div>
@@ -587,58 +804,66 @@
                                                 $end_date = date('d-m-Y H:i:s', $product->discount_end_date);
                                             @endphp
                                             <!--begin::Discount options-->
-                                                <div class="card-title">
-                                                    <h3>{{ translate('Discount') }}</h3>
-                                                </div>
-                                                <div class="d-flex flex-wrap gap-5">
+                                            <div class="card-title">
+                                                <h3>{{ translate('Discount') }}</h3>
+                                            </div>
+                                            <div class="d-flex flex-wrap gap-5">
 
-                                                    <div class="mb-6 fv-row">
-                                                        <label class="required form-label"
-                                                            for="start_date">{{ translate('Discount Date Range') }}</label>
-                                                        <input type="text" class="form-control aiz-date-range mb-2"
-                                                            name="date_range" placeholder="{{ translate('Select Date') }}"
-                                                            data-time-picker="true" data-format="DD-MM-Y HH:mm:ss"
-                                                            data-separator=" to " autocomplete="off" @if($product->discount_start_date && $product->discount_end_date) value="{{ $start_date.' to '.$end_date }}" @endif>
-                                                    </div>
-
-                                                    <!--begin::Input group-->
-                                                    <div class="fv-row w-100 flex-md-root pb-5">
-                                                        <!--begin::Label-->
-                                                        <label
-                                                            class="form-label">{{ translate('Discount Type') }}</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Select2-->
-                                                        <select class="form-select mb-2" name="discount_type"
-                                                            data-control="select2" data-hide-search="true"
-                                                            data-placeholder="Select an option">
-                                                            <option value="amount" <?php if ($product->discount_type == 'amount') echo "selected"; ?>>{{ translate('Flat') }}</option>
-                                                            <option value="percent" <?php if ($product->discount_type == 'percent') echo "selected"; ?>>{{ translate('Percent') }}</option>
-                                                        </select>
-                                                        <!--end::Select2-->
-                                                        <!--begin::Description-->
-                                                        <div class="text-muted fs-7">
-                                                            {{ translate('Set the product discount type') }}.</div>
-                                                        <!--end::Description-->
-                                                    </div>
-                                                    <!--end::Input group-->
-                                                    <!--begin::Input group-->
-                                                    <div class="fv-row w-100 flex-md-root">
-                                                        <!--begin::Label-->
-                                                        <label class="form-label">{{ translate('Discount Amount') }}
-                                                            (%)</label>
-                                                        <!--end::Label-->
-                                                        <!--begin::Input-->
-                                                        <input type="number" lang="en" min="0" step="0.01"
-                                                            placeholder="{{ translate('Discount') }}" name="discount"
-                                                            class="form-control mb-2" value="{{ $product->discount }}" required>
-                                                        <!--end::Input-->
-                                                        <!--begin::Description-->
-                                                        <div class="text-muted fs-7">
-                                                            {{ translate('Set the product VAT about') }}.</div>
-                                                        <!--end::Description-->
-                                                    </div>
-                                                    <!--end::Input group-->
+                                                <div class="mb-6 fv-row">
+                                                    <label class="required form-label"
+                                                        for="start_date">{{ translate('Discount Date Range') }}</label>
+                                                    <input type="text" class="form-control aiz-date-range mb-2"
+                                                        name="date_range" placeholder="{{ translate('Select Date') }}"
+                                                        data-time-picker="true" data-format="DD-MM-Y HH:mm:ss"
+                                                        data-separator=" to " autocomplete="off"
+                                                        @if ($product->discount_start_date && $product->discount_end_date) value="{{ $start_date . ' to ' . $end_date }}" @endif>
                                                 </div>
+
+                                                <!--begin::Input group-->
+                                                <div class="fv-row w-100 flex-md-root pb-5">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="form-label">{{ translate('Discount Type') }}</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Select2-->
+                                                    <select class="form-select mb-2" name="discount_type"
+                                                        data-control="select2" data-hide-search="true"
+                                                        data-placeholder="Select an option">
+                                                        <option value="amount" <?php if ($product->discount_type == 'amount') {
+    echo 'selected';
+} ?>>
+                                                            {{ translate('Flat') }}</option>
+                                                        <option value="percent" <?php if ($product->discount_type == 'percent') {
+    echo 'selected';
+} ?>>
+                                                            {{ translate('Percent') }}</option>
+                                                    </select>
+                                                    <!--end::Select2-->
+                                                    <!--begin::Description-->
+                                                    <div class="text-muted fs-7">
+                                                        {{ translate('Set the product discount type') }}.</div>
+                                                    <!--end::Description-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row w-100 flex-md-root">
+                                                    <!--begin::Label-->
+                                                    <label class="form-label">{{ translate('Discount Amount') }}
+                                                        (%)</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="number" lang="en" min="0" step="0.01"
+                                                        placeholder="{{ translate('Discount') }}" name="discount"
+                                                        class="form-control mb-2" value="{{ $product->discount ?? 0 }}"
+                                                        required>
+                                                    <!--end::Input-->
+                                                    <!--begin::Description-->
+                                                    <div class="text-muted fs-7">
+                                                        {{ translate('Set the product VAT about') }}.</div>
+                                                    <!--end::Description-->
+                                                </div>
+                                                <!--end::Input group-->
+                                            </div>
                                             <!--end:Discount-->
                                             <!--begin::Tax-->
                                             <div id="show-hide-div">
@@ -717,10 +942,12 @@
                                                         <select class="form-select mb-2" name="tax_type[]"
                                                             data-control="select2" data-hide-search="true"
                                                             data-placeholder="Select an option">
-                                                            <option value="amount" @if ($tax_type == 'amount') selected @endif>
+                                                            <option value="amount"
+                                                                @if ($tax_type == 'amount') selected @endif>
                                                                 {{ translate('Flat') }}
                                                             </option>
-                                                            <option value="percent" @if ($tax_type == 'percent') selected @endif>
+                                                            <option value="percent"
+                                                                @if ($tax_type == 'percent') selected @endif>
                                                                 {{ translate('Percent') }}
                                                             </option>
                                                         </select>
@@ -737,8 +964,8 @@
                                                         <!--end::Label-->
                                                         <!--begin::Input-->
                                                         <input type="number" lang="en" min="0" value="{{ $tax_amount }}"
-                                                            step="0.01" placeholder="{{ translate('Tax') }}" name="tax[]"
-                                                            class="form-control mb-2" required>
+                                                            step="0.01" placeholder="{{ translate('Tax') }}"
+                                                            name="tax[]" class="form-control mb-2" required>
                                                         <!--end::Input-->
                                                         <!--begin::Description-->
                                                         <div class="text-muted fs-7">Set the product VAT about.</div>
@@ -753,7 +980,7 @@
                                     </div>
                                     <!--end::Pricing-->
                                     <!--begin::Variations-->
-                                    <div class="card card-flush py-4">
+                                    <div class="card card-flush py-4 d-none">
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
@@ -771,7 +998,8 @@
                                                     <div class="mb-3">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-5 fw-bold">
-                                                            <span class="required">{{ translate('Stock Visibility State') }}</span>
+                                                            <span
+                                                                class="required">{{ translate('Stock Visibility State') }}</span>
                                                         </label>
 
                                                     </div>
@@ -784,14 +1012,14 @@
                                                             data-kt-buttons-target="[data-kt-button]">
                                                             <!--begin::Radio-->
                                                             <label
-                                                                class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success {{$product->stock_visibility_state == 'quantity' ? 'active' : '' }}"
+                                                                class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success {{ $product->stock_visibility_state == 'quantity' ? 'active' : '' }}"
                                                                 data-kt-button="true">
                                                                 <input class="btn-check" type="radio"
                                                                     name="stock_visibility_state" value="quantity"
                                                                     @if ($product->stock_visibility_state == 'quantity') checked @endif>
                                                                 {{ translate('Show Stock Quantity') }}</label>
                                                             <label
-                                                                class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success {{$product->stock_visibility_state == 'text' ? 'active' : '' }}"
+                                                                class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success {{ $product->stock_visibility_state == 'text' ? 'active' : '' }}"
                                                                 data-kt-button="true">
                                                                 <!--begin::Input-->
                                                                 <input class="btn-check" type="radio"
@@ -803,7 +1031,7 @@
                                                             <!--end::Radio-->
                                                             <!--begin::Radio-->
                                                             <label
-                                                                class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success {{$product->stock_visibility_state == 'hide' ? 'active' : '' }}"
+                                                                class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success {{ $product->stock_visibility_state == 'hide' ? 'active' : '' }}"
                                                                 data-kt-button="true">
                                                                 <!--begin::Input-->
                                                                 <input class="btn-check" type="radio"
@@ -854,8 +1082,7 @@
                                                 <label class="form-label">{{ translate('Description') }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Editor-->
-                                                <textarea class="aiz-text-editor"
-                                                    name="meta_description">{{ $product->meta_description }}</textarea>
+                                                <textarea class="aiz-text-editor" name="meta_description">{{ $product->meta_description }}</textarea>
                                                 <!--end::Editor-->
                                                 <!--begin::Description-->
                                                 <div class="text-muted fs-7">
@@ -877,7 +1104,8 @@
                                                         <input type="hidden" name="meta_img" class="selected-files"
                                                             value="{{ $product->meta_img }}">
                                                         <div class="ms-4">
-                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload</h3>
+                                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Click to upload
+                                                            </h3>
                                                         </div>
                                                         <!--end::Info-->
                                                     </div>
@@ -919,10 +1147,13 @@
                                 <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
                                     data-allow-clear="true" name="category_id" id="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>
+                                        <option value="{{ $category->id }}"
+                                            @if ($product->category_id == $category->id) selected @endif>
                                             {{ $category->getTranslation('name') }}</option>
                                         @foreach ($category->childrenCategories as $childCategory)
-                                            @include('categories.child_category', ['child_category' => $childCategory])
+                                            @include('categories.child_category', [
+                                                'child_category' => $childCategory,
+                                            ])
                                         @endforeach
                                     @endforeach
                                 </select>
@@ -946,7 +1177,8 @@
                                     data-allow-clear="true" name="brand_id" id="brand_id">
                                     <option value="">{{ translate('Select Brand') }}</option>
                                     @foreach (\App\Models\Brand::all() as $brand)
-                                        <option value="{{ $brand->id }}" @if ($product->brand_id == $brand->id) selected @endif>
+                                        <option value="{{ $brand->id }}"
+                                            @if ($product->brand_id == $brand->id) selected @endif>
                                             {{ $brand->getTranslation('name') }}</option>
                                     @endforeach
                                 </select>
@@ -965,20 +1197,19 @@
                                     <!--end::Svg Icon-->Create new Brand
                                 </a>
                                 <!--begin::Label-->
-                                <label class="form-label d-block">Tags</label>
+                                <label class="form-label d-block d-none">Tags</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input id="kt_ecommerce_add_product_tags" class="form-control mb-2" name="tags[]"
-                                    placeholder="{{ translate('Type & add tag') }}"
-                                    value="{{ $product->tags }}">
-                                <div class="text-muted fs-7">
+                                <input id="kt_ecommerce_add_product_tags" class="form-control mb-2 d-none" name="tags[]"
+                                    placeholder="{{ translate('Type & add tag') }}" value="{{ $product->tags }}">
+                                <div class="text-muted fs-7 d-none">
                                     <span class="text-danger"> {{ translate('Type & hit enter add tag') }}.</span>
                                     {{ translate('This is used for search. Input those words by which customer can find this product.') }}
                                 </div>
                             </div>
                             <!--end::Card body-->
                         </div>
-                        <div class="card card-flush py-4">
+                        <div class="card card-flush py-4 d-none">
                             <!--begin::Card header-->
                             <div class="card-header">
                                 <!--begin::Card title-->
@@ -1004,7 +1235,7 @@
                                         <div class="text-muted fs-7">
                                             {{ translate('Cash On Delivery option is disabled. Activate this feature from here') }}
                                             <a href="{{ route('activation.index') }}"
-                                                class="aiz-side-nav-link {{ areActiveRoutes(['shipping_configuration.index', 'shipping_configuration.edit', 'shipping_configuration.update']) }}">
+                                                class="aiz-side-nav-link {{ areActiveRoutes(['shipping_configuration.index','shipping_configuration.edit','shipping_configuration.update']) }}">
                                                 <span
                                                     class="aiz-side-nav-text">{{ translate('Cash Payment Activation') }}</span>
                                             </a>
@@ -1035,7 +1266,8 @@
                                             <span
                                                 class="form-check-label ms-0 fw-bolder fs-6 text-gray-700">{{ translate('Free Shipping') }}</span>
                                             <input class="form-check-input" type="radio" name="shipping_type"
-                                                checked="checked" value="free" @if ($product->shipping_type == 'free') checked @endif>
+                                                checked="checked" value="free"
+                                                @if ($product->shipping_type == 'free') checked @endif>
                                         </label>
                                         <!--end::Option-->
                                         <!--begin::Option-->
@@ -1067,7 +1299,7 @@
                                         <p>
                                             {{ translate('Product wise shipping cost is disable. Shipping cost is configured from here') }}
                                             <a href="{{ route('shipping_configuration.index') }}"
-                                                class="aiz-side-nav-link {{ areActiveRoutes(['shipping_configuration.index', 'shipping_configuration.edit', 'shipping_configuration.update']) }}">
+                                                class="aiz-side-nav-link {{ areActiveRoutes(['shipping_configuration.index','shipping_configuration.edit','shipping_configuration.update']) }}">
                                                 <span
                                                     class="aiz-side-nav-text">{{ translate('Shipping Configuration') }}</span>
                                             </a>
@@ -1261,6 +1493,94 @@
 @section('script')
     <script src="{{ static_asset('assets/backend/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
     <script src="{{ static_asset('assets/backend/js/custom/apps/ecommerce/catalog/save-product.js') }}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".js-data-example-ajax").select2({
+                ajax: {
+                    url: "{{ route('flash_deal.search') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        // parse the results into the format expected by Select2
+                        // since we are using custom formatting functions we do not need to
+                        // alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+                        params.page = params.page || 1;
+                        // console.log(data);
+                        // console.log(data.data[0].items);
+                        // console.log(params);
+                        // return
+                        return {
+                            results: data.items,
+                            pagination: {
+                                more: (params.page * 30) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                placeholder: 'Search for a product',
+                minimumInputLength: 1,
+                templateResult: formatRepo,
+                templateSelection: formatRepoSelection
+            });
+
+            function formatRepo(repo) {
+                if (repo.loading) {
+                    return repo.text;
+                }
+
+                var $container = $(
+                    "<div class='select2-result-repository clearfix'>" +
+                    "<div class='select2-result-repository__meta'>" +
+                    "<div class='select2-result-repository__title'></div>" +
+                    "<div class='select2-result-repository__description'></div>" +
+                    "</div>" +
+                    "</div>"
+                );
+
+                $container.find(".select2-result-repository__title").text(repo.name);
+                // $container.find(".select2-result-repository__description").text(repo.description);
+
+                return $container;
+            }
+
+            function formatRepoSelection(repo) {
+                return repo.name || repo.text;
+            }
+
+
+            function get_related_products() {
+                var product_ids = $('#related_products').val();
+                if (product_ids.length > 0) {
+                    $.post('{{ route('flash_deals.product_discount') }}', {
+                        _token: '{{ csrf_token() }}',
+                        product_ids: product_ids
+                    }, function(data) {
+                        $('#discount_table').html(data);
+                        AIZ.plugins.fooTable();
+                    });
+                } else {
+                    $('#discount_table').html(null);
+                }
+            }
+
+            get_related_products();
+
+            $('#related_products').on('change', function() {
+                get_related_products();
+            });
+        });
+    </script>
     <script type="text/javascript">
         $('form').bind('submit', function(e) {
             // Disable the submit button while evaluating if the form should be submitted
@@ -1309,18 +1629,19 @@
                 success: function(data) {
                     var obj = JSON.parse(data);
                     $('#customer_choice_options').append('\
-                    <div class="mb-6 fv-row row">\
-                        <div class="col-md-3">\
-                            <input type="hidden" name="choice_no[]" value="' + i + '">\
-                            <input type="text" class="form-control" name="choice[]" value="' + name +
+                        <div class="mb-6 fv-row row">\
+                            <div class="col-md-3">\
+                                <input type="hidden" name="choice_no[]" value="' + i + '">\
+                                <input type="text" class="form-control" name="choice[]" value="' + name +
                         '" placeholder="{{ translate('Choice Title') }}" readonly>\
-                        </div>\
-                        <div class="col-md-8">\
-                            <select class="form-select mb-2 attribute_choice" data-control="select2" data-hide-search="false" data-live-search="true" name="choice_options_' + i + '[]" multiple>\
-                                ' + obj + '\
-                            </select>\
-                        </div>\
-                    </div>');
+                            </div>\
+                            <div class="col-md-8">\
+                                <select class="form-select mb-2 attribute_choice" data-control="select2" data-hide-search="false" data-live-search="true" name="choice_options_' +
+                        i + '[]" multiple>\
+                                    ' + obj + '\
+                                </select>\
+                            </div>\
+                        </div>');
                     $(".attribute_choice").select2();
                     AIZ.plugins.bootstrapSelect('refresh');
                 }
@@ -1415,5 +1736,4 @@
             update_sku();
         });
     </script>
-
 @endsection

@@ -55,24 +55,24 @@ Route::post('/users/login/cart', 'HomeController@cart_login')->name('cart.login.
 
 //Home Page
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('contact','HomeController@contact')->name('contact');
+Route::get('about','HomeController@about')->name('about');
+Route::get('accrediation-approvals','HomeController@accrediation_approvals')->name('accrediation_approvals');
 Route::post('/home/section/featured', 'HomeController@load_featured_section')->name('home.section.featured');
 Route::post('/home/section/best_selling', 'HomeController@load_best_selling_section')->name('home.section.best_selling');
 Route::post('/home/section/home_categories', 'HomeController@load_home_categories_section')->name('home.section.home_categories');
 Route::post('/home/section/best_sellers', 'HomeController@load_best_sellers_section')->name('home.section.best_sellers');
 
 //new links
-Route::get('/{slug?}', 'RoomController@show')->name('room.slug');
-// Route::get('/{slug}','RoomController@show');
-Route::get('special','HomeController@special')->name('special');
-Route::get('gallery','HomeController@gallery')->name('gallery');
-Route::get('guestreview','HomeController@guest_review')->name('guest_review');
-Route::get('contact','HomeController@contact')->name('contact');
-Route::get('about','HomeController@about')->name('about');
+//Route::get('/{slug?}', 'RoomController@show')->name('room.slug');
+//// Route::get('/{slug}','RoomController@show');
+//Route::get('special','HomeController@special')->name('special');
+//Route::get('gallery','HomeController@gallery')->name('gallery');
+//Route::get('guestreview','HomeController@guest_review')->name('guest_review');
 
 
 Route::post('contact_store','HomeController@contact_store')->name('contact_store');
-
-
 
 //category dropdown menu ajax call
 Route::post('/category/nav-element-list', 'HomeController@get_category_items')->name('category.elements');
@@ -115,6 +115,7 @@ Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart
 //Checkout Routes
 Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
+    Route::post('/address_store', 'CheckoutController@address_store')->name('checkout.address_store');
     Route::any('/delivery_info', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
     Route::post('/payment_select', 'CheckoutController@store_delivery_info')->name('checkout.store_delivery_info');
 
@@ -169,6 +170,12 @@ Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolic
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');
+
+    Route::get('/address', 'HomeController@address')->name('address');
+	Route::get('/add_billing_address', 'HomeController@add_billing_address')->name('address.add_billing_address');
+	Route::get('/add_shipping_address', 'HomeController@add_shipping_address')->name('address.add_shipping_address');
+	Route::get('/address_edit/{id}', 'HomeController@address_edit')->name('address.address_edit');
+
     Route::post('/new-user-verification', 'HomeController@new_verify')->name('user.new.verify');
     Route::post('/new-user-email', 'HomeController@update_email')->name('user.change.email');
 

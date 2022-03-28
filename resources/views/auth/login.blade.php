@@ -41,10 +41,9 @@
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Aside-->
-            <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative"
-                style="background-color: #ee2525">
+            <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" >
                 <!--begin::Wrapper-->
-                <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+                <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y" style="background-color: #cdcccc">
                     <!--begin::Content-->
                     <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
                         <!--begin::Logo-->
@@ -56,13 +55,13 @@
                         <br>
                         <!--end::Logo-->
                         <!--begin::Title-->
-                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #ffffff;">{{ translate('Welcome to') }}
+                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #000000;">{{ translate('Welcome to') }}
                             {{ env('APP_NAME') }}</h1>
 
                             <br>
                         @if (get_setting('system_logo_white') != null)
                             <a href="https://digitalgraphiks.ae" target="_blank" class="wrap-links-logo" style="text-align: -webkit-center;">
-                                <img src="{{ static_asset("assets/img/logo_white.svg") }}" class="h-60px" height="60">
+                                <img src="{{ static_asset('assets/img/logo_white.svg') }}" class="h-60px" height="60">
                             </a>
                         @endif
                         <!--end::Title-->

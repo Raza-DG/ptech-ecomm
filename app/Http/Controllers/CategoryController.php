@@ -225,4 +225,14 @@ class CategoryController extends Controller
         Cache::forget('featured_categories');
         return 1;
     }
+    
+    
+    public function updateMenu(Request $request)
+    {
+        $category = Category::findOrFail($request->id);
+        $category->menu = $request->status;
+        $category->save();
+        Cache::forget('featured_categories');
+        return 1;
+    }
 }

@@ -57,7 +57,7 @@
             <div id="kt_content_container" class="container-xxl">
                <div class="row">
                    {{-- Our Strength --}}
-                    <div class="card pt-5">
+                    <div class="card pt-5 d-none">
                         <div class="card-header">
                             <h4 class="mb-0">{{ translate('Slider Left Side Text') }}</h4>
                         </div>

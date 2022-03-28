@@ -153,6 +153,37 @@ class HomeController extends Controller
         }
     }
 
+    public function address(Request $request)
+    {
+        if(Auth::user()->user_type == 'delivery_boy'){
+            return view('delivery_boys.frontend.profile');
+        }
+        else{
+            return view('frontend.user.address');
+        }
+    }
+
+	public function add_billing_address(Request $request)
+    {
+		 return view('frontend.user.add_billing_address');
+
+    }
+
+	public function add_shipping_address(Request $request)
+    {
+            return view('frontend.user.add_shipping_address');
+    }
+
+
+	public function address_edit($id)
+    {
+		$data['address_data'] = \App\Models\Address::findOrFail($id);
+        $data['states'] = \App\Models\State::where('status', 1)->where('country_id', $data['address_data']->country_id)->get();
+        $data['cities'] = \App\Models\City::where('status', 1)->where('state_id', $data['address_data']->state_id)->get();
+        return view('frontend.user.address_edit', $data);
+    }
+
+
     public function userProfileUpdate(Request $request)
     {
         if(env('DEMO_MODE') == 'On'){
@@ -162,6 +193,7 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->address = $request->address;
         $user->country = $request->country;
         $user->city = $request->city;
@@ -713,6 +745,11 @@ class HomeController extends Controller
         return view('frontend.about');
     }
 
+    public function accrediation_approvals()
+    {
+        return view('frontend.accrediations_approvals');
+    }
+
     public function contact_store(Request $request)
     {
         $conatct = new Contact;
@@ -731,7 +768,7 @@ class HomeController extends Controller
                     $array['from'] = $conatct->email;
                     $array['content'] = $conatct;
                     try {
-                        Mail::to('sm@digitalgraphiks.pk')->queue(new EmailManager($array));
+                        Mail::to('ra@digitalgraphiks.pk')->queue(new EmailManager($array));
                     } catch (\Exception $e) {
                         //dd($e);
                     }
@@ -755,6 +792,7 @@ class HomeController extends Controller
     public function get_menus_items(Request $request)
     {
         $menus = Menu::findOrFail($request->id);
-        return view('frontend.partials.sub_menu', compact('menus'));
+
+        return view('frontend.partials.menus_elements', compact('menus'));
     }
 }

@@ -2,9 +2,13 @@
 
 @section('content')
 
-<div class="py-6">
+<div class="py-6 mt-150">
     <div class="container">
         <div class="row">
+		
+		
+		
+		
             <div class="col-xxl-5 col-xl-6 col-md-8 mx-auto">
                 <div class="bg-white rounded shadow-sm p-4 text-left">
                     <h1 class="h3 fw-600">{{ translate('Forgot Password?') }}</h1>

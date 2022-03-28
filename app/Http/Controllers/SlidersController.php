@@ -69,6 +69,8 @@ class SlidersController extends Controller
         $slider = new Slider;
         $slider->title1 =   $request->title1;
         $slider->title2 =   $request->title2;
+        $slider->title3 =   $request->title3;
+        $slider->align =   $request->align;
         $slider->button_text    =   $request->button_text;
         $slider->background_color    =   $request->background_color;
         $slider->status =   0;
@@ -120,6 +122,7 @@ class SlidersController extends Controller
         }
         $slider_translation->title1 = $request->title1;
         $slider_translation->title2 = $request->title2;
+        $slider_translation->title3 = $request->title3;
         $slider_translation->button_text = $request->button_text;
         if (isset($request->photo)) {
             $photo = Upload::where('id',$request->photo)->first();
@@ -195,6 +198,8 @@ class SlidersController extends Controller
             # code...
             $slider->title1 =   $request->title1;
             $slider->title2 =   $request->title2;
+            $slider->title3 =   $request->title3;
+            $slider->align =   $request->align;
             $slider->button_text    =   $request->button_text;
             $slider->background_color    =   $request->background_color;
             if ($request->status) {
@@ -253,6 +258,7 @@ class SlidersController extends Controller
 		$slider_translation->slider_id =  $slider->id;
         $slider_translation->title1 =   $request->title1;
         $slider_translation->title2 =   $request->title2;
+        $slider_translation->title3 =   $request->title3;
         $slider_translation->button_text =   $request->button_text;
         // $slider_translation->link   =   $request->link;
         // photo

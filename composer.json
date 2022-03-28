@@ -16,6 +16,7 @@
         "instamojo/instamojo-php": "^0.4.0",
         "intervention/image": "^2.5",
         "iyzico/iyzipay-php": "^2.0",
+        "jenssegers/agent": "^2.6",
         "kingflamez/laravelrave": "^4.2",
         "laracasts/flash": "^3.0",
         "laracon21/colorcodeconverter": "1.2",
@@ -39,6 +40,7 @@
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/db-dumper": "2.21.1",
         "stripe/stripe-php": "^7.95",
+        "torann/geoip": "^3.0",
         "twilio/sdk": "^6.1",
         "unicodeveloper/laravel-paystack": "^1.0"
     },

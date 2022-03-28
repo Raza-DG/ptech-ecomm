@@ -35,240 +35,242 @@
 @endsection
 
 @section('content')
+    <div class="page-title page-title-default title-size-default title-design-centered color-scheme-dark title-shop shop-banner" style="background-image: url({{uploaded_asset(get_setting('shop_banner')) ?? uploaded_asset(get_setting('default_banner')) ?? static_asset('assets-ecom/images/banner/category-banner.jpg')}});">
+        <div class="container">
+            <div class="nav-shop">
+                <div class="shop-title-wrapper">
+                    <h1 class="entry-title text-white">Shop</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN CONTENT AREA -->
+    <div class="container">
+        <div class="row content-layout-wrapper align-items-start">
+            <aside class="sidebar-container col-lg-3 col-md-3 col-12 order-last order-md-first sidebar-left area-sidebar-shop" role="complementary">
+                <div class="widget-heading">
+                    <a href="#" class="close-side-widget wd-cross-button wd-with-text-left">close</a>
+                </div>
+                <div class="sidebar-inner woodmart-sidebar-scroll">
+                    <div class="widget-area woodmart-sidebar-content">
+                        <div id="woocommerce_product_categories-2" class="woodmart-widget widget sidebar-widget woocommerce widget_product_categories ">
+                            <h5 class="widget-title">Product categories</h5>
 
-    <section class="mb-4 pt-3">
-        <div class="container sm-px-0">
-            <form class="" id="search-form" action="" method="GET">
-                <div class="row">
-                    <div class="col-xl-3">
-                        <div class="aiz-filter-sidebar collapse-sidebar-wrap sidebar-xl sidebar-right z-1035">
-                            <div class="overlay overlay-fixed dark c-pointer" data-toggle="class-toggle" data-target=".aiz-filter-sidebar" data-same=".filter-sidebar-thumb"></div>
-                            <div class="collapse-sidebar c-scrollbar-light text-left">
-                                <div class="d-flex d-xl-none justify-content-between align-items-center pl-3 border-bottom">
-                                    <h3 class="h6 mb-0 fw-600">{{ translate('Filters') }}</h3>
-                                    <button type="button" class="btn btn-sm p-2 filter-sidebar-thumb" data-toggle="class-toggle" data-target=".aiz-filter-sidebar" >
-                                        <i class="las la-times la-2x"></i>
-                                    </button>
-                                </div>
-                                <div class="bg-white shadow-sm rounded mb-3">
-                                    <div class="fs-15 fw-600 p-3 border-bottom">
-                                        {{ translate('Categories')}}
-                                    </div>
-                                    <div class="p-3">
-                                        <ul class="list-unstyled">
-                                            @if (!isset($category_id))
-                                                @foreach (\App\Models\Category::where('level', 0)->get() as $category)
-                                                    <li class="mb-2 ml-2">
-                                                        <a class="text-reset fs-14" href="{{ route('products.category', $category->slug) }}">{{ $category->getTranslation('name') }}</a>
-                                                    </li>
-                                                @endforeach
-                                            @else
-                                                <li class="mb-2">
-                                                    <a class="text-reset fs-14 fw-600" href="{{ route('search') }}">
-                                                        <i class="las la-angle-left"></i>
-                                                        {{ translate('All Categories')}}
-                                                    </a>
-                                                </li>
-                                                @if (\App\Models\Category::find($category_id)->parent_id != 0)
-                                                    <li class="mb-2">
-                                                        <a class="text-reset fs-14 fw-600" href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
-                                                            <i class="las la-angle-left"></i>
-                                                            {{ \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name') }}
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                <li class="mb-2">
-                                                    <a class="text-reset fs-14 fw-600" href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
-                                                        <i class="las la-angle-left"></i>
-                                                        {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
-                                                    </a>
-                                                </li>
-                                                @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key => $id)
-                                                    <li class="ml-4 mb-2">
-                                                        <a class="text-reset fs-14" href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">{{ \App\Models\Category::find($id)->getTranslation('name') }}</a>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="bg-white shadow-sm rounded mb-3">
-                                    <div class="fs-15 fw-600 p-3 border-bottom">
-                                        {{ translate('Price range')}}
-                                    </div>
-                                    <div class="p-3">
-                                        <div class="aiz-range-slider">
-                                            <div
-                                                id="input-slider-range"
-                                                data-range-value-min="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif"
-                                                data-range-value-max="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif"
-                                            ></div>
+                            <ul class="product-categories">
 
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <span class="range-slider-value value-low fs-14 fw-600 opacity-70"
-                                                        @if (isset($min_price))
-                                                            data-range-value-low="{{ $min_price }}"
-                                                        @elseif($products->min('unit_price') > 0)
-                                                            data-range-value-low="{{ $products->min('unit_price') }}"
-                                                        @else
-                                                            data-range-value-low="0"
-                                                        @endif
-                                                        id="input-slider-range-value-low"
-                                                    ></span>
-                                                </div>
-                                                <div class="col-6 text-right">
-                                                    <span class="range-slider-value value-high fs-14 fw-600 opacity-70"
-                                                        @if (isset($max_price))
-                                                            data-range-value-high="{{ $max_price }}"
-                                                        @elseif($products->max('unit_price') > 0)
-                                                            data-range-value-high="{{ $products->max('unit_price') }}"
-                                                        @else
-                                                            data-range-value-high="0"
-                                                        @endif
-                                                        id="input-slider-range-value-high"
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @if (!isset($category_id))
+                                    @foreach (\App\Models\Category::where('level', 0)->get() as $category)
+									{{$category_id}}
+                                <li class="cat-item cat-item-25 cat-parent"><a href="{{ route('products.category', $category->slug) }}"> {{ $category->getTranslation('name') }}</a> <span class="count">{{ count_products_in_category_id($category->id)}}</span>
 
-                                @foreach ($attributes as $attribute)
-                                    <div class="bg-white shadow-sm rounded mb-3">
-                                        <div class="fs-15 fw-600 p-3 border-bottom">
-                                            {{ translate('Filter by') }} {{ $attribute->getTranslation('name') }}
-                                        </div>
-                                        <div class="p-3">
-                                            <div class="aiz-checkbox-list">
-                                                @foreach ($attribute->attribute_values as $attribute_value)
-                                                    <label class="aiz-checkbox">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="selected_attribute_values[]"
-                                                            value="{{ $attribute_value->value }}" @if (in_array($attribute_value->value, $selected_attribute_values)) checked @endif
-                                                            onchange="filter()"
-                                                        >
-                                                        <span class="aiz-square-check"></span>
-                                                        <span>{{ $attribute_value->value }}</span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
 
-                                @if (get_setting('color_filter_activation'))
-                                    <div class="bg-white shadow-sm rounded mb-3">
-                                        <div class="fs-15 fw-600 p-3 border-bottom">
-                                            {{ translate('Filter by color')}}
-                                        </div>
-                                        <div class="p-3">
-                                            <div class="aiz-radio-inline">
-                                                @foreach ($colors as $key => $color)
-                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ $color->name }}">
-                                                    <input
-                                                        type="radio"
-                                                        name="color"
-                                                        value="{{ $color->code }}"
-                                                        onchange="filter()"
-                                                        @if(isset($selected_color) && $selected_color == $color->code) checked @endif
-                                                    >
-                                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                        <span class="size-30px d-inline-block rounded" style="background: {{ $color->code }};"></span>
-                                                    </span>
-                                                </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
 
-                                {{-- <button type="submit" class="btn btn-styled btn-block btn-base-4">Apply filter</button> --}}
-                            </div>
+				 @if(count(\App\Utility\CategoryUtility::get_immediate_children_ids($category->id))>0)
+
+					 <ul class='children'>
+							 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $id)
+							<li class="cat-item cat-item-46">
+								<a href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">{{ \App\Models\Category::find($id)->getTranslation('name') }}</a>
+								<span class="count">{{ count_products_in_category_id($id)}}</span>
+
+
+			 		 @if(count(\App\Utility\CategoryUtility::get_immediate_children_ids($id))>0)
+
+					 <ul class='children'>
+							 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($id) as $key => $id2)
+							<li class="cat-item cat-item-46">
+								<a href="{{ route('products.category', \App\Models\Category::find($id2)->slug) }}">{{ \App\Models\Category::find($id2)->getTranslation('name') }}</a>
+								<span class="count">{{ count_products_in_category_id($id2)}}</span>
+							</li>
+							@endforeach
+                      </ul>
+
+
+							<div class="woodmart-cats-toggle"></div>
+										</li>
+
+
+							@endif
+
+
+
+							</li>
+							@endforeach
+                      </ul>
+
+
+							<div class="woodmart-cats-toggle"></div>
+										</li>
+
+
+							@endif
+
+								</li>
+                                    @endforeach
+                                @else
+
+
+
+
+                                        <li class="cat-item cat-item-20 cat-parent">
+                                            <a href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">{{ \App\Models\Category::find($category_id)->getTranslation('name') }}</a> <span class="count">{{ count_products_in_category_id($category_id)}}</span>
+
+
+					  @if(count(\App\Utility\CategoryUtility::get_immediate_children_ids($category_id))>0)
+
+					   <ul class='children'>
+							 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key => $id)
+							<li class="cat-item cat-item-46">
+								<a href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">{{ \App\Models\Category::find($id)->getTranslation('name') }}</a>
+								<span class="count">{{ count_products_in_category_id($id)}}</span>
+
+					  @if(count(\App\Utility\CategoryUtility::get_immediate_children_ids($id))>0)
+
+					 <ul class='children'>
+							 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($id) as $key => $id2)
+							<li class="cat-item cat-item-46">
+								<a href="{{ route('products.category', \App\Models\Category::find($id2)->slug) }}">{{ \App\Models\Category::find($id2)->getTranslation('name') }}</a>
+								<span class="count">{{ count_products_in_category_id($id2)}}</span>
+							</li>
+							@endforeach
+                      </ul>
+
+
+							<div class="woodmart-cats-toggle"></div>
+										</li>
+
+
+							@endif
+
+
+
+							</li>
+							@endforeach
+                      </ul>
+
+
+							<div class="woodmart-cats-toggle"></div>
+										</li>
+
+
+							@endif
+
+								</li>
+
+											</li>
+										@endif
+
+
+
+
+                        </div>
+                        <div id="woocommerce_price_filter-3" class="woodmart-widget widget sidebar-widget woocommerce widget_price_filter">
+
                         </div>
                     </div>
-                    <div class="col-xl-9">
+                    <!-- .widget-area -->
+                </div>
+                <!-- .sidebar-inner -->
+            </aside>
+            <!-- .sidebar-container -->
 
-                        <ul class="breadcrumb bg-transparent p-0">
-                            <li class="breadcrumb-item opacity-50">
-                                <a class="text-reset" href="{{ route('home') }}">{{ translate('Home')}}</a>
-                            </li>
+
+
+            <div data-zm-merchant="f91bbf48-799b-4c1c-b9e1-bb935d5ea204" data-env="production" data-require-checkout="false" data-zm-region="au" data-zm-price-max="1500" data-zm-price-min="1" data-zm-display-inline="false">
+            </div>
+            <div class="site-content shop-content-area col-lg-9 col-12 col-md-9 description-area-before content-with-products" role="main">
+                <div class="woocommerce-notices-wrapper">
+                </div>
+
+                <div class="shop-loop-head">
+                    <div class="woodmart-woo-breadcrumbs">
+
+                        <nav class="woocommerce-breadcrumb">
+                            <a href="{{ route('home') }}" class="breadcrumb-link breadcrumb-link-last">{{ translate('Home')}}</a>
                             @if(!isset($category_id))
-                                <li class="breadcrumb-item fw-600  text-dark">
-                                    <a class="text-reset" href="{{ route('search') }}">"{{ translate('All Categories')}}"</a>
-                                </li>
+                <a href="{{ route('search') }}" class="breadcrumb-link breadcrumb-link-last">{{ translate('All Categories')}}</a>
                             @else
-                                <li class="breadcrumb-item opacity-50">
-                                    <a class="text-reset" href="{{ route('search') }}">{{ translate('All Categories')}}</a>
-                                </li>
+                <a href="{{ route('search') }}" class="breadcrumb-link breadcrumb-link-last">{{ translate('All Categories')}}</a>
                             @endif
                             @if(isset($category_id))
-                                <li class="text-dark fw-600 breadcrumb-item">
-                                    <a class="text-reset" href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">"{{ \App\Models\Category::find($category_id)->getTranslation('name') }}"</a>
-                                </li>
+                            <span href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}" class="breadcrumb-last" > {{ \App\Models\Category::find($category_id)->getTranslation('name') }}</span>
                             @endif
-                        </ul>
+                        </nav>
+                        <p class="woocommerce-result-count">
+                            Showing 1&ndash;15 of 184 results</p>
+                    </div>
+                    <div class="woodmart-shop-tools">
+                        <div class="woodmart-show-sidebar-btn">
+                                    <span class="woodmart-side-bar-icon">
+                                    </span>
+                            <span>Show sidebar</span>
+                        </div>
+						<form id="search-form" method="get">
+                        <div class="woodmart-products-per-page">
 
-                        <div class="text-left">
-                            <div class="row gutters-5 flex-wrap align-items-center">
-                                <div class="col-lg col-10">
-                                    <h1 class="h6 fw-600 text-body">
-                                        @if(isset($category_id))
-                                            {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
-                                        @elseif(isset($query))
-                                            {{ translate('Search result for ') }}"{{ $query }}"
-                                        @else
-                                            {{ translate('All Products') }}
-                                        @endif
-                                    </h1>
-                                    <input type="hidden" name="keyword" value="{{ $query }}">
-                                </div>
-                                <div class="col-2 col-lg-auto d-xl-none mb-lg-3 text-right">
-                                    <button type="button" class="btn btn-icon p-0" data-toggle="class-toggle" data-target=".aiz-filter-sidebar">
-                                        <i class="la la-filter la-2x"></i>
-                                    </button>
-                                </div>
-                                <div class="col-6 col-lg-auto mb-3 w-lg-200px">
-                                    @if (Route::currentRouteName() != 'products.brand')
-                                        <label class="mb-0 opacity-50">{{ translate('Brands')}}</label>
-                                        <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="brand" onchange="filter()">
-                                            <option value="">{{ translate('All Brands')}}</option>
-                                            @foreach (\App\Models\Brand::all() as $brand)
-                                                <option value="{{ $brand->slug }}" @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->getTranslation('name') }}</option>
-                                            @endforeach
-                                        </select>
-                                    @endif
-                                </div>
-                                <div class="col-6 col-lg-auto mb-3 w-lg-200px">
-                                    <label class="mb-0 opacity-50">{{ translate('Sort by')}}</label>
-                                    <select class="form-control form-control-sm aiz-selectpicker" name="sort_by" onchange="filter()">
-                                        <option value="newest" @isset($sort_by) @if ($sort_by == 'newest') selected @endif @endisset>{{ translate('Newest')}}</option>
-                                        <option value="oldest" @isset($sort_by) @if ($sort_by == 'oldest') selected @endif @endisset>{{ translate('Oldest')}}</option>
-                                        <option value="price-asc" @isset($sort_by) @if ($sort_by == 'price-asc') selected @endif @endisset>{{ translate('Price low to high')}}</option>
-                                        <option value="price-desc" @isset($sort_by) @if ($sort_by == 'price-desc') selected @endif @endisset>{{ translate('Price high to low')}}</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <span class="per-page-title">Show</span>
+
+                            <a rel="nofollow" href="#" class="per-page-variation">
+                                <span>9</span>
+                            </a>
+                            <span class="per-page-border">
+                                    </span>
+                            <a rel="nofollow" href="#" class="per-page-variation">
+                                <span>24</span>
+                            </a>
+                            <span class="per-page-border">
+                                    </span>
+                            <a rel="nofollow" href="#" class="per-page-variation">
+                                <span>36</span>
+                            </a>
+                            <span class="per-page-border">
+                                    </span>
+                            <a rel="nofollow" href="#" class="per-page-variation">
+                                <span>All</span>
+                            </a>
+                            <span class="per-page-border">
+                                    </span>
                         </div>
-                        <input type="hidden" name="min_price" value="">
-                        <input type="hidden" name="max_price" value="">
-                        <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                            @foreach ($products as $key => $product)
-                                <div class="col">
-                                    @include('frontend.partials.product_box_1',['product' => $product])
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="aiz-pagination aiz-pagination-center mt-4">
-                            {{ $products->appends(request()->input())->links() }}
+                        <div class="woocommerce-ordering">
+                            <select name="sort_by" onchange="filter()" class="orderby" aria-label="Shop order">
+                                <option value="newest" @isset($sort_by) @if ($sort_by == 'newest') selected @endif @endisset>{{ translate('Newest')}}</option>
+                                <option value="oldest" @isset($sort_by) @if ($sort_by == 'oldest') selected @endif @endisset>{{ translate('Oldest')}}</option>
+                                <option value="price-asc" @isset($sort_by) @if ($sort_by == 'price-asc') selected @endif @endisset>{{ translate('Price low to high')}}</option>
+                                <option value="price-desc" @isset($sort_by) @if ($sort_by == 'price-desc') selected @endif @endisset>{{ translate('Price high to low')}}</option>
+                            </select>
                         </div>
                     </div>
+					</form>
                 </div>
-            </form>
-        </div>
-    </section>
 
+                <div class="woodmart-active-filters">
+                </div>
+
+                <div class="woodmart-shop-loader">
+                </div>
+
+                <div class="products elements-grid align-items-start woodmart-products-holder  woodmart-spacing-30 pagination-pagination row grid-columns-4" data-source="main_loop" data-min_price="" data-max_price="">
+                @foreach ($products as $key => $product)
+                    @include('frontend.partials.product_listings_shop',['product' => $product])
+                @endforeach
+				@if(count($products)==0)
+
+				<h5 class="widget-title" style="text-align: center !important;
+    width: 100%;
+    font-size: 25px;
+    padding: 65px;">No Product Found</h5>
+				@endif
+                </div>
+                <div class="products-footer">
+                    <nav class="woocommerce-pagination">
+                        {{ $products->appends(request()->input())->links() }}
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- .main-page-wrapper -->
+    </div> <!-- end row -->
 @endsection
 
 @section('script')
@@ -282,4 +284,5 @@
             filter();
         }
     </script>
+
 @endsection

@@ -177,6 +177,7 @@ class LoginController extends Controller
      */
     public function authenticated()
     {
+	//dd('aaa');
         if (session('temp_user_id') != null) {
             Cart::where('temp_user_id', session('temp_user_id'))
                 ->update(

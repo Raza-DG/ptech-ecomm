@@ -23,8 +23,16 @@ use App\Models\Role;
 use App\Utility\SendSMSUtility;
 use App\Utility\NotificationUtility;
 use Illuminate\Database\Eloquent\Builder;
-
-
+use Jenssegers\Agent\Agent;
+function count_products_in_category_id($id)
+{
+    $products = Product::where('category_id', $id)->where('published',1)->get();
+    if(count($products) > 0){
+        return count($products);
+    }else{
+        return 0;
+    }
+}
 
 //sensSMS function for OTP
 if (!function_exists('sendSMS')) {
@@ -34,9 +42,36 @@ if (!function_exists('sendSMS')) {
     }
 }
 
+if (! function_exists('useragent')) {
+    function useragent(){
+        $agent = new Agent();
+        return $agent;
+    }
+}
+
+if (! function_exists('check_region')) {
+    function check_region() {
+          $getinfo = geoip()->getLocation($_SERVER['REMOTE_ADDR']); //
+        // $getinfo = geoip()->getLocation('202.47.47.140');  // Pak
+        //    $getinfo = geoip()->getLocation('5.253.206.122');  // Poland
+        // $getinfo = geoip()->getLocation('191.101.217.99'); // Fran
+        // $getinfo = geoip()->getLocation('191.101.217.99'); // Germany
+        // $getinfo = geoip()->getLocation('2.22.152.0'); // swizeland
+        // $getinfo = geoip()->getLocation('87.251.20.34'); // turkey
+        // $getinfo = geoip()->getLocation('95.214.235.64'); // ukrainian
+
+        // $getinfo = geoip()->getLocation('91.239.206.191'); // 	Georgian
+        // $getinfo = geoip()->getLocation('82.118.29.97'); // 	sewden
+
+        // $getinfo = geoip()->getLocation('45.130.83.34'); // united state
+        // dd($getinfo);
+        return $getinfo;
+    }
+}
+
 //highlights the selected navigation on admin panel
 if (!function_exists('areActiveRoutes')) {
-    function areActiveRoutes(array $routes, $output = "active")
+    function areActiveRoutes(array $routes, $output = "is-active")
     {
         foreach ($routes as $route) {
             if (Route::currentRouteName() == $route) return $output;
@@ -206,7 +241,11 @@ if (!function_exists('discount_in_percentage')) {
             $base = home_base_price($product, false);
             $reduced = home_discounted_base_price($product, false);
             $discount = $base - $reduced;
+			if($base==0){
+			return 0.00;
+			}
             $dp = ($discount * 100) / $base;
+			//dd($dp);
             return round($dp);
         } catch (Exception $e) {
         }

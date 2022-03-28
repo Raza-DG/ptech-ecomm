@@ -4,7 +4,7 @@
 @php
     $privacy_policy =  \App\Models\Page::where('type', 'privacy_policy_page')->first();
 @endphp
-<section class="pt-4 mb-4">
+<section class="pt-4 mb-4 mt-150">
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-6 text-center text-lg-left">

@@ -8,141 +8,125 @@ if (Session::has('locale')) {
 }
 @endphp
 @section('content')
-    <div class="rey-siteContent main-div --tpl-template-builder-php" id="content">
-        <section class="common-sections about-bg-gray" data-element_type="section" data-id="9161df8">
-            <div class="elementor-widget-container">
-                <p class="elementor-heading-title elementor-size-default">HOME/ <span class="text-red">CONTACT</span>
-                </p>
-            </div>
-        </section>
-        <div class="rey-siteContainer rey-pbTemplate main-holder-div">
-            <div class="rey-siteRow">
-                <main class="rey-siteMain rey-filterSidebar contact-main" id="main">
-                    <div class="elementor elementor-1032" data-elementor-id="1032" data-elementor-settings="[]"
-                        data-elementor-type="wp-post">
-                        <div class="elementor-section-wrap common-sections">
-                            <section
-                                class="elementor-top-section elementor-element elementor-element-9161df8 elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default"
-                                data-element_type="section" data-id="9161df8" style="text-align:center;">
-                                <div class="elementor-container elementor-column-gap-default">
-                                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8d7b482"
-                                        data-element_type="column" data-id="8d7b482">
-                                        <div
-                                            class="elementor-column-wrap--8d7b482 elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading"
-                                                data-element_type="widget" data-id="dd31e89"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h2 class="text-red pt60px">{{ get_setting('main_heading') }}</h2>
+
+
+<div class="main-page-wrapper">
+
+            <!-- MAIN CONTENT AREA -->
+            <div class="container">
+                <div class="row content-layout-wrapper align-items-start">
+
+                    <div class="site-content col-lg-12 col-12 col-md-12" role="main">
+
+                        <article id="post-756" class="post-756 page type-page status-publish hentry">
+
+                            <div class="entry-content">
+                                <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid eux-margin-titles vc_custom_1615178274345">
+                                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                                        <div class="vc_column-inner vc_custom_1521121732925">
+                                            <div class="wpb_wrapper">
+                                                <div id="wd-604179cbf1768" class="woodmart-text-block-wrapper color-scheme-custom woodmart-title-size-custom woodmart-title-width-100 text-center vc_custom_1614903761589 hidden-xs hidden-sm eux-title-playfair">
+                                                    <div class="woodmart-title-container woodmart-text-block font-primary woodmart-font-weight-400">
+                                                      </div>
+
                                                 </div>
+
+                                                <div id="wd-604d89c21ead1" class="title-wrapper  woodmart-title-color-default woodmart-title-style-image woodmart-title-width-40 text-center eux-title-playfair woodmart-title-size-custom ">
+
+                                                    <div class="liner-continer">
+                                                        <span class="left-line"></span>
+                                                        <h2 class="woodmart-title-container title  woodmart-font-weight-"> {{ get_setting('main_heading') }}</h2> <span class="img-wrapper"><img src="{{uploaded_asset(get_setting('contact_one_image'))}}" width="137" height="19" alt="{{ get_setting('main_heading') }}" title="{{ get_setting('main_heading') }}"></span> <span class="right-line"></span>
+                                                    </div>
+
+                                                    <div class="title-after_title"> {!! get_setting('contact_us_widget_main_description', null, $lang) ?? '' !!}</div>
+
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                            <section
-                                class="elementor-top-section elementor-element elementor-element-9161df8 elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default"
-                                data-element_type="section" data-id="9161df8" style="text-align:center;">
-                                <div class="elementor-container elementor-column-gap-default df sm-fl-d-column">
-                                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-8d7b482"
-                                        data-element_type="column" data-id="8d7b482">
-                                        <div
-                                            class="elementor-column-wrap--8d7b482 elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading"
-                                                data-element_type="widget" data-id="dd31e89"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h3 class="Futura_Extra_Black italic fz22px stretch-h">
-                                                        {{ get_setting('contact_us_widget_one') }}</h3>
-                                                    <div class="text-part" style="width:100%;padding:0px 0px 0px 0px;">
-                                                        <div class="elementor-widget-container">
-                                                            {!! get_setting('contact_us_widget_one_description', null, $lang) ?? '' !!}
+                                <div class="vc_row-full-width vc_clearfix"></div>
+                                <div class="vc_row wpb_row vc_row-fluid vc_custom_1614922590231">
+                                    <div class="wpb_column vc_column_container vc_col-sm-6">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div id="wd-6042a997d4903" class="title-wrapper  woodmart-title-color-primary woodmart-title-style-default woodmart-title-width-100 text-left woodmart-title-size-medium vc_custom_1614981529508">
+
+                                                    <div class="liner-continer">
+                                                        <span class="left-line"></span>
+                                                        <h4 class="woodmart-title-container title  woodmart-font-weight-">{{ get_setting('contact_us_widget_second') }}</h4> <span class="right-line"></span>
+                                                    </div>
+
+                                                    <div class="title-after_title"> {!! get_setting('contact_us_widget_second_description', null, $lang) ?? '' !!}</div>
+
+                                                </div>
+
+                                                <div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-content-top vc_row-flex">
+                                                    <div class="wpb_column vc_column_container vc_col-sm-6">
+                                                        <div class="vc_column-inner vc_custom_1499851571242">
+                                                            <div class="wpb_wrapper">
+                                                                <div id="wd-6042a8c47225e" class="title-wrapper  woodmart-title-color-default woodmart-title-style-default woodmart-title-width-100 text-left woodmart-title-size-default vc_custom_1614981315269">
+
+                                                                    <div class="liner-continer">
+                                                                        <span class="left-line"></span>
+                                                                        <h4 class="woodmart-title-container title  woodmart-font-weight-">{{ get_setting('contact_us_widget_third') }}</h4> <span class="right-line"></span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="wpb_text_column wpb_content_element vc_custom_1614981330107">
+                                                                    <div class="wpb_wrapper">
+                                                                        {!! get_setting('contact_us_widget_third_description', null, $lang) ?? '' !!}
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="wpb_column vc_column_container vc_col-sm-6">
+                                                        <div class="vc_column-inner vc_custom_1499851571242">
+                                                            <div class="wpb_wrapper">
+                                                                <div id="wd-6042a89105816" class="title-wrapper  woodmart-title-color-default woodmart-title-style-default woodmart-title-width-100 text-left woodmart-title-size-default vc_custom_1614981264534">
+
+                                                                    <div class="liner-continer">
+                                                                        <span class="left-line"></span>
+                                                                        <h4 class="woodmart-title-container title  woodmart-font-weight-">{{ get_setting('contact_us_widget_one') }}</h4> <span class="right-line"></span>
+                                                                    </div>
+
+
+                                                                </div>
+
+
+                                                                <div class="wpb_text_column wpb_content_element vc_custom_1614981338458"> 
+                                                                    {!! get_setting('contact_us_widget_one_description', null, $lang) ?? '' !!}
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                    <div class="wpb_column vc_column_container">
+                                                         {!! get_setting('map_url', null, $lang) ?? '' !!}
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-8d7b482"
-                                        data-element_type="column" data-id="8d7b482">
-                                        <div
-                                            class="elementor-column-wrap--8d7b482 elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading"
-                                                data-element_type="widget" data-id="dd31e89"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h3 class="Futura_Extra_Black italic fz22px stretch-h">
-                                                        {{ get_setting('contact_us_widget_second') }}</h3>
-                                                    <div class="text-part" style="width:100%;padding:0px 0px 0px 0px;">
-                                                        <div class="elementor-widget-container">
-                                                            {!! get_setting('contact_us_widget_second_description', null, $lang) ?? '' !!}
-                                                        </div>
+                                    <div class="wpb_column vc_column_container vc_col-sm-6">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div id="wd-6042a9f48ec5f" class="title-wrapper  woodmart-title-color-default woodmart-title-style-default woodmart-title-width-100 text-left woodmart-title-size-medium vc_custom_1614981628428">
+
+                                                    <div class="liner-continer">
+                                                        <span class="left-line"></span>
+                                                        <h4 class="woodmart-title-container title  woodmart-font-weight-">{{ get_setting('contact_us_widget_fourth') }}</h4> <span class="right-line"></span>
                                                     </div>
+
+                                                    {!! get_setting('contact_us_widget_fourth_description', null, $lang) ?? '' !!}
+
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-8d7b482"
-                                        data-element_type="column" data-id="8d7b482">
-                                        <div
-                                            class="elementor-column-wrap--8d7b482 elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading"
-                                                data-element_type="widget" data-id="dd31e89"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h3 class="Futura_Extra_Black italic fz22px stretch-h">
-                                                        {{ get_setting('contact_us_widget_third') }}</h3>
-                                                    <div class="text-part" style="width:100%;padding:0px 0px 0px 0px;">
-                                                        <div class="elementor-widget-container">
-                                                            {!! get_setting('contact_us_widget_third_description', null, $lang) ?? '' !!}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section><br>
-                            <br>
-                            <section
-                                class="elementor-section elementor-top-section elementor-element elementor-element-6167dae elementor-section-boxed elementor-section-gap-default elementor-section-height-default elementor-section-height-default"
-                                data-element_type="section" data-id="6167dae">
-                                <div class="elementor-container elementor-column-gap-default">
-                                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-c16c300"
-                                        data-element_type="column" data-id="c16c300">
-                                        <div
-                                            class="elementor-column-wrap--c16c300 elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-dd31e89 elementor-widget elementor-widget-heading"
-                                                data-element_type="widget" data-id="dd31e89"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h3 class="elementor-heading-title elementor-size-default"><span
-                                                            class="Futura_Extra_Black italic">{{ get_setting('contact_us_widget_fourth') }}</span>
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-39e40ef u-links-anim-ul elementor-widget elementor-widget-text-editor"
-                                                data-element_type="widget" data-id="39e40ef"
-                                                data-widget_type="text-editor.default">
-                                                <div class="text-part" style="width:100%;padding:0px 0px 0px 0px;">
-                                                    <div class="elementor-widget-container">
-                                                        {!! get_setting('contact_us_widget_fourth_description', null, $lang) ?? '' !!}
-                                                    </div>
-                                                    <div class="map">
-                                                        {!! get_setting('map_url') !!}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-4175219"
-                                        data-element_type="column" data-id="4175219">
-                                        <div
-                                            class="elementor-column-wrap--4175219 elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-82e66f4 elementor-widget elementor-widget-image"
-                                                data-element_type="widget" data-id="82e66f4"
-                                                data-widget_type="image.default">
-                                                <form action="{{ route('contact_store') }}"
+
+                                                <div class="wpforms-container wpforms-container-full" id="wpforms-276597">
+                                                    <form action="{{ route('contact_store') }}"
                                                     class="wpcf7-form init rey-cf7--basic demo contact-form"
                                                     data-status="init" method="POST" novalidate="novalidate">
                                                     @csrf
@@ -178,17 +162,30 @@ if (Session::has('locale')) {
                                                             type="submit" value="SEND"></p>
                                                     <div aria-hidden="true" class="wpcf7-response-output"></div>
                                                 </form>
+                                                </div> <!-- .wpforms-container -->
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
-                            </section>
-                        </div>
-                    </div>
-                </main><!-- .rey-siteMain -->
-            </div>
-        </div><!-- .rey-siteContainer -->
-    </div><!-- .rey-siteContent -->
+
+                            </div>
+
+
+                        </article><!-- #post -->
+
+
+
+                    </div><!-- .site-content -->
+
+
+
+                </div><!-- .main-page-wrapper -->
+            </div> <!-- end row -->
+        </div>
+		
+		
+		 
 @endsection
 
 

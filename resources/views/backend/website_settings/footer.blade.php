@@ -248,7 +248,7 @@
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 d-none">
                                 <div class="card shadow-none bg-light pt-2">
 
                                     <div class="card-header">
@@ -350,7 +350,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 d-none">
                                 <div class="card shadow-none bg-light pt-2">
 
                                     <div class="card-header">
@@ -453,7 +453,7 @@
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 d-none">
                                 <div class="card shadow-none bg-light pt-2">
 
                                     <div class="card-header">

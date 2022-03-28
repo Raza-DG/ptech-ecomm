@@ -49,7 +49,7 @@ class AdminController extends Controller
         if (Auth::user()->user_type == 'admin') {
             return view('backend.dashboard', compact('root_categories', 'cached_graph_data'));
         }else{
-            return redirect()->route('rooms.index');
+            return redirect()->route('all_orders.index');
         }
     }
 

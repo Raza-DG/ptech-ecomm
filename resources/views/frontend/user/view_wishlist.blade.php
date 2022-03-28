@@ -4,7 +4,7 @@
     <div class="aiz-titlebar mt-2 mb-4">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <b class="h4">{{ translate('Wishlist')}}</b>
+                <b class="h4">{{ translate('My Wishlist')}}</b>
             </div>
         </div>
     </div>
@@ -12,36 +12,11 @@
     <div class="row gutters-5">
         @forelse ($wishlists as $key => $wishlist)
             @if ($wishlist->product != null)
-                <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 col-sm-6" id="wishlist_{{ $wishlist->id }}">
-                    <div class="card mb-2 shadow-sm">
-                        <div class="card-body">
-                            <a href="{{ route('product', $wishlist->product->slug) }}" class="d-block mb-3">
-                                <img src="{{ uploaded_asset($wishlist->product->thumbnail_img) }}" class="img-fit h-140px h-md-200px">
-                            </a>
 
-                            <h5 class="fs-14 mb-0 lh-1-5 fw-600 text-truncate-2">
-                                <a href="{{ route('product', $wishlist->product->slug) }}" class="text-reset">{{ $wishlist->product->getTranslation('name') }}</a>
-                            </h5>
-                            <div class="rating rating-sm mb-1">
-                                {{ renderStarRating($wishlist->product->rating) }}
-                            </div>
-                            <div class=" fs-14">
-                                  @if(home_base_price($wishlist->product) != home_discounted_base_price($wishlist->product))
-                                      <del class="opacity-60 mr-1">{{ home_base_price($wishlist->product) }}</del>
-                                  @endif
-                                      <span class="fw-600 text-primary">{{ home_discounted_base_price($wishlist->product) }}</span>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="link link--style-3" data-toggle="tooltip" data-placement="top" title="Remove from wishlist" onclick="removeFromWishlist({{ $wishlist->id }})">
-                                <i class="la la-trash la-2x"></i>
-                            </a>
-                            <button type="button" class="btn btn-sm btn-block btn-primary ml-3" onclick="showAddToCartModal({{ $wishlist->product->id }})">
-                                <i class="la la-shopping-cart mr-2"></i>{{ translate('Add to cart')}}
-                            </button>
-                        </div>
-                    </div>
-                </div>
+			 @include('frontend.partials.product_listings_shop1',['product' => $wishlist->product])
+
+
+
             @endif
         @empty
             <div class="col">
@@ -83,7 +58,8 @@
             $.post('{{ route('wishlists.remove') }}',{_token:'{{ csrf_token() }}', id:id}, function(data){
                 $('#wishlist').html(data);
                 $('#wishlist_'+id).hide();
-                AIZ.plugins.notify('success', '{{ translate('Item has been renoved from wishlist') }}');
+                AIZ.plugins.notify('success', '{{ translate('Item has been remove from wishlist') }}');
+                location.reload();
             })
         }
     </script>

@@ -1,0 +1,53 @@
+.icons-design-simple .woodmart-social-icon {
+    background-color: #888888;
+    color: #fff !important;
+}
+.icons-design-simple .woodmart-social-icon:hover {
+    background-color: #f2f2f2;
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+.woodmart-navigation .item-level-0 > a {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+@media (max-width: 991px) {
+    .black-menu-bar {
+        display: none;
+    }
+}
+.page .main-page-wrapper,
+.main-page-wrapper {
+    background-image: url(assets/images/Background-Full.jpg);
+    background-position-y: 630px;
+    background-repeat: repeat-y;
+    background-position-x: center;
+}
+/* navigation bar css start */
+.sub-men {
+    position: absolute;
+    min-width: 150px;
+    background-color: #fff;
+    margin-top: 1px;
+}
+.menu-item .sub-men {
+    display: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.menu-item:hover .sub-men {
+    display: block;
+    opacity: 1;
+    border-left: 1px solid rgba(129, 129, 129, 0.15);
+    border-right: 1px solid rgba(129, 129, 129, 0.15);
+}
+.menu-item .sub-men li {
+    border-bottom: 1px solid rgba(129, 129, 129, 0.15);
+}
+.menu-item .sub-men li:hover {
+    background-color: #f9f9f9;
+}
+
+.text-white{
+    color: #fff !important;
+}
+/* navigation bar css end */

@@ -171,6 +171,32 @@
                                             </div>
                                         </div>
                                     </div>
+                                     <div class="col-md mb-5">
+                                            <div class="form-group">
+                                                <div class="input-group" data-toggle="aizuploader" data-type="image">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}} (162 x 164)</div>
+                                                    </div>
+                                                    <div class="form-control file-amount pb-9">{{ translate('Choose File') }}</div>
+                                                    <input type="hidden" name="types[]" value="contact_one_image">
+                                                    <input type="hidden" name="contact_one_image" class="selected-files" value="{{get_setting('contact_one_image')}}">
+                                                </div>
+                                                <div class="file-preview box sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-12 mb-5">
+                                            <div class="d-flex flex-column">
+                                                <div class="mb-5 fv-row">
+                                                    <label class="form-label">{{ translate('Description') }}</label>
+                                                    <input type="hidden" name="types[][{{ $lang }}]" value="contact_us_widget_main_description">
+                                                    <textarea class="aiz-text-editor" data-buttons='[["font", ["bold", "underline", "italic", "clear"]],["para", ["ul", "ol", "paragraph"]],["style", ["style"]],["color", ["color"]],["table", ["table"]],["insert", ["link", "picture", "video"]],["view", ["fullscreen", "codeview", "undo", "redo"]]]' name="contact_us_widget_main_description" placeholder="Description" data-min-height="150">
+                                                            {!! get_setting('contact_us_widget_main_description',null,$lang) ?? "" !!}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
@@ -245,7 +271,7 @@
                     {{-- Press Contact --}}
                     <div class="card pt-5">
                         <div class="card-header">
-                            <h4 class="mb-0">{{ translate('Press Contact') }}</h4>
+                            <h4 class="mb-0">{{ translate('Online Shop Orders and Enquiries') }}</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">

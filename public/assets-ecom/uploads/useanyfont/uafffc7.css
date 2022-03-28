@@ -1,0 +1,40 @@
+				@font-face {
+					font-family: 'lato-light';
+					src: url('2274Lato-Light.html') format('woff2'),
+						url('2274Lato-Light.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.lato-light{font-family: 'lato-light' !important;}
+
+						@font-face {
+					font-family: 'playfair-medium';
+					src: url('540PlayFair-Medium.html') format('woff2'),
+						url('540PlayFair-Medium.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.playfair-medium{font-family: 'playfair-medium' !important;}
+
+						@font-face {
+					font-family: 'playfair-bold';
+					src: url('5641PlayFair-Bold.html') format('woff2'),
+						url('5641PlayFair-Bold.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.playfair-bold{font-family: 'playfair-bold' !important;}
+
+						.eux-lato-light{
+					font-family: 'lato-light' !important;
+				}
+						.eux-playfair-medium{
+					font-family: 'playfair-medium' !important;
+				}
+						.eux-playfair-bold{
+					font-family: 'playfair-bold' !important;
+				}
+						.product_title{
+					font-family: 'lato-light' !important;
+				}
+		

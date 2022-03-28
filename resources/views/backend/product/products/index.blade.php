@@ -172,7 +172,7 @@
                                             @endif
                                             <th class="text-center min-w-175px">{{ translate('Info') }}</th>
                                             <th class="text-center min-w-150px">{{ translate('Total Stock') }}</th>
-                                            <th class="text-center min-w-100px">{{ translate('Todays Deal') }}</th>
+                                            
                                             <th class="text-center min-w-100px">{{ translate('Published') }}</th>
                                             @if (get_setting('product_approve_by_admin') == 1 && $type == 'Seller')<th class="text-center min-w-100px">{{ translate('Approved') }}</th>@endif
                                             <th class="text-center min-w-70px">{{ translate('Featured') }}</th>
@@ -256,16 +256,7 @@
                                                 </td>
                                                 <!--end::Price=-->
                                                 <!--begin::Rating-->
-                                                <td class="text-center pe-0" data-order="rating-3">
-                                                    <label
-                                                        class="form-check form-switch form-check-custom form-check-solid">
-                                                        <input class="form-check-input" onchange="update_todays_deal(this)"
-                                                            value="{{ $product->id }}" type="checkbox"
-                                                            <?php if ($product->todays_deal == 1) {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                    </label>
-                                                </td>
+                                                
                                                 <!--end::Rating-->
                                                 <!--begin::Status=-->
                                                 <td class="text-center pe-0" data-order="Scheduled">

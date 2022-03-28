@@ -407,19 +407,26 @@
                     {{-- Our Story --}}
                     <div class="card pt-5">
                         <div class="card-header">
-                            <h4 class="mb-0">{{ translate('Our Story') }}</h4>
+                            <h4 class="mb-0">{{ translate('Our Mission') }}</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <div class="row gutters-5 mt-5">
-                                        <div class="col-md">
+                                        <div class="col-md mb-5">
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="about_our_story">
                                                 <input type="text" class="form-control" placeholder="Heading" name="about_our_story" value="{{ get_setting('about_our_story') }}">
                                             </div>
                                         </div>
+										<div class="col-md mb-5">
+                                            <div class="form-group"> 
+											<input type="hidden" name="types[][{{ $lang }}]" value="about_our_story1">
+                                                <input type="text" class="form-control" placeholder="Heading" name="about_our_story1" value="{{ get_setting('about_our_story1') }}">
+                                            </div>
+                                        </div>
+										
                                         <div class="col-md mb-5">
                                             <div class="form-group">
                                                 <div class="input-group" data-toggle="aizuploader" data-type="image">
@@ -458,7 +465,7 @@
                     {{-- Our Mission --}}
                     <div class="card pt-5">
                         <div class="card-header">
-                            <h4 class="mb-0">{{ translate('Our Mission') }}</h4>
+                            <h4 class="mb-0">{{ translate('Our Story') }}</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
@@ -469,6 +476,12 @@
                                             <div class="form-group">
                                                 <input type="hidden" name="types[][{{ $lang }}]" value="about_our_mission">
                                                 <input type="text" class="form-control" placeholder="Heading" name="about_our_mission" value="{{ get_setting('about_our_mission') }}">
+                                            </div>
+                                        </div>
+										<div class="col-md mb-5">
+                                            <div class="form-group"> 
+											<input type="hidden" name="types[][{{ $lang }}]" value="about_our_mission1">
+                                                <input type="text" class="form-control" placeholder="Heading" name="about_our_mission1" value="{{ get_setting('about_our_mission1') }}">
                                             </div>
                                         </div>
                                         <div class="col-md mb-5">
@@ -507,7 +520,7 @@
 
 
                     {{-- Our Strength --}}
-                    <div class="card pt-5">
+                    <div class="card pt-5 d-none">
                         <div class="card-header">
                             <h4 class="mb-0">{{ translate('Our Strength') }}</h4>
                         </div>
