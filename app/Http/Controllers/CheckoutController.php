@@ -224,8 +224,6 @@ class CheckoutController extends Controller
 
     public function address_store(Request $request)
     {
-        dd($request->all());
-
         if ($request->address_id == null) {
             $address = new Address;
         }else{
@@ -252,6 +250,22 @@ class CheckoutController extends Controller
         $address->phone         = $request->phone;
 		//dd($address);
         $address->save();
+        if(isset($request->ship_to_different_address)){
+            $address = new Address;
+            $address->type          = 'shipping';
+            $address->first_name    = $request->shipping_first_name;
+            $address->last_name     = $request->shipping_last_name;
+            $address->email         = $request->shipping_email;
+            $address->address       = $request->address;
+            $address->country_id    = $request->shipping_country_id;
+            $address->state_id      = $request->shipping_state_id;
+            $address->city_id       = $request->shipping_city_id;
+            $address->longitude     = $request->longitude;
+            $address->latitude      = $request->latitude;
+            $address->postal_code   = $request->shipping_billing_postcode;
+            $address->phone         = $request->shipping_phone;
+            $address->save();
+        }
 
         $carts = Cart::where('user_id', Auth::user()->id)->get();
 

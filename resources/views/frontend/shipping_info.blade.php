@@ -135,13 +135,18 @@
                                                     <div id="zipMoneyInfoDiv" style="display: none"></div>
                                                     <div id="zipMoneyErrorDiv" style="display: none;"></div>
                                                     @php
-                                                        $address = \App\Models\Address::where('user_id',Auth::user()->id)->where('type','billing')->first();
+                                                        $address = \App\Models\Address::where('user_id', Auth::user()->id)
+                                                            ->where('type', 'billing')
+                                                            ->first();
                                                     @endphp
-                                                    <form name="checkout" method="POST" class="checkout woocommerce-checkout row" action="{{ route('checkout.address_store') }}"
+                                                    <form name="checkout" method="POST"
+                                                        class="checkout woocommerce-checkout row"
+                                                        action="{{ route('checkout.address_store') }}"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         <input id="type" name="type" type="hidden" value="billing">
-                                                        <input id="type" name="address_id" type="hidden" value="{{$address->id ?? ""}}">
+                                                        <input id="type" name="address_id" type="hidden"
+                                                            value="{{ $address->id ?? '' }}">
                                                         <div class="col-12 col-md-5 col-lg-6">
 
                                                             <div class="row" id="customer_details">
@@ -163,7 +168,8 @@
                                                                                     <input type="text"
                                                                                         class="input-text "
                                                                                         name="first_name" id="first_name"
-                                                                                        placeholder="" value="{{$address->first_name ?? ""}}"
+                                                                                        placeholder=""
+                                                                                        value="{{ $address->first_name ?? '' }}"
                                                                                         autocomplete="given-name" /></span>
                                                                             </p>
                                                                             <p class="form-row form-row-last validate-required"
@@ -175,7 +181,12 @@
                                                                                         title="required">*</abbr></label><span
                                                                                     class="woocommerce-input-wrapper">
 
-                                                                                    <input type="text" class="input-text" name="last_name" id="last_name" placeholder="" value="{{$address->last_name ?? ""}}" autocomplete="family-name" /></span>
+                                                                                    <input type="text"
+                                                                                        class="input-text"
+                                                                                        name="last_name" id="last_name"
+                                                                                        placeholder=""
+                                                                                        value="{{ $address->last_name ?? '' }}"
+                                                                                        autocomplete="family-name" /></span>
                                                                             </p>
                                                                             <p class="form-row form-row-wide"
                                                                                 id="billing_company_field"
@@ -193,11 +204,10 @@
                                                                                             {{ translate('Select your country') }}
                                                                                         </option>
                                                                                         @foreach (\App\Models\Country::where('status', 1)->get() as $key => $country)
-                                                                                            <option value="{{ $country->id }}"
-                                                                                                @if($address->country_id != null)
-                                                                                                    @if($address->country_id == $country->id)
-                                                                                                        selected
-                                                                                                    @endif
+                                                                                            <option
+                                                                                                value="{{ $country->id }}"
+                                                                                                @if ($address->country_id != null) @if ($address->country_id == $country->id)
+                                                                                                        selected @endif
                                                                                                 @endif>
                                                                                                 {{ $country->name }}
                                                                                             </option>
@@ -217,12 +227,12 @@
                                                                                     <select class="form-control mb-3"
                                                                                         data-live-search="true"
                                                                                         name="state_id" required>
-                                                                                        @foreach (\App\Models\State::where('status', 1)->where('country_id', $address->country_id)->get() as $key => $state)
-                                                                                            <option value="{{ $state->id }}"
-                                                                                                @if($address->state_id != null)
-                                                                                                    @if($address->state_id == $state->id)
-                                                                                                        selected
-                                                                                                    @endif
+                                                                                        @foreach (\App\Models\State::where('status', 1)->where('country_id', $address->country_id)->get()
+        as $key => $state)
+                                                                                            <option
+                                                                                                value="{{ $state->id }}"
+                                                                                                @if ($address->state_id != null) @if ($address->state_id == $state->id)
+                                                                                                        selected @endif
                                                                                                 @endif>
                                                                                                 {{ $state->name }}
                                                                                             </option>
@@ -242,12 +252,12 @@
                                                                                         class="form-control mb-3"
                                                                                         data-live-search="true"
                                                                                         name="city_id" required>
-                                                                                        @foreach (\App\Models\City::where('status', 1)->where('state_id', $address->state_id)->get() as $key => $city)
-                                                                                            <option value="{{ $city->id }}"
-                                                                                                @if($address->city_id != null)
-                                                                                                    @if($address->city_id == $city->id)
-                                                                                                        selected
-                                                                                                    @endif
+                                                                                        @foreach (\App\Models\City::where('status', 1)->where('state_id', $address->state_id)->get()
+        as $key => $city)
+                                                                                            <option
+                                                                                                value="{{ $city->id }}"
+                                                                                                @if ($address->city_id != null) @if ($address->city_id == $city->id)
+                                                                                                        selected @endif
                                                                                                 @endif>
                                                                                                 {{ $city->name }}
                                                                                             </option>
@@ -265,7 +275,7 @@
                                                                                         type="text" class="input-text "
                                                                                         name="billing_postcode"
                                                                                         id="billing_postcode" placeholder=""
-                                                                                        value="{{ $address->postal_code ?? "" }}"
+                                                                                        value="{{ $address->postal_code ?? '' }}"
                                                                                         autocomplete="postal-code" /></span>
                                                                             </p>
 
@@ -278,7 +288,8 @@
                                                                                     class="woocommerce-input-wrapper"><input
                                                                                         type="tel" class="input-text "
                                                                                         name="phone" id="phone"
-                                                                                        placeholder="" value="{{ $address->phone ?? "" }}"
+                                                                                        placeholder=""
+                                                                                        value="{{ $address->phone ?? '' }}"
                                                                                         autocomplete="tel" /></span></p>
                                                                             <p class="form-row form-row-wide validate-required validate-email"
                                                                                 id="billing_email_field"
@@ -291,8 +302,9 @@
                                                                                     class="woocommerce-input-wrapper"><input
                                                                                         type="email" class="input-text "
                                                                                         name="email" id="email"
-                                                                                        placeholder="" value="{{Auth::user()->email ?? ""}}"
-                                                                                        autocomplete="email username"/></span>
+                                                                                        placeholder=""
+                                                                                        value="{{ Auth::user()->email ?? '' }}"
+                                                                                        autocomplete="email username" /></span>
                                                                             </p>
                                                                             <p class="form-row importanthide"
                                                                                 id="billing_address_1_field"
@@ -332,7 +344,9 @@
                                                                         <h3 id="ship-to-different-address">
                                                                             <label
                                                                                 class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                                                                <input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+                                                                                <input
+                                                                                    id="ship-to-different-address-checkbox"
+                                                                                    class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
                                                                                     type="checkbox"
                                                                                     name="ship_to_different_address"
                                                                                     value="1" /> <span>Ship to a different
@@ -340,154 +354,133 @@
                                                                             </label>
                                                                         </h3>
 
-                                                                        <div class="shipping_address">
+                                                                        <div class="shipping_address" style="display: none">
 
 
-                                                                            <div
-                                                                                class="woocommerce-shipping-fields__field-wrapper">
-                                                                                <p class="form-row form-row-first validate-required"
-                                                                                    id="shipping_first_name_field"
-                                                                                    data-priority="10"><label
-                                                                                        for="shipping_first_name"
-                                                                                        class="">First name&nbsp;<abbr class="required"
-                                                                                            title="required">*</abbr></label><span
-                                                                                        class="woocommerce-input-wrapper"><input
-                                                                                            type="text"
-                                                                                            class="input-text "
-                                                                                            name="shipping_first_name"
-                                                                                            id="shipping_first_name"
-                                                                                            placeholder="" value=""
-                                                                                            autocomplete="given-name" /></span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-last validate-required"
-                                                                                    id="shipping_last_name_field"
-                                                                                    data-priority="20"><label
-                                                                                        for="shipping_last_name"
-                                                                                        class="">Last
-                                                                                        name&nbsp;<abbr
-                                                                                            class="required"
-                                                                                            title="required">*</abbr></label><span
-                                                                                        class="woocommerce-input-wrapper"><input
-                                                                                            type="text"
-                                                                                            class="input-text "
-                                                                                            name="shipping_last_name"
-                                                                                            id="shipping_last_name"
-                                                                                            placeholder="" value=""
-                                                                                            autocomplete="family-name" /></span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide"
-                                                                                    id="shipping_company_field"
-                                                                                    data-priority="30"><label
-                                                                                        for="shipping_company"
-                                                                                        class="">Company
-                                                                                        name&nbsp;<span
-                                                                                            class="optional">(optional)</span></label><span
-                                                                                        class="woocommerce-input-wrapper"><input
-                                                                                            type="text"
-                                                                                            class="input-text "
-                                                                                            name="shipping_company"
-                                                                                            id="shipping_company"
-                                                                                            placeholder="" value=""
-                                                                                            autocomplete="organization" /></span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide address-field update_totals_on_change validate-required"
-                                                                                    id="shipping_country_field"
-                                                                                    data-priority="40"><label
-                                                                                        for="shipping_country"
-                                                                                        class="">Country /
-                                                                                        Region&nbsp;<abbr
-                                                                                            class="required"
-                                                                                            title="required">*</abbr></label><span
-                                                                                        class="woocommerce-input-wrapper"><strong>Australia</strong><input
-                                                                                            type="hidden"
-                                                                                            name="shipping_country"
-                                                                                            id="shipping_country" value="AU"
-                                                                                            autocomplete="country"
-                                                                                            class="country_to_state"
-                                                                                            readonly="readonly" /></span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide address-field importanthide"
-                                                                                    id="shipping_address_1_field"
-                                                                                    data-priority="50"><label
-                                                                                        for="shipping_address_1"
-                                                                                        class="">Street
-                                                                                        address&nbsp;<span
-                                                                                            class="optional">(optional)</span></label><span
-                                                                                        class="woocommerce-input-wrapper"><input
-                                                                                            type="text"
-                                                                                            class="input-text "
-                                                                                            name="shipping_address_1"
-                                                                                            id="shipping_address_1"
-                                                                                            placeholder="House number and street name"
-                                                                                            value="Default"
-                                                                                            autocomplete="address-line1" /></span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide address-field"
-                                                                                    id="shipping_address_2_field"
-                                                                                    data-priority="60"><label
-                                                                                        for="shipping_address_2"
-                                                                                        class="screen-reader-text">Apartment,
-                                                                                        suite, unit, etc.
-                                                                                        (optional)&nbsp;<span
-                                                                                            class="optional">(optional)</span></label><span
-                                                                                        class="woocommerce-input-wrapper"><input
-                                                                                            type="text"
-                                                                                            class="input-text "
-                                                                                            name="shipping_address_2"
-                                                                                            id="shipping_address_2"
-                                                                                            placeholder="Apartment, suite, unit, etc. (optional)"
-                                                                                            value=""
-                                                                                            autocomplete="address-line2" /></span>
-                                                                                </p>
-                                                                                <p class="form-row form-row-wide address-field validate-required validate-state"
-                                                                                    id="shipping_state_field"
-                                                                                    data-priority="80"><label
-                                                                                        for="shipping_state"
-                                                                                        class="">State&nbsp;<abbr
-                                                                                            class="required"
-                                                                                            title="required">*</abbr></label><span
-                                                                                        class="woocommerce-input-wrapper"><select
-                                                                                            name="shipping_state"
-                                                                                            id="shipping_state"
-                                                                                            class="state_select "
-                                                                                            autocomplete="address-level1"
-                                                                                            data-placeholder="Select an option&hellip;"
-                                                                                            data-input-classes="">
-                                                                                            <option value="">Select an
-                                                                                                option&hellip;</option>
-                                                                                            <option value="ACT">Australian
-                                                                                                Capital Territory</option>
-                                                                                            <option value="NSW"
-                                                                                                selected='selected'>New
-                                                                                                South Wales</option>
-                                                                                            <option value="NT">Northern
-                                                                                                Territory</option>
-                                                                                            <option value="QLD">Queensland
+                                                                            <div class="woocommerce-shipping-fields__field-wrapper">
+                                                                            <p class="form-row form-row-first validate-required"
+                                                                                id="shipping_first_name_field"
+                                                                                data-priority="10">
+                                                                                <label for="shipping_first_name"
+                                                                                    class="">First
+                                                                                    name&nbsp;<abbr class="required"
+                                                                                        title="required">*</abbr></label><span
+                                                                                    class="woocommerce-input-wrapper">
+
+                                                                                    <input type="text"
+                                                                                        class="input-text "
+                                                                                        name="shipping_first_name" id="first_name"
+                                                                                        placeholder="" autocomplete="given-name" /></span>
+                                                                            </p>
+                                                                            <p class="form-row form-row-last validate-required"
+                                                                                id="shipping_last_name_field"
+                                                                                data-priority="20"><label
+                                                                                    for="shipping_last_name"
+                                                                                    class="">Last name&nbsp;<abbr class="required"
+                                                                                        title="required">*</abbr></label><span
+                                                                                    class="woocommerce-input-wrapper">
+
+                                                                                    <input type="text"
+                                                                                        class="input-text"
+                                                                                        name="shipping_last_name" id="last_name"
+                                                                                        placeholder=""
+                                                                                        autocomplete="family-name" /></span>
+                                                                            </p>
+                                                                            <p class="form-row form-row-wide"
+                                                                                id="shipping_company_field"
+                                                                                data-priority="30">
+                                                                                <label for="shipping_company"
+                                                                                    class="">{{ translate('Country') }}&nbsp;</label><span
+                                                                                    class="woocommerce-input-wrapper">
+                                                                                    <select class="form-control "
+                                                                                        data-live-search="true"
+                                                                                        data-placeholder="{{ translate('Select your Shipping country') }}"
+                                                                                        name="shipping_country_id">
+                                                                                        <option value="">
+                                                                                            {{ translate('Select your country') }}
+                                                                                        </option>
+                                                                                        @foreach (\App\Models\Country::where('status', 1)->get() as $key => $country)
+                                                                                            <option value="{{ $country->id }}" >
+                                                                                                {{ $country->name }}
                                                                                             </option>
-                                                                                            <option value="SA">South
-                                                                                                Australia</option>
-                                                                                            <option value="TAS">Tasmania
-                                                                                            </option>
-                                                                                            <option value="VIC">Victoria
-                                                                                            </option>
-                                                                                            <option value="WA">Western
-                                                                                                Australia</option>
-                                                                                        </select></span></p>
-                                                                                <p class="form-row form-row-wide address-field importanthide validate-postcode"
-                                                                                    id="shipping_postcode_field"
-                                                                                    data-priority="90"><label
-                                                                                        for="shipping_postcode"
-                                                                                        class="">Postcode&nbsp;<span
-                                                                                            class="optional">(optional)</span></label><span
-                                                                                        class="woocommerce-input-wrapper"><input
-                                                                                            type="text"
-                                                                                            class="input-text "
-                                                                                            name="shipping_postcode"
-                                                                                            id="shipping_postcode"
-                                                                                            placeholder="" value="Default"
-                                                                                            autocomplete="postal-code" /></span>
-                                                                                </p>
-                                                                            </div>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </span>
+                                                                            </p>
+
+                                                                            <p class="form-row address-field validate-required form-row-wide"
+                                                                                id="billing_address_1_field"
+                                                                                data-priority="50">
+                                                                                <label for="billing_address_1"
+                                                                                    class="">{{ translate('State') }}&nbsp;</label><span
+                                                                                    class="woocommerce-input-wrapper">
+                                                                                    <select class="form-control mb-3"
+                                                                                        data-live-search="true"
+                                                                                        name="shipping_state_id">
+
+                                                                                    </select></span>
+                                                                            </p>
+
+                                                                            <p class="form-row address-field validate-required validate-postcode form-row-wide"
+                                                                                id="billing_postcode_field"
+                                                                                data-priority="90"
+                                                                                data-o_class="form-row form-row-wide address-field validate-required validate-postcode">
+                                                                                <label for="billing_postcode"
+                                                                                    class="">{{ translate('City') }}&nbsp;</label><span
+                                                                                    class="woocommerce-input-wrapper"><select
+                                                                                        class="form-control mb-3"
+                                                                                        data-live-search="true"
+                                                                                        name="shipping_city_id">
+
+                                                                                    </select></span>
+                                                                            </p>
+
+                                                                            <p class="form-row form-row-wide address-field importanthide validate-postcode"
+                                                                                id="billing_postcode_field"
+                                                                                data-priority="90"><label
+                                                                                    for="billing_postcode"
+                                                                                    class="">Postcode&nbsp;<span
+                                                                                        class="optional">(optional)</span></label><span
+                                                                                    class="woocommerce-input-wrapper"><input
+                                                                                        type="text" class="input-text "
+                                                                                        name="shipping_billing_postcode"
+                                                                                        id="shipping_billing_postcode" placeholder=""
+                                                                                        autocomplete="postal-code" /></span>
+                                                                            </p>
+
+                                                                            <p class="form-row form-row-wide validate-required validate-phone"
+                                                                                id="billing_phone_field"
+                                                                                data-priority="100"><label for="phone"
+                                                                                    class="">Phone&nbsp;<abbr
+                                                                                        class="required"
+                                                                                        title="required">*</abbr></label><span
+                                                                                    class="woocommerce-input-wrapper"><input
+                                                                                        type="tel" class="input-text "
+                                                                                        name="shipping_phone" id="phone"
+                                                                                        placeholder="" autocomplete="tel" /></span></p>
+                                                                            <p class="form-row form-row-wide validate-required validate-email"
+                                                                                id="billing_email_field"
+                                                                                data-priority="110"><label
+                                                                                    for="billing_email"
+                                                                                    class="">Email
+                                                                                    address&nbsp;<abbr
+                                                                                        class="required"
+                                                                                        title="required">*</abbr></label><span
+                                                                                    class="woocommerce-input-wrapper"><input
+                                                                                        type="email" class="input-text "
+                                                                                        name="shipping_email" id="email"
+                                                                                        placeholder="" autocomplete="email username" /></span>
+                                                                            </p>
+                                                                            <p class="form-row importanthide"
+                                                                                id="billing_address_1_field"
+                                                                                data-priority=""><span
+                                                                                    class="woocommerce-input-wrapper"><input
+                                                                                        type="text" class="input-text "
+                                                                                        name="billing_address_1"
+                                                                                        id="billing_address_1"
+                                                                                        placeholder=""
+                                                                                        value="Default" /></span></p>
+                                                                        </div>
 
 
                                                                         </div>
@@ -603,13 +596,17 @@
 
                                                                 <h3 id="order_review_heading">Your order</h3>
 
-                                                                <div id="order_review" class="woocommerce-checkout-review-order">
+                                                                <div id="order_review"
+                                                                    class="woocommerce-checkout-review-order">
                                                                     <div class="woodmart-table-wrapper">
-                                                                        <table class="shop_table woocommerce-checkout-review-order-table">
+                                                                        <table
+                                                                            class="shop_table woocommerce-checkout-review-order-table">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th class="product-name">{{ translate('Product') }}</th>
-                                                                                    <th class="product-total">{{ translate('Subtotal') }}</th>
+                                                                                    <th class="product-name">
+                                                                                        {{ translate('Product') }}</th>
+                                                                                    <th class="product-total">
+                                                                                        {{ translate('Subtotal') }}</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -626,15 +623,18 @@
                                                                                             $product_name_with_choice = $product->getTranslation('name') . ' - ' . $cartItem['variation'];
                                                                                         }
                                                                                     @endphp
-                                                                                    <tr class="cart_item requires-shipping--true">
+                                                                                    <tr
+                                                                                        class="cart_item requires-shipping--true">
                                                                                         <td class="product-name">
-                                                                                            {{ $product_name_with_choice }} &nbsp; <strong
+                                                                                            {{ $product_name_with_choice }}
+                                                                                            &nbsp; <strong
                                                                                                 class="product-quantity">&times;&nbsp;{{ $cartItem['quantity'] }}</strong>
                                                                                         </td>
                                                                                         <td class="product-total">
-                                                                                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                                                                                        class="woocommerce-Price-currencySymbol">
-                                                                                                    </span>{{ single_price(($cartItem['price'] + $cartItem['tax']) * $cartItem['quantity']) }}</bdi></span>
+                                                                                            <span
+                                                                                                class="woocommerce-Price-amount amount"><bdi>
+                                                                                                <span class="woocommerce-Price-currencySymbol">
+                                                                                                </span>{{ single_price(($cartItem['price'] + $cartItem['tax']) * $cartItem['quantity']) }}</bdi></span>
                                                                                         </td>
                                                                                     </tr>
                                                                                 @endforeach
@@ -643,16 +643,19 @@
 
                                                                                 <tr class="cart-subtotal">
                                                                                     <th>{{ translate('Tax') }}</th>
-                                                                                    <td><span class="woocommerce-Price-amount amount"><bdi><span
+                                                                                    <td><span
+                                                                                            class="woocommerce-Price-amount amount"><bdi><span
                                                                                                     class="woocommerce-Price-currencySymbol">
-                                                                                                </span>{{ single_price($cartItem['tax']) }}</bdi></span></td>
+                                                                                                </span>{{ single_price($cartItem['tax']) }}</bdi></span>
+                                                                                    </td>
                                                                                 </tr>
 
 
 
                                                                                 <tr class="order-total">
                                                                                     <th>{{ translate('Total') }}</th>
-                                                                                    <td><strong><span class="woocommerce-Price-amount amount"><bdi><span
+                                                                                    <td><strong><span
+                                                                                                class="woocommerce-Price-amount amount"><bdi><span
                                                                                                         class="woocommerce-Price-currencySymbol"></span>{{ single_price($total) }}</bdi></span></strong>
                                                                                     </td>
                                                                                 </tr>
@@ -662,32 +665,49 @@
                                                                         </table>
                                                                     </div><!-- .woodmart-table-wrapper -->
                                                                     <div id="payment" class="woocommerce-checkout-payment">
-                                                                        <ul class="wc_payment_methods payment_methods methods">
+                                                                        <ul
+                                                                            class="wc_payment_methods payment_methods methods">
                                                                             @if (get_setting('credit_card') == 1)
-                                                                                <li class="wc_payment_method payment_method_limepay">
-                                                                                    <input id="payment_method_limepay" type="radio" class="input-radio" name="payment_method"
-                                                                                        value="limepay" checked='checked' data-order_button_text="" />
+                                                                                <li
+                                                                                    class="wc_payment_method payment_method_limepay">
+                                                                                    <input id="payment_method_limepay"
+                                                                                        type="radio" class="input-radio"
+                                                                                        name="payment_method"
+                                                                                        value="limepay" checked='checked'
+                                                                                        data-order_button_text="" />
 
                                                                                     <label for="payment_method_limepay">
-                                                                                        Credit Card <img src="{{ static_asset('assets-ecom/images/card-icons-list.svg') }}"
+                                                                                        Credit Card <img
+                                                                                            src="{{ static_asset('assets-ecom/images/card-icons-list.svg') }}"
                                                                                             alt="Credit Card" /> </label>
-                                                                                    <div class="payment_box payment_method_limepay">
-                                                                                        <p>Pay securely by Credit/Debit Card.</p>
+                                                                                    <div
+                                                                                        class="payment_box payment_method_limepay">
+                                                                                        <p>Pay securely by Credit/Debit
+                                                                                            Card.</p>
                                                                                     </div>
                                                                                 </li>
                                                                             @endif
                                                                             @if (get_setting('paypal_payment') == 1)
-                                                                                <li class="wc_payment_method payment_method_paypal">
-                                                                                    <input id="payment_method_paypal" type="radio" class="input-radio" name="payment_method"
-                                                                                        value="paypal" data-order_button_text="Proceed to PayPal" />
+                                                                                <li
+                                                                                    class="wc_payment_method payment_method_paypal">
+                                                                                    <input id="payment_method_paypal"
+                                                                                        type="radio" class="input-radio"
+                                                                                        name="payment_method" value="paypal"
+                                                                                        data-order_button_text="Proceed to PayPal" />
 
                                                                                     <label for="payment_method_paypal">
                                                                                         PayPal <img
                                                                                             src="{{ static_asset('assets-ecom/images/icons/Solutions-graphics-1-184x80.jpg') }}"
-                                                                                            alt="PayPal acceptance mark" /><a href="#" class="about_paypal" target="_blank"
-                                                                                            rel="noopener">What is PayPal?</a> </label>
-                                                                                    <div class="payment_box payment_method_paypal" style="display:none;">
-                                                                                        <p>Pay via PayPal; you can pay with your credit card if you don&#8217;t have a PayPal
+                                                                                            alt="PayPal acceptance mark" /><a
+                                                                                            href="#" class="about_paypal"
+                                                                                            target="_blank"
+                                                                                            rel="noopener">What is
+                                                                                            PayPal?</a> </label>
+                                                                                    <div class="payment_box payment_method_paypal"
+                                                                                        style="display:none;">
+                                                                                        <p>Pay via PayPal; you can pay with
+                                                                                            your credit card if you
+                                                                                            don&#8217;t have a PayPal
                                                                                             account.</p>
                                                                                     </div>
                                                                                 </li>
@@ -707,15 +727,22 @@
                                                                                     }
                                                                                 @endphp
                                                                                 @if ($digital != 1 && $cod_on == 1)
-                                                                                    <li class="wc_payment_method cash_on_delivery">
-                                                                                        <input id="cash_on_delivery" type="radio" class="input-radio" name="payment_option"
-                                                                                            value="cash_on_delivery" data-order_button_text="Proceed to COD" />
+                                                                                    <li
+                                                                                        class="wc_payment_method cash_on_delivery">
+                                                                                        <input id="cash_on_delivery"
+                                                                                            type="radio"
+                                                                                            class="input-radio"
+                                                                                            name="payment_option"
+                                                                                            value="cash_on_delivery"
+                                                                                            data-order_button_text="Proceed to COD" required/>
 
                                                                                         <label for="cash_on_delivery">
                                                                                             {{ translate('Cash on Delivery') }}
                                                                                         </label>
-                                                                                        <div class="payment_box cash_on_delivery" style="display:none;">
-                                                                                            <p>{{ translate('Pay with cash upon delivery.') }}</p>
+                                                                                        <div class="payment_box cash_on_delivery"
+                                                                                            style="display:none;">
+                                                                                            <p>{{ translate('Pay with cash upon delivery.') }}
+                                                                                            </p>
                                                                                         </div>
                                                                                     </li>
                                                                                 @endif
@@ -724,57 +751,98 @@
                                                                         </ul>
                                                                         <div class="form-row place-order">
                                                                             <noscript>
-                                                                                Since your browser does not support JavaScript, or it is disabled, please ensure you click the
-                                                                                <em>Update Totals</em> button before placing your order. You may be charged more than the amount
-                                                                                stated above if you fail to do so. <br /><button type="submit" class="button alt"
-                                                                                    name="woocommerce_checkout_update_totals" value="Update totals">Update totals</button>
+                                                                                Since your browser does not support
+                                                                                JavaScript, or it is disabled, please ensure
+                                                                                you click the
+                                                                                <em>Update Totals</em> button before placing
+                                                                                your order. You may be charged more than the
+                                                                                amount
+                                                                                stated above if you fail to do so.
+                                                                                <br /><button type="submit"
+                                                                                    class="button alt"
+                                                                                    name="woocommerce_checkout_update_totals"
+                                                                                    value="Update totals">Update
+                                                                                    totals</button>
                                                                             </noscript>
 
-                                                                            <div class="woocommerce-terms-and-conditions-wrapper">
-                                                                                <div class="woocommerce-privacy-policy-text">
-                                                                                    <p>Your personal data will be used to process your order, support your experience throughout
-                                                                                        this website, and for other purposes described in our<a href="#"
-                                                                                            class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
+                                                                            <div
+                                                                                class="woocommerce-terms-and-conditions-wrapper">
+                                                                                <div
+                                                                                    class="woocommerce-privacy-policy-text">
+                                                                                    <p>Your personal data will be used to
+                                                                                        process your order, support your
+                                                                                        experience throughout
+                                                                                        this website, and for other purposes
+                                                                                        described in our<a href="#"
+                                                                                            class="woocommerce-privacy-policy-link"
+                                                                                            target="_blank">privacy
+                                                                                            policy</a>.</p>
                                                                                 </div>
                                                                                 <div class="woocommerce-terms-and-conditions"
                                                                                     style="display: none; max-height: 200px; overflow: auto;">
-                                                                                    <h3><span style="font-weight: 400">Conditions of Use</span></h3>
+                                                                                    <h3><span
+                                                                                            style="font-weight: 400">Conditions
+                                                                                            of Use</span></h3>
                                                                                     <ol>
-                                                                                        <li><strong> Using this website Means You Agree to These Terms.</strong></li>
+                                                                                        <li><strong> Using this website
+                                                                                                Means You Agree to These
+                                                                                                Terms.</strong></li>
                                                                                     </ol>
-                                                                                    <p><span style="font-weight: 400">Please read these Terms of Use. By using this website, you
-                                                                                            accept these Terms of Use. These are an agreement between you and and govern your
+                                                                                    <p><span style="font-weight: 400">Please
+                                                                                            read these Terms of Use. By
+                                                                                            using this website, you
+                                                                                            accept these Terms of Use. These
+                                                                                            are an agreement between you and
+                                                                                            and govern your
                                                                                             use of this website.</span></p>
                                                                                     <h1></h1>
                                                                                     <ol start="2">
-                                                                                        <li><span style="font-weight: 400"><strong> Explanation</strong> </span></li>
+                                                                                        <li><span
+                                                                                                style="font-weight: 400"><strong>
+                                                                                                    Explanation</strong>
+                                                                                            </span></li>
                                                                                     </ol>
                                                                                     <h1></h1>
                                                                                     <ol start="27">
-                                                                                        <li><strong> Additional Information Required by Law</strong></li>
+                                                                                        <li><strong> Additional Information
+                                                                                                Required by Law</strong>
+                                                                                        </li>
                                                                                     </ol>
                                                                                 </div>
-                                                                                <p class="form-row validate-required pb20px">
-                                                                                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                                                <p
+                                                                                    class="form-row validate-required pb20px">
+                                                                                    <label
+                                                                                        class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
                                                                                         <input type="checkbox"
                                                                                             class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
                                                                                             name="terms" id="terms" />
-                                                                                        <span class="woocommerce-terms-and-conditions-checkbox-text">I have read and agree to
-                                                                                            the website <a href="#" class="woocommerce-terms-and-conditions-link"
-                                                                                                target="_blank">terms and conditions</a></span>&nbsp;<span
+                                                                                        <span
+                                                                                            class="woocommerce-terms-and-conditions-checkbox-text">I
+                                                                                            have read and agree to
+                                                                                            the website <a href="#"
+                                                                                                class="woocommerce-terms-and-conditions-link"
+                                                                                                target="_blank">terms and
+                                                                                                conditions</a></span>&nbsp;<span
                                                                                             class="required">*</span>
                                                                                     </label>
-                                                                                    <input type="hidden" name="terms-field" value="1" />
+                                                                                    <input type="hidden" name="terms-field"
+                                                                                        value="1" />
                                                                                 </p>
                                                                             </div>
 
 
-                                                                            <button type="submit" class="button alt" name="woocommerce_checkout_place_order"
-                                                                                id="place_order" value="Place order" data-value="Place order">Place order</button>
+                                                                            <button type="submit" class="button alt"
+                                                                                name="woocommerce_checkout_place_order"
+                                                                                id="place_order" value="Place order"
+                                                                                data-value="Place order">Place
+                                                                                order</button>
 
-                                                                            <input type="hidden" id="woocommerce-process-checkout-nonce"
-                                                                                name="woocommerce-process-checkout-nonce" value="f83fa310b9" /><input type="hidden"
-                                                                                name="_wp_http_referer" value="/checkout/" />
+                                                                            <input type="hidden"
+                                                                                id="woocommerce-process-checkout-nonce"
+                                                                                name="woocommerce-process-checkout-nonce"
+                                                                                value="f83fa310b9" /><input type="hidden"
+                                                                                name="_wp_http_referer"
+                                                                                value="/checkout/" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -810,7 +878,8 @@
         </div><!-- .main-page-wrapper -->
     </div>
     <!-- end row -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!-- scripts for checkout page start -->
     <!-- for tab  -->
     <script type='text/javascript' id='wc-checkout-js-extra'>
@@ -834,6 +903,15 @@
     <script type='text/javascript' src='{{ static_asset('assets-ecom/js/jquery.blockUI.min.js') }}'
         id='jquery-blockui-js'></script>
     <script type='text/javascript' src='{{ static_asset('assets-ecom/js/checkout.min.js') }}'>
+    </script>
+    <script>
+        document.querySelector('#ship-to-different-address-checkbox').addEventListener("change", function(e){
+            if (e.target.checked == true){
+                document.querySelector('.shipping_address').style.display = "block";
+            } else {
+                document.querySelector('.shipping_address').style.display = "none";
+            }
+        });
     </script>
     <!-- scripts for checkout page end -->
 @endsection
@@ -883,6 +961,9 @@
             get_city(state_id);
         });
 
+
+
+
         function get_states(country_id) {
             $('[name="state"]').html("");
             $.ajax({
@@ -924,5 +1005,62 @@
                 }
             });
         }
+
+
+        // shipping
+
+        $(document).on('change', '[name=shipping_country_id]', function() {
+            var country_id = $(this).val();
+            shipping_get_states(country_id);
+        });
+
+        $(document).on('change', '[name=shipping_state_id]', function() {
+            var state_id = $(this).val();
+            shipping_get_city(state_id);
+        });
+
+        function shipping_get_states(country_id) {
+            $('[name="shipping_state_id"]').html("");
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ route('get-state') }}",
+                type: 'POST',
+                data: {
+                    country_id: country_id
+                },
+                success: function(response) {
+                    var obj = JSON.parse(response);
+                    if (obj != '') {
+                        $('[name="shipping_state_id"]').html(obj);
+                        AIZ.plugins.bootstrapSelect('refresh');
+                    }
+                }
+            });
+        }
+
+        function shipping_get_city(state_id) {
+            $('[name="shipping_city_id"]').html("");
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ route('get-city') }}",
+                type: 'POST',
+                data: {
+                    state_id: state_id
+                },
+                success: function(response) {
+                    var obj = JSON.parse(response);
+                    if (obj != '') {
+                        $('[name="shipping_city_id"]').html(obj);
+                        AIZ.plugins.bootstrapSelect('refresh');
+                    }
+                }
+            });
+        }
+
+
     </script>
 @endsection
