@@ -253,6 +253,7 @@ class CheckoutController extends Controller
         if(isset($request->ship_to_different_address)){
             $address = new Address;
             $address->type          = 'shipping';
+            $address->user_id   = Auth::user()->id;
             $address->first_name    = $request->shipping_first_name;
             $address->last_name     = $request->shipping_last_name;
             $address->email         = $request->shipping_email;

@@ -815,7 +815,7 @@
                                                                                         class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
                                                                                         <input type="checkbox"
                                                                                             class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
-                                                                                            name="terms" id="terms" />
+                                                                                            name="terms" id="agree_checkbox" required />
                                                                                         <span
                                                                                             class="woocommerce-terms-and-conditions-checkbox-text">I
                                                                                             have read and agree to

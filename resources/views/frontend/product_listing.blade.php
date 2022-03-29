@@ -196,8 +196,7 @@
                             <span href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}" class="breadcrumb-last" > {{ \App\Models\Category::find($category_id)->getTranslation('name') }}</span>
                             @endif
                         </nav>
-                        <p class="woocommerce-result-count">
-                            Showing 1&ndash;15 of 184 results</p>
+                         
                     </div>
                     <div class="woodmart-shop-tools">
                         <div class="woodmart-show-sidebar-btn">
@@ -206,31 +205,7 @@
                             <span>Show sidebar</span>
                         </div>
 						<form id="search-form" method="get">
-                        <div class="woodmart-products-per-page">
-
-                            <span class="per-page-title">Show</span>
-
-                            <a rel="nofollow" href="#" class="per-page-variation">
-                                <span>9</span>
-                            </a>
-                            <span class="per-page-border">
-                                    </span>
-                            <a rel="nofollow" href="#" class="per-page-variation">
-                                <span>24</span>
-                            </a>
-                            <span class="per-page-border">
-                                    </span>
-                            <a rel="nofollow" href="#" class="per-page-variation">
-                                <span>36</span>
-                            </a>
-                            <span class="per-page-border">
-                                    </span>
-                            <a rel="nofollow" href="#" class="per-page-variation">
-                                <span>All</span>
-                            </a>
-                            <span class="per-page-border">
-                                    </span>
-                        </div>
+                        
                         <div class="woocommerce-ordering">
                             <select name="sort_by" onchange="filter()" class="orderby" aria-label="Shop order">
                                 <option value="newest" @isset($sort_by) @if ($sort_by == 'newest') selected @endif @endisset>{{ translate('Newest')}}</option>

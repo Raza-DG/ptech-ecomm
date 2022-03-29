@@ -355,9 +355,11 @@
                                                     data-placeholder="Select an option" name="related_products[]"
                                                     id="related_products" data-live-search="true" multiple="multiple"
                                                     data-select>
+                                                    @if(!empty($product->related_id))
                                                     @foreach(\App\Models\Product::where('published',1)->orderBy('created_at', 'desc')->get() as $products)
                                                         <option value="{{$products->id}}" {{in_array($products->id,json_decode($product->related_id)) == true ? "selected" : "" }}>{{ $product->getTranslation('name') }}</option>
                                                     @endforeach
+                                                    @endif
                                                 </select>
 
                                             </div>

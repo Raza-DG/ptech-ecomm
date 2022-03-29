@@ -148,7 +148,17 @@
                                                                                 <div id="wc_gc_cart_redeem_form">
                                                                                     <input autocomplete="off" id="wc_gc_cart_code" name="wc_gc_cart_code" placeholder="Enter your code…" type="text"> <button id="wc_gc_cart_redeem_send" name="wc_gc_cart_redeem_send" type="button">Apply</button>
                                                                                 </div>
-                                                                            </div><a class="checkout-button button alt wc-forward btn_block" href="#">Proceed to shipping &amp; pickup</a>
+                                                                            </div>
+                                                                            @if(Auth::check())
+                                                                                <a class="checkout-button button alt wc-forward btn_block" href="{{ route('checkout.shipping_info') }}">Proceed to shipping &amp; pickup</a>
+                                                                            @else
+                                                                                <div class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover my-account-with-text login-side-opener">
+                                                                                    <a href="javascript:;" title="Proceed to shipping pickup" class="checkout-button button alt wc-forward btn_block">
+                                                                                        <span class="wd-tools-icon"></span>
+                                                                                        <span class="wd-tools-text">{{ translate('Proceed to shipping pickup')}}</span>
+                                                                                    </a>
+                                                                                </div>
+                                                                            @endif
                                                                         </div>
                                                                     </div><!--.cart-totals-inner-->
                                                                 </div>
@@ -178,14 +188,7 @@
                 </a>
             </div>
             <div class="col-md-6 text-center text-md-right">
-                @if(Auth::check())
-
-                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary fw-600">
-                        {{ translate('Continue to Shipping')}}
-                    </a>
-                @else
-                    <button class="btn btn-primary fw-600" onclick="showCheckoutModal()">{{ translate('Continue to Shipping')}}</button>
-                @endif
+                
             </div>
         </div>
     </div>

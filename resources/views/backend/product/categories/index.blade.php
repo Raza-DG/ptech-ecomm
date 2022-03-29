@@ -120,7 +120,7 @@
                                            
                                             <th class="text-center min-w-100px">{{ translate('Banner') }}</th>
                                             <th class="text-center min-w-100px">{{ translate('Icon') }}</th>
-                                            <th class="text-center min-w-70px">{{ translate('Featured') }}</th>
+                                            <!--<th class="text-center min-w-70px">{{ translate('Featured') }}</th>-->
                                             <th class="text-center min-w-100px">{{ translate('Menu') }}</th>
                                             <th class="text-center min-w-150px">{{ translate('Actions') }}</th>
                                         </tr>
@@ -207,16 +207,16 @@
                                                 </td>
                                                 <!--end::Price=-->
                                                 
-                                                <td class="text-center pe-0" data-order="rating-3">
-                                                    <label
-                                                        class="form-check form-switch form-check-custom form-check-solid">
-                                                        <input class="form-check-input" onchange="update_featured(this)"
-                                                            value="{{ $category->id }}" type="checkbox"
-                                                            <?php if ($category->featured == 1) {
-                                                                echo 'checked';
-                                                            } ?>>
-                                                    </label>
-                                                </td>
+                                                <!--<td class="text-center pe-0" data-order="rating-3">-->
+                                                <!--    <label-->
+                                                <!--        class="form-check form-switch form-check-custom form-check-solid">-->
+                                                <!--        <input class="form-check-input" onchange="update_featured(this)"-->
+                                                <!--            value="{{ $category->id }}" type="checkbox"  
+                                                             <?php if ($category->featured == 1) { 
+                                                                //echo 'checked';-->
+                                                             } ?> 
+                                                <!--    </label>-->
+                                                <!--</td>-->
                                                 
                                                 <!--begin::Rating-->
                                                 <td class="text-center pe-0" data-order="rating-3">

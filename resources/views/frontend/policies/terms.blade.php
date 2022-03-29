@@ -4,7 +4,7 @@
 @php
     $terms =  \App\Models\Page::where('type', 'terms_conditions_page')->first();
 @endphp
-<section class="pt-4 mb-4 mt-150">
+<section class="pt-4 mb-4">
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-6 text-center text-lg-left">

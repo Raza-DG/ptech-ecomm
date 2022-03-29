@@ -37,6 +37,20 @@
 @endsection
 
 @section('content')
+<style>
+ 
+@media only screen and (max-width: 600px) {    
+ 
+.prodMain {
+	padding: 5px;
+   }
+	
+	 
+}
+.prodMain {
+    max-width: 100% !important;
+	}
+	</style>
     <div class="container-fluid">
         <div class="row content-layout-wrapper align-items-start">
             <div data-zm-merchant="f91bbf48-799b-4c1c-b9e1-bb935d5ea204" data-env="production" data-require-checkout="false" data-zm-region="au" data-zm-price-max="1500" data-zm-price-min="1" data-zm-display-inline="false"></div>
@@ -272,44 +286,67 @@
                                                     </div>
 
                                                 </div>
-
+                                                <div class="mb-3">
+                                                    @if ($detailedProduct->external_link != null)
+                                                        <a type="button" class="btn btn-primary buy-now fw-600" href="{{ $detailedProduct->external_link }}">
+                                                            <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn)}}
+                                                        </a>
+                                                    @else
+                                                        <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onclick="addToCart()">
+                                                            <i class="las la-shopping-bag"></i>
+                                                            <span class="d-none d-md-inline-block"> {{ translate('Add to cart')}}</span>
+                                                        </button>
+														
+                                                        <button type="button" class="btn btn-primary buy-now fw-600" onclick="buyNow()">
+                                                            <i class="la la-shopping-cart"></i> {{ translate('Buy Now')}}
+                                                        </button>
+														
+                                                    @endif
+                                                    <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
+                                                        <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock')}}
+                                                    </button>
+                                                </div>
                                             </form>
-                                            <div class="mb-3">
-                                                @if ($detailedProduct->external_link != null)
-                                                    <a type="button" class="btn btn-primary buy-now fw-600" href="{{ $detailedProduct->external_link }}">
-                                                        <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn)}}
-                                                    </a>
+                                            
+                                             @if (get_setting('conversation_system') == 1) 
+                                              <div class="woodmart-after-add-to-cart">
+                                                 @if (Auth::check())
+                                                <div class="stock">
+                                                  <img alt="" src="{{ static_asset('assets/images/download.png') }}" width="30px"> <a href="javascript:;"  onclick="show_chat_modal()">{{ translate('Enquire Now')}}</a>
+                                                </div>
                                                 @else
-                                                    <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onclick="addToCart()">
-                                                        <i class="las la-shopping-bag"></i>
-                                                        <span class="d-none d-md-inline-block"> {{ translate('Add to cart')}}</span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary buy-now fw-600" onclick="buyNow()">
-                                                        <i class="la la-shopping-cart"></i> {{ translate('Buy Now')}}
-                                                    </button>
-                                                @endif
-                                                <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
-                                                    <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock')}}
-                                                </button>
+                                                    <div class="stock">
+                                                    <div class="login-side-opener">
+                                                        <a href="javascript:;">
+                                                                <img alt="" src="{{ static_asset('assets/images/download.png') }}" width="30px"> <a href="#">Enquire Now</a>
+                                                        </a>
+                                                    </div>
+                                                    </div>
+                                                @endif    
                                             </div>
+																 
+														@endif
+											 @if($detailedProduct->sheet != null)
                                             <div class="woodmart-after-add-to-cart">
 
                                                 <div class="stock">
-                                                    <img alt="" src="{{ static_asset('assets/images/download.png') }}" width="30px"> <a href="#">Download Data Sheet</a>
+                                                    <img alt="" src="{{ static_asset('assets/images/download.png') }}" width="30px"> <a href="#datasheet">Download Data Sheet</a>
                                                 </div>
 
                                             </div>
+											@endif
                                             <div class="woodmart-wishlist-btn wd-action-btn wd-wishlist-btn wd-style-text">
                                                 <a href="javascript:;" onclick="addToWishList({{ $detailedProduct->id }})" data-key="{{ $detailedProduct->id }}" data-product-id="{{ $detailedProduct->id }}" data-added-text="Browse Wishlist">{{ translate('Add to wishlist')}}</a>
                                             </div>
                                             <div class="product_meta">
 
 														<span class="posted_in">Categories:
-															<a href="#" rel="tag">Tester</a><span class="meta-sep">,</span> <a href="#" rel="tag">Clamp</a></span>
+															<a href="{{route('products.category',$detailedProduct->category->slug)}}" rel="tag">
+															{{$detailedProduct->category->getTranslation('name')}}</a></span><a id="datasheet"></a>
                                             </div>
                                         </div>
                                     </div>
-                                </div><!-- .summary -->
+                                </div><!-- .summary --> 
                             </div>
                         </div>
                     </div>
@@ -320,28 +357,43 @@
                         <div class="desc-tabs">
                             <ul class="prodNav">
                                 <li class="text-red ptItem active" id="pTab1">Description</li>
+								 @if($detailedProduct->related_id != null)
                                 <li class="text-red ptItem" id="pTab2">Optional Accessories</li>
+								@endif
+								 @if($detailedProduct->sheet != null)
+								
                                 <li class="text-red ptItem" id="pTab3">Data Sheets</li>
+								@endif
                             </ul>
                             <div class="prodBody">
                                 <div class="prodMain active" id="pTab1C">
-                                    {{$detailedProduct->getTranslation('description')}}
+                                    {!!$detailedProduct->getTranslation('description')!!}
                                 </div>
+								
+								
                                 <div class="prodMain" id="pTab2C">
+								
+         						@if ($detailedProduct->related_id != null)
+							 
          <div class="products elements-grid align-items-start woodmart-products-holder woodmart-spacing-30 pagination-pagination row">
+		 	@foreach (filter_products(\App\Models\Product::whereIn('id', json_decode($detailedProduct->related_id))->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
+                                        
                                         <div class="product-grid-item product woodmart-hover-quick col-md-3 col-sm-4 col-6 type-product post-447 status-publish instock product_cat-beef product_cat-quick-cook-meals has-post-thumbnail shipping-taxable purchasable product-type-simple" data-loop="2" data-id="447">
                                             <div class="product-element-top">
-                                                <a href="product-details.php" class="product-image-link">
-                                                    <img width="300" height="300" src="assets/images/products/prod1.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /> </a>
+                                                <a class="product-image-link" href="{{ route('product', $related_product->slug) }}">
+                                                        <div class="product-labels labels-rounded">
+                                                            @if(discount_in_percentage($related_product) > 0)
+                                                                <span class="onsale product-label">&nbsp;-{{discount_in_percentage($related_product)}}%</span>
+                                                            @endif
+                                                        </div>
+                                                        <img alt="" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" height="300" src="{{ uploaded_asset($related_product->thumbnail_img) }}" width="300"></a>
                                                 <div class="woodmart-buttons wd-pos-r-t">
                                                     <div class="woodmart-wishlist-btn wd-action-btn wd-wishlist-btn wd-style-icon">
-                                                        <a href="#" data-key="985a3d55c9" data-product-id="447" data-added-text="Browse Wishlist">Add to wishlist</a>
+                                                      <a href="javascript:void(0)" onclick="addToWishList({{ $related_product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left" data-added-text="Browse Wishlist" data-key="{{ $related_product->id }}" data-product-id="{{ $related_product->id }}" href="{{ route('product', $related_product->slug) }}">{{ translate('Add to wishlist') }}</a>
                                                     </div>
                                                 </div>
                                                 <div class="woodmart-add-btn wd-add-btn-replace">
-                                                    <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" aria-label="Add &ldquo;* Voted best in Australia 2020 * Texan Longhorn Burger 4 for $12&rdquo; to your cart" rel="nofollow">
-                                                        <span>Add to cart</span>
-                                                    </a>
+                                                     <a style="width:100%;" href="javascript:void(0)" onclick="showAddToCartModal({{ $related_product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" data-quantity="1" rel="nofollow"><span>{{ translate('Add to cart') }}</span></a>
                                                     <meta input type="hidden" class="wpmProductId" data-id="447">
                                                 </div>
                                                 <div class="quick-shop-wrapper">
@@ -353,125 +405,39 @@
                                                 </div>
                                             </div>
                                             <h3 class="product-title">
-                                                <a href="product-details.php">METREL MD 9231</a>
+                                               <a href="{{ route('product', $related_product->slug) }}">{{ Str::words($related_product->getTranslation('name'), '3')  }}</a>
                                             </h3>
-                                            <span class="price">
-														<span class="woocommerce-Price-amount amount">
-															<bdi><span class="woocommerce-Price-currencySymbol">AED </span>12.00</bdi>
-														</span>
-													</span>
+                                            <span class="price"><span class="woocommerce-Price-amount amount"></span></span>
+                                                @if(home_base_price($related_product) != home_discounted_base_price($related_product))
+                                                    <del class="fw-600 opacity-50 mr-1">{{ home_base_price($related_product) }}</del>
+                                                @endif
+                                                <bdi> {{ home_discounted_base_price($related_product) }}</bdi>
                                         </div>
-                                        <div class="product-grid-item product woodmart-hover-quick col-md-3 col-sm-4 col-6 type-product post-447 status-publish instock product_cat-beef product_cat-quick-cook-meals has-post-thumbnail shipping-taxable purchasable product-type-simple" data-loop="2" data-id="447">
-                                            <div class="product-element-top">
-                                                <a href="product-details.php" class="product-image-link">
-                                                    <img width="300" height="300" src="assets/images/products/prod2.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /> </a>
-                                                <div class="woodmart-buttons wd-pos-r-t">
-                                                    <div class="woodmart-wishlist-btn wd-action-btn wd-wishlist-btn wd-style-icon">
-                                                        <a href="#" data-key="985a3d55c9" data-product-id="447" data-added-text="Browse Wishlist">Add to wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <div class="woodmart-add-btn wd-add-btn-replace">
-                                                    <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" aria-label="Add &ldquo;* Voted best in Australia 2020 * Texan Longhorn Burger 4 for $12&rdquo; to your cart" rel="nofollow">
-                                                        <span>Add to cart</span>
-                                                    </a>
-                                                    <meta input type="hidden" class="wpmProductId" data-id="447">
-                                                </div>
-                                                <div class="quick-shop-wrapper">
-                                                    <div class="quick-shop-close wd-cross-button wd-size-s wd-with-text-left">
-                                                        <span>Close</span>
-                                                    </div>
-                                                    <div class="quick-shop-form">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h3 class="product-title">
-                                                <a href="product-details.php">METREL MD 9231</a>
-                                            </h3>
-                                            <span class="price">
-														<span class="woocommerce-Price-amount amount">
-															<bdi><span class="woocommerce-Price-currencySymbol">AED </span>12.00</bdi>
-														</span>
-													</span>
-                                        </div>
-                                        <div class="product-grid-item product woodmart-hover-quick col-md-3 col-sm-4 col-6 type-product post-447 status-publish instock product_cat-beef product_cat-quick-cook-meals has-post-thumbnail shipping-taxable purchasable product-type-simple" data-loop="2" data-id="447">
-                                            <div class="product-element-top">
-                                                <a href="product-details.php" class="product-image-link">
-                                                    <img width="300" height="300" src="assets/images/products/prod3.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /> </a>
-                                                <div class="woodmart-buttons wd-pos-r-t">
-                                                    <div class="woodmart-wishlist-btn wd-action-btn wd-wishlist-btn wd-style-icon">
-                                                        <a href="#" data-key="985a3d55c9" data-product-id="447" data-added-text="Browse Wishlist">Add to wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <div class="woodmart-add-btn wd-add-btn-replace">
-                                                    <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" aria-label="Add &ldquo;* Voted best in Australia 2020 * Texan Longhorn Burger 4 for $12&rdquo; to your cart" rel="nofollow">
-                                                        <span>Add to cart</span>
-                                                    </a>
-                                                    <meta input type="hidden" class="wpmProductId" data-id="447">
-                                                </div>
-                                                <div class="quick-shop-wrapper">
-                                                    <div class="quick-shop-close wd-cross-button wd-size-s wd-with-text-left">
-                                                        <span>Close</span>
-                                                    </div>
-                                                    <div class="quick-shop-form">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h3 class="product-title">
-                                                <a href="product-details.php">METREL MD 9231</a>
-                                            </h3>
-                                            <span class="price">
-														<span class="woocommerce-Price-amount amount">
-															<bdi><span class="woocommerce-Price-currencySymbol">AED </span>12.00</bdi>
-														</span>
-													</span>
-                                        </div>
-                                        <div class="product-grid-item product woodmart-hover-quick col-md-3 col-sm-4 col-6 type-product post-447 status-publish instock product_cat-beef product_cat-quick-cook-meals has-post-thumbnail shipping-taxable purchasable product-type-simple" data-loop="2" data-id="447">
-                                            <div class="product-element-top">
-                                                <a href="product-details.php" class="product-image-link">
-                                                    <img width="300" height="300" src="assets/images/products/prod4.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" /> </a>
-                                                <div class="woodmart-buttons wd-pos-r-t">
-                                                    <div class="woodmart-wishlist-btn wd-action-btn wd-wishlist-btn wd-style-icon">
-                                                        <a href="#" data-key="985a3d55c9" data-product-id="447" data-added-text="Browse Wishlist">Add to wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <div class="woodmart-add-btn wd-add-btn-replace">
-                                                    <a href="#" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" aria-label="Add &ldquo;* Voted best in Australia 2020 * Texan Longhorn Burger 4 for $12&rdquo; to your cart" rel="nofollow">
-                                                        <span>Add to cart</span>
-                                                    </a>
-                                                    <meta input type="hidden" class="wpmProductId" data-id="447">
-                                                </div>
-                                                <div class="quick-shop-wrapper">
-                                                    <div class="quick-shop-close wd-cross-button wd-size-s wd-with-text-left">
-                                                        <span>Close</span>
-                                                    </div>
-                                                    <div class="quick-shop-form">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h3 class="product-title">
-                                                <a href="product-details.php">METREL MD 9231</a>
-                                            </h3>
-                                            <span class="price">
-														<span class="woocommerce-Price-amount amount">
-															<bdi><span class="woocommerce-Price-currencySymbol">AED </span>12.00</bdi>
-														</span>
-													</span>
+										  @endforeach 
                                         </div>
                                     </div>
 
+                             
+                                @endif
+
                                 </div>
                                 <div class="prodMain" id="pTab3C">
-                                    <div class="p-4  ">
+                                   
                                         @if($detailedProduct->sheet != null)
                                             @php $sheets=json_decode($detailedProduct->sheet);
                                             @endphp
                                             @foreach($sheets as $key => $sheet)
-                                                <span class="bb" style="text-align:left;width:100% ;margin-bottom: 15px; display: flex;   background: #ededeb;
-    padding: 10px;">{{  translate($sheet) }}  <a href="{{ uploaded_asset(json_decode($detailedProduct->sheet_link)[$key]) }}" target="_blank" rel="noopener noreferrer" style="text-align: right;
-    width: 94%;"><span class="rrig">{{  translate("Download") }} </span></a></span>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #eeeeee;margin-bottom: 10px;">
+                                                  <tr>
+                                                    <td style="width: 95%;">{{  translate($sheet) }} </td>
+                                                    <td><a href="{{ uploaded_asset(json_decode($detailedProduct->sheet_link)[$key]) }}" target="_blank" rel="noopener noreferrer" style="text-align: right;
+    width: 74%;"><span class="rrig">{{  translate("Download") }} </span></a></td>
+                                                  </tr>
+                                                </table>
+                                                 
                                             @endforeach
                                         @endif
-                                    </div>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -483,7 +449,7 @@
                             <h3 class="title slider-title">Related products</h3>
                             <div id="carousel-704" class="woodmart-carousel-container  slider-type-product woodmart-carousel-spacing-30" data-owl-carousel data-desktop="6" data-tablet_landscape="4" data-tablet="3" data-mobile="2">
                                 <div class="owl-carousel owl-items-lg-6 owl-items-md-4 owl-items-sm-3 owl-items-xs-2">
-                                    @foreach (filter_products(\App\Models\Product::whereIn('id', json_decode($detailedProduct->related_id))->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
+                                    @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $product)
                                         <div class="slide-product owl-carousel-item">
 
                                             <div class="product-grid-item product woodmart-hover-quick type-product post-162 status-publish first instock product_cat-lamb product_cat-quick-cook-meals-lamb-2 has-post-thumbnail shipping-taxable purchasable product-type-simple" data-loop="4" data-id="162">
@@ -501,7 +467,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="woodmart-add-btn wd-add-btn-replace">
-                                                        <a href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" data-quantity="1" rel="nofollow"><span>{{ translate('Add to cart') }}</span></a>
+                                                        <a style="width:100%;" href="javascript:void(0)" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" class="button product_type_simple add_to_cart_button ajax_add_to_cart add-to-cart-loop" data-product_id="447" data-product_sku="" data-quantity="1" rel="nofollow"><span>{{ translate('Add to cart') }}</span></a>
                                                     </div>
                                                     <div class="quick-shop-wrapper">
                                                         <div class="quick-shop-close wd-cross-button wd-size-s  ">
@@ -703,11 +669,15 @@
             @if (Auth::check())
                 $('#chat_modal').modal('show');
             @else
-                $('#login_modal').modal('show');
+               // $('#login-side-opener').trigger('click');
+                return false;
+                
+           
             @endif
         }
 
     </script>
+    <script src="assets/js/jquery/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             var pTabItem = $(".prodNav .ptItem");

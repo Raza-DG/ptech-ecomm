@@ -310,7 +310,7 @@ width:unset !important;}
     @endif
 
    {{-- @include('frontend.partials.modal') --}}
-
+@if(Route::currentRouteName() != 'checkout.shipping_info')
     <div class="modal fade" id="addToCart">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative">
@@ -326,7 +326,7 @@ width:unset !important;}
             </div>
         </div>
     </div>
-
+@endif
     @yield('modal')
 
     <!-- SCRIPTS -->

@@ -158,7 +158,14 @@
                                                                             @if(Auth::check())
                                                                                 <a class="checkout-button button alt wc-forward btn_block" href="{{ route('checkout.shipping_info') }}">Proceed to shipping &amp; pickup</a>
                                                                             @else
-                                                                                <a class="checkout-button button alt wc-forward btn_block" href="javascript:void(0)" onclick="showCheckoutModal()">Proceed to shipping &amp; pickup</a>
+                                                                                <div class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover  my-account-with-text login-side-opener">
+                                                                                <a href="javascript:;" title="Login / Register" class="checkout-button button alt wc-forward btn_block">
+                                                                                    <span class="wd-tools-icon">
+                                                                                    </span>
+                                                                                    <span class="wd-tools-text">
+                                                                                        {{ translate('Proceed to shipping pickup')}}</span>
+                                                                                </a>
+                                                                                </div>
                                                                             @endif
                                                                         </div>
                                                                     </div><!--.cart-totals-inner-->
@@ -189,14 +196,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 text-center text-md-right">
-                    @if(Auth::check())
-
-                        <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary fw-600">
-                            {{ translate('Continue to Shipping')}}
-                        </a>
-                    @else
-                        <button class="btn btn-primary fw-600" onclick="showCheckoutModal()">{{ translate('Continue to Shipping')}}</button>
-                    @endif
+                    
                 </div>
             </div>
     </div>

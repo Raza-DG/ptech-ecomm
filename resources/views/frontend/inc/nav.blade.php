@@ -11,27 +11,31 @@
     </div>
 @endif
 @php $agent = useragent(); @endphp
- <header class="whb-header whb-sticky-shadow whb-scroll-stick whb-sticky-real">
+<header class="whb-header whb-sticky-shadow whb-scroll-stick whb-sticky-real">
     <div class="whb-main-header">
 
 
 
-        <div class="whb-row whb-general-header whb-not-sticky-row whb-without-bg whb-border-fullwidth whb-color-dark whb-flex-flex-middle">
+        <div
+            class="whb-row whb-general-header whb-not-sticky-row whb-without-bg whb-border-fullwidth whb-color-dark whb-flex-flex-middle">
             <div class="container">
                 <div class="whb-flex-row whb-general-header-inner">
                     <div class="whb-column whb-col-left whb-visible-lg">
                         <div class="site-logo">
                             <div class="woodmart-logo-wrap switch-logo-enable">
-							<a class="d-block py-20px mr-3 ml-0" href="{{ route('home') }}">
-                                @php
-                            $header_logo = get_setting('header_logo');
-                        @endphp
-                        @if($header_logo != null)
-                               <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" style="max-width: 150px;" /> </a>
-                        @else
-                           <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" style="max-width: 150px;" /> </a>
-                        @endif
-						</a>
+                                <a class="d-block py-20px mr-3 ml-0" href="{{ route('home') }}">
+                                    @php
+                                        $header_logo = get_setting('header_logo');
+                                    @endphp
+                                    @if ($header_logo != null)
+                                        <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}"
+                                            style="max-width: 150px;" />
+                                </a>
+                            @else
+                                <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}"
+                                    style="max-width: 150px;" /> </a>
+                                @endif
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -55,68 +59,106 @@
                         <div class="whb-divider-element whb-divider-default ">
                         </div>
 
-                           @auth
-                            <div class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover my-account-with-text">
-                                <a href="#" title="My account"><span class="wd-tools-icon"></span> <span class="wd-tools-text">My Account</span></a>
+                        @auth
+                            <div
+                                class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover my-account-with-text">
+                                <a href="#" title="My account"><span class="wd-tools-icon"></span> <span
+                                        class="wd-tools-text">My Account</span></a>
                                 <div class="sub-menu-dropdown menu-item-my-account color-scheme-darks">
                                     <ul class="sub-menu">
 
-                                        <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard is-active">
+                                        <li
+                                            class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard is-active">
                                             @if (isAdmin())
-                                                    <a href="{{ route('admin.dashboard') }}"><span>Dashboard</span></a>
-                                                @else
-                                                    <a href="{{ route('dashboard') }}"><span>Dashboard</span></a>
+                                                <a href="{{ route('admin.dashboard') }}"><span>Dashboard</span></a>
+                                            @else
+                                                <a href="{{ route('dashboard') }}"><span>Dashboard</span></a>
                                             @endif
                                         </li>
-                                        <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
-                                            <a href="{{route('orders.index')}}"><span>Orders</span></a>
+                                        <li
+                                            class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
+                                            <a href="{{ route('purchase_history.index') }}"><span>Orders</span></a>
                                         </li>
-                                        <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address">
-                                            <a href="{{route("address")}}"><span>Addresses</span></a>
+                                        <li
+                                            class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
+                                            <a href="{{ route('wishlists.index') }}"><span>Wishlist</span></a>
                                         </li>
-                                        <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account">
-                                            <a href="{{route('profile')}}"><span>Account details</span></a>
+                                        <li
+                                            class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address">
+                                            <a href="{{ route('address') }}"><span>Addresses</span></a>
                                         </li>
-                                        <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout">
+                                        <li
+                                            class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account">
+                                            <a href="{{ route('profile') }}"><span>Account details</span></a>
+                                        </li>
+                                        <li
+                                            class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout">
                                             <a href="{{ route('logout') }}"><span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="whb-divider-element whb-divider-default"></div>
-						   @else
-						   <div class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover  my-account-with-text login-side-opener">
-						    <a href="javascript:;" title="Login / Register">
-                                <span class="wd-tools-icon">
-                                </span>
-                                <span class="wd-tools-text">
-                                    Login / Register </span>
-                            </a>
-							</div>
-							@endauth
+                        @else
+                            <div
+                                class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover  my-account-with-text login-side-opener">
+                                <a href="javascript:;" title="Login / Register">
+                                    <span class="wd-tools-icon">
+                                    </span>
+                                    <span class="wd-tools-text">
+                                        Login / Register </span>
+                                </a>
+                            </div>
+                        @endauth
 
                         <div class="whb-divider-element whb-divider-default ">
                         </div>
-                        <div class="woodmart-shopping-cart wd-tools-element woodmart-cart-design-2 woodmart-cart-alt cart-widget-opener">
-                            <a href="javascript:;" title="Shopping cart">
-                                <i class="la la-shopping-cart la-2x opacity-80"></i>
-                                <span class="flex-grow-1 ml-1">
-        @if(isset($cart) && count($cart) > 0)
-                                        <span class="badge badge-primary badge-inline badge-pill cart-count">
-                {{ count($cart)}}
-            </span>
+                        <div
+                            class="woodmart-shopping-cart wd-tools-element woodmart-cart-design-2 woodmart-cart-alt cart-widget-opener">
+                            <a href="#" title="Shopping cart">
+                                <span class="woodmart-cart-icon wd-tools-icon">
+                                    @php
+                                        if(auth()->user() != null) {
+                                            $user_id = Auth::user()->id;
+                                            $cart = \App\Models\Cart::where('user_id', $user_id)->get();
+                                        } else {
+                                            $temp_user_id = Session()->get('temp_user_id');
+                                            if($temp_user_id) {
+                                                $cart = \App\Models\Cart::where('temp_user_id', $temp_user_id)->get();
+                                            }
+                                        }
+                                    @endphp
+                                    @if (isset($cart) && count($cart) > 0)
+                                        <span class="woodmart-cart-number">{{ count($cart) }}
+                                            <span>items</span></span>
                                     @else
-                                        <span class="badge badge-primary badge-inline badge-pill cart-count">0</span>
+                                        <span class="woodmart-cart-number">0 <span>items</span></span>
                                     @endif
-        <span class="nav-box-text d-none d-xl-block opacity-70">{{translate('Cart')}}</span>
-    </span>
+                                </span>
+                                <span class="woodmart-cart-totals wd-tools-text">
+
+                                    <span class="subtotal-divider">/</span>
+                                    <span class="woodmart-cart-subtotal">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                @if (isset($cart) && count($cart) > 0)
+                                                    <span class="woocommerce-Price-currencySymbol">{{ count($cart) }}
+                                                    </span>items
+                                                @else
+                                                    <span class="woocommerce-Price-currencySymbol">0 </span>items
+                                                @endif
+                                            </bdi>
+                                        </span>
+                                    </span>
+                                </span>
                             </a>
                         </div>
 
 
                     </div>
                     <div class="whb-column whb-mobile-left whb-hidden-lg">
-                        <div class="woodmart-burger-icon wd-tools-element mobile-nav-icon whb-mobile-nav-icon wd-style-text">
+                        <div
+                            class="woodmart-burger-icon wd-tools-element mobile-nav-icon whb-mobile-nav-icon wd-style-text">
                             <a href="#">
                                 <span class="woodmart-burger wd-tools-icon">
                                 </span>
@@ -129,16 +171,18 @@
                     <div class="whb-column whb-mobile-center whb-hidden-lg">
                         <div class="site-logo">
                             <div class="woodmart-logo-wrap switch-logo-enable">
-							<a class="d-block py-20px mr-3 ml-0" href="{{ route('home') }}">
-                               @php
-                            $header_logo = get_setting('header_logo');
-                        @endphp
-                        @if($header_logo != null)
-                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-40px" height="40">
-                        @else
-                            <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-40px" height="40">
-                        @endif
-						</a>
+                                <a class="d-block py-20px mr-3 ml-0" href="{{ route('home') }}">
+                                    @php
+                                        $header_logo = get_setting('header_logo');
+                                    @endphp
+                                    @if ($header_logo != null)
+                                        <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}"
+                                            class="mw-100 h-30px h-md-40px" height="40">
+                                    @else
+                                        <img src="{{ static_asset('assets/img/logo.png') }}"
+                                            alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-40px" height="40">
+                                    @endif
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -146,16 +190,17 @@
                     <div class="whb-column whb-mobile-right whb-hidden-lg">
                         <div class="woodmart-shopping-cart wd-tools-element woodmart-cart-design-5 cart-widget-opener">
                             @if ($agent->isDesktop())
-                             @include('frontend.partials.cart')
+                                @include('frontend.partials.cart')
                             @elseif($agent->isMobile())
                                 <a href="javascript:;" title="Shopping cart">
-                                <span class="woodmart-cart-icon wd-tools-icon">
-                                     @if(isset($cart) && count($cart) > 0)
-                                    <span class="woodmart-cart-number  cart-count">{{ count($cart)}} <span>items</span></span>
-                                    @else
-                                        <span class="woodmart-cart-number  cart-count">0</span>
-                                    @endif
-                                </span>
+                                    <span class="woodmart-cart-icon wd-tools-icon">
+                                        @if (isset($cart) && count($cart) > 0)
+                                            <span class="woodmart-cart-number  cart-count">{{ count($cart) }}
+                                                <span>items</span></span>
+                                        @else
+                                            <span class="woodmart-cart-number  cart-count">0</span>
+                                        @endif
+                                    </span>
                                 </a>
                             @endif
                         </div>
@@ -169,7 +214,8 @@
 
 
 
-        <div class="whb-row whb-header-bottom whb-not-sticky-row whb-with-bg whb-border-fullwidth whb-color-light whb-flex-flex-middle black-menu-bar">
+        <div
+            class="whb-row whb-header-bottom whb-not-sticky-row whb-with-bg whb-border-fullwidth whb-color-light whb-flex-flex-middle black-menu-bar">
             <div class="container">
                 <div class="whb-flex-row whb-header-bottom-inner">
                     <div class="whb-column whb-col-left whb-visible-lg">
@@ -190,17 +236,19 @@
 
 
 
-                                <div class="categories-menu-dropdown vertical-navigation woodmart-navigation desktop-nav">
+                                <div
+                                    class="categories-menu-dropdown vertical-navigation woodmart-navigation desktop-nav">
                                     <div class="menu-categories-container">
-                                            @include('frontend.partials.category_menu')
+                                        @include('frontend.partials.category_menu')
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="whb-navigation whb-primary-menu main-nav site-navigation woodmart-navigation menu-left navigation-style-default" role="navigation">
+                        <div class="whb-navigation whb-primary-menu main-nav site-navigation woodmart-navigation menu-left navigation-style-default"
+                            role="navigation">
                             <div class="menu-main-menu-container">
-							@include('frontend.partials.main_menu')
+                                @include('frontend.partials.main_menu')
                             </div>
                         </div>
                         <!--END MAIN-NAV-->

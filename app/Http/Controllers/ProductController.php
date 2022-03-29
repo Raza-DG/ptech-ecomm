@@ -194,6 +194,26 @@ class ProductController extends Controller
         $product->external_link = $request->external_link;
         $product->external_link_btn = $request->external_link_btn;
 
+         if (!empty($request->related_products)) {
+            $product->related_id = json_encode($request->related_products);
+        }
+        else {
+            $product->related_id = json_encode(array());
+        }
+        
+          if (!empty($request->heading_list)) {
+            $product->sheet = json_encode($request->heading_list);
+        }
+        else {
+            $product->sheet = json_encode(array());
+        }
+		
+		if (!empty($request->pdf2)) {
+            $product->sheet_link = json_encode($request->pdf2);
+        }
+        else {
+            $product->sheet_link = json_encode(array());
+        }
 
         if($request->has('weight') && !empty($request->weight)){
             $product->weight =$request->weight;
@@ -548,7 +568,26 @@ class ProductController extends Controller
         $product->featured = 0;
         $product->todays_deal = 0;
         $product->is_quantity_multiplied = 0;
-
+        if (!empty($request->related_products)) {
+            $product->related_id = json_encode($request->related_products);
+        }
+        else {
+            $product->related_id = json_encode(array());
+        }
+        
+        if (!empty($request->heading_list)) {
+            $product->sheet = json_encode($request->heading_list);
+        }
+        else {
+            $product->sheet = json_encode(array());
+        }
+		
+		if (!empty($request->pdf2)) {
+            $product->sheet_link = json_encode($request->pdf2);
+        }
+        else {
+            $product->sheet_link = json_encode(array());
+        }
         if (addon_is_activated('refund_request')) {
             if ($request->refundable != null) {
                 $product->refundable = 1;

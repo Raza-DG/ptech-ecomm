@@ -7,8 +7,8 @@
           <tr class="text-center text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
               <th class="text-center min-w-75px">{{ translate('Product') }}</th>
               <th class="text-center min-w-75px">{{ translate('Base Price') }}</th>
-              <th class="text-center min-w-175px">{{ translate('Discount') }}</th>
-              <th class="text-center min-w-150px">{{ translate('Discount Type') }}</th>
+              <!--<th class="text-center min-w-175px">{{ translate('Discount') }}</th>-->
+              <!--<th class="text-center min-w-150px">{{ translate('Discount Type') }}</th>-->
           </tr>
           <!--end::Table row-->
       </thead>
@@ -47,21 +47,21 @@
                   </td>
                   <!--end::SKU=-->
                   <!--begin::Qty=-->
-                  <td class="pe-0 w-150px" data-order="32">
-                    <div class="fv-row">
-                      <input type="number" name="discount_{{ $id }}"
-                          class="form-control mb-2" min="0" step="1" required>
-                    </div>
-                  </td>
+                  <!--<td class="pe-0 w-150px" data-order="32">-->
+                  <!--  <div class="fv-row">-->
+                  <!--    <input type="number" name="discount_{{ $id }}"-->
+                  <!--        class="form-control mb-2" min="0" step="1" required>-->
+                  <!--  </div>-->
+                  <!--</td>-->
                   <!--end::Qty=-->
-                  <td class="pe-0 w-150px" data-order="32">
-                      <select class="form-select text-center" data-control="select2" data-hide-search="false"
-                          data-placeholder="Select an option" id="discount_type_" name="discount_type_{{ $id }}"
-                          data-live-search="true">
-                          <option value="amount">{{ translate('Flat') }}</option>
-                          <option value="percent">{{ translate('Percent') }}</option>
-                      </select>
-                  </td>
+                  <!--<td class="pe-0 w-150px" data-order="32">-->
+                  <!--    <select class="form-select text-center" data-control="select2" data-hide-search="false"-->
+                  <!--        data-placeholder="Select an option" id="discount_type_" name="discount_type_{{ $id }}"-->
+                  <!--        data-live-search="true">-->
+                  <!--        <option value="amount">{{ translate('Flat') }}</option>-->
+                  <!--        <option value="percent">{{ translate('Percent') }}</option>-->
+                  <!--    </select>-->
+                  <!--</td>-->
                   <!--end::Qty=-->
                  
               </tr>
