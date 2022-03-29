@@ -332,9 +332,7 @@
                                                                         <h3 id="ship-to-different-address">
                                                                             <label
                                                                                 class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                                                                <input
-                                                                                    id="ship-to-different-address-checkbox"
-                                                                                    class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+                                                                                <input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
                                                                                     type="checkbox"
                                                                                     name="ship_to_different_address"
                                                                                     value="1" /> <span>Ship to a different
@@ -710,7 +708,7 @@
                                                                                 @endphp
                                                                                 @if ($digital != 1 && $cod_on == 1)
                                                                                     <li class="wc_payment_method cash_on_delivery">
-                                                                                        <input id="cash_on_delivery" type="radio" class="input-radio" name="payment_method"
+                                                                                        <input id="cash_on_delivery" type="radio" class="input-radio" name="payment_option"
                                                                                             value="cash_on_delivery" data-order_button_text="Proceed to COD" />
 
                                                                                         <label for="cash_on_delivery">
@@ -812,8 +810,7 @@
         </div><!-- .main-page-wrapper -->
     </div>
     <!-- end row -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!-- scripts for checkout page start -->
     <!-- for tab  -->
     <script type='text/javascript' id='wc-checkout-js-extra'>
@@ -836,7 +833,7 @@
     <!-- for tab -->
     <script type='text/javascript' src='{{ static_asset('assets-ecom/js/jquery.blockUI.min.js') }}'
         id='jquery-blockui-js'></script>
-    <script type='text/javascript' src='{{ static_asset('assets-ecom/js/checkout.min.js') }}' id='wc-checkout-js'>
+    <script type='text/javascript' src='{{ static_asset('assets-ecom/js/checkout.min.js') }}'>
     </script>
     <!-- scripts for checkout page end -->
 @endsection

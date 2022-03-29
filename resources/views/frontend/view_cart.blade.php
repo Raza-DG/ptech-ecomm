@@ -154,7 +154,12 @@
                                                                                 <div id="wc_gc_cart_redeem_form">
                                                                                     <input autocomplete="off" id="wc_gc_cart_code" name="wc_gc_cart_code" placeholder="Enter your code…" type="text"> <button id="wc_gc_cart_redeem_send" name="wc_gc_cart_redeem_send" type="button">Apply</button>
                                                                                 </div>
-                                                                            </div><a class="checkout-button button alt wc-forward btn_block" href="#">Proceed to shipping &amp; pickup</a>
+                                                                            </div>
+                                                                            @if(Auth::check())
+                                                                                <a class="checkout-button button alt wc-forward btn_block" href="{{ route('checkout.shipping_info') }}">Proceed to shipping &amp; pickup</a>
+                                                                            @else
+                                                                                <a class="checkout-button button alt wc-forward btn_block" href="javascript:void(0)" onclick="showCheckoutModal()">Proceed to shipping &amp; pickup</a>
+                                                                            @endif
                                                                         </div>
                                                                     </div><!--.cart-totals-inner-->
                                                                 </div>

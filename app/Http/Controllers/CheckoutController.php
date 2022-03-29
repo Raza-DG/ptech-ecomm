@@ -33,7 +33,7 @@ class CheckoutController extends Controller
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
-        dd($request->all());
+
         if ($request->payment_option != null) {
             (new OrderController)->store($request);
 
@@ -317,7 +317,7 @@ class CheckoutController extends Controller
 
             }
             $total = $subtotal + $tax + $shipping;
-            return redirect()->route('payment.checkout',[$request]);
+            return $this->checkout($request);
         }else {
             flash(translate('Your Cart was empty'))->warning();
             return redirect()->route('home');
